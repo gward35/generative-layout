@@ -6,6 +6,11 @@ let currentPalette, tileLen;
 
 function setup() {
     createCanvas(windowWidth, windowWidth)
+    let gridItems = selectAll('.item');
+    console.log(gridItems)
+    for (let i = 0; i < gridItems.length; i++) {
+        gridItems[i].mouseOver(change);
+    }
     noLoop();
 }
 
@@ -53,5 +58,9 @@ function draw() {
 }
 
 function mouseClicked() {
+    redraw();
+}
+
+function change() {
     redraw();
 }
