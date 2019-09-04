@@ -4,6 +4,14 @@ body {
   background-color: #9E0031;
   font-family: 'Josefin Sans', sans-serif; }
 
+button {
+  position: relative;
+  z-index: 99;
+  width: 5rem;
+  height: 3rem;
+  color: #fff;
+  cursor: pointer; }
+
 canvas {
   position: absolute;
   top: 0;
@@ -44,15 +52,29 @@ p {
     grid-template-rows: 127px 127px 127px 127px 127px 127px 127px 127px 127px;
     max-width: 1000px;
     margin: 100px auto;
-    color: #fff; }
+    color: #fff;
+    cursor: pointer; }
     .container .grid .item {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: all ease 1s; }
+      transition: all ease 1s;
+      overflow: hidden;
+      position: relative; }
       .container .grid .item:hover {
-        color: #9E0031; }
+        color: #8E0045; }
+        .container .grid .item:hover:after {
+          width: 310%; }
+      .container .grid .item:after {
+        content: '';
+        height: 100%;
+        width: 0;
+        position: absolute;
+        z-index: -1;
+        transition: 0.5s;
+        top: 0;
+        bottom: 0; }
       .container .grid .item.-a {
         grid-column-start: 1;
         grid-column-end: 3;
@@ -64,8 +86,9 @@ p {
         border-right: 0;
         padding: 2rem 0;
         background-color: rgba(255, 255, 255, 0.5); }
-        .container .grid .item.-a:hover {
-          background-color: white; }
+        .container .grid .item.-a:after {
+          transform: skew(45deg);
+          background: linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 30%, white 100%); }
       .container .grid .item.-b {
         grid-column-start: 3;
         grid-column-end: 5;
@@ -74,8 +97,9 @@ p {
         border: 1px solid #fff;
         padding: 4rem 0;
         background-color: rgba(0, 0, 0, 0.5); }
-        .container .grid .item.-b:hover {
-          background-color: black; }
+        .container .grid .item.-b:after {
+          transform: skew(-45deg);
+          background: linear-gradient(-45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 30%, black 100%); }
       .container .grid .item.-c {
         grid-column-start: 1;
         grid-column-end: 2;
@@ -87,8 +111,9 @@ p {
         border-right: 1px solid #fff;
         padding: 2rem 0;
         background-color: rgba(189, 213, 234, 0.5); }
-        .container .grid .item.-c:hover {
-          background-color: #bdd5ea; }
+        .container .grid .item.-c:after {
+          transform: skew(45deg);
+          background: linear-gradient(45deg, rgba(189, 213, 234, 0) 0%, rgba(189, 213, 234, 0.5) 30%, #bdd5ea 100%); }
       .container .grid .item.-d {
         grid-column-start: 2;
         grid-column-end: 3;
@@ -100,8 +125,9 @@ p {
         border-bottom: 1px solid #fff;
         padding: 2rem 0;
         background-color: rgba(242, 92, 84, 0.5); }
-        .container .grid .item.-d:hover {
-          background-color: #f25c54; }
+        .container .grid .item.-d:after {
+          transform: skew(-45deg);
+          background: linear-gradient(-45deg, rgba(242, 92, 84, 0) 0%, rgba(242, 92, 84, 0.5) 30%, #f25c54 100%); }
       .container .grid .item.-e {
         grid-column-start: 3;
         grid-column-end: 4;
@@ -113,8 +139,9 @@ p {
         border-bottom: 0;
         padding: 2rem 0;
         background-color: rgba(255, 255, 255, 0.5); }
-        .container .grid .item.-e:hover {
-          background-color: white; }
+        .container .grid .item.-e:after {
+          transform: skew(45deg);
+          background: linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 30%, white 100%); }
       .container .grid .item.-f {
         grid-column-start: 4;
         grid-column-end: 5;
@@ -126,8 +153,9 @@ p {
         border-bottom: 1px solid #fff;
         padding: 2rem 0;
         background-color: rgba(189, 213, 234, 0.5); }
-        .container .grid .item.-f:hover {
-          background-color: #bdd5ea; }
+        .container .grid .item.-f:after {
+          transform: skew(45deg);
+          background: linear-gradient(45deg, rgba(189, 213, 234, 0) 0%, rgba(189, 213, 234, 0.5) 30%, #bdd5ea 100%); }
       .container .grid .item.-g {
         grid-column-start: 1;
         grid-column-end: 3;
@@ -139,8 +167,9 @@ p {
         border-bottom: 1px solid #fff;
         padding: 2rem 0;
         background-color: rgba(0, 0, 0, 0.5); }
-        .container .grid .item.-g:hover {
-          background-color: black; }
+        .container .grid .item.-g:after {
+          transform: skew(45deg);
+          background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 30%, black 100%); }
       .container .grid .item.-h {
         grid-column-start: 3;
         grid-column-end: 4;
@@ -152,8 +181,9 @@ p {
         border-bottom: 1px solid #fff;
         padding: 2rem 0;
         background-color: rgba(242, 92, 84, 0.5); }
-        .container .grid .item.-h:hover {
-          background-color: #f25c54; }
+        .container .grid .item.-h:after {
+          transform: skew(45deg);
+          background: linear-gradient(45deg, rgba(242, 92, 84, 0) 0%, rgba(242, 92, 84, 0.5) 30%, #f25c54 100%); }
       .container .grid .item.-i {
         grid-column-start: 2;
         grid-column-end: 4;

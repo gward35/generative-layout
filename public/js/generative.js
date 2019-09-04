@@ -1,3 +1,5 @@
+let canvas;
+let savedCanvas;
 const color = [['#9E0031', '#8E0045', '#770058'], ['#666A86', '#788AA3', '#92B6B1'], ['#FC7753', '#66D7D1', '#403D58']];
 let queueNumber = [0, 1, 2];
 let num = 30;
@@ -5,14 +7,16 @@ let colorThemeIndex = 0;
 let currentPalette, tileLen;
 
 function setup() {
-    createCanvas(windowWidth, windowWidth)
+    canvas = createCanvas(windowWidth, windowWidth)
+    
     let gridItems = selectAll('.item');
-    console.log(gridItems)
     for (let i = 0; i < gridItems.length; i++) {
-        gridItems[i].mouseOver(change);
+        gridItems[i].mouseOver(hoverChange);
     }
     noLoop();
 }
+
+
 
 function draw() {
     noStroke();
@@ -55,12 +59,13 @@ function draw() {
             }
         }
     }
+
+    savedCanvas = canvas.canvas.toDataURL();
+    let button = select('button');
+    
+    button.style('background-image', `url(${str(savedCanvas)})`);
 }
 
-function mouseClicked() {
-    redraw();
-}
-
-function change() {
+function hoverChange() {
     redraw();
 }
