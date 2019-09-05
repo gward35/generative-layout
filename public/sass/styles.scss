@@ -7,8 +7,8 @@ $purple: #770058;
 body {
     width: 100%;
     height: 100%;
-    background-color: $plum;
     font-family: 'Josefin Sans', sans-serif;
+    background-color: #494850;
 }
 
 button {
@@ -65,9 +65,9 @@ p {
     .grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 127px 127px 127px 127px 127px 127px 127px 127px 127px;
+        grid-template-rows: 127px 127px 127px 127px 127px 127px 127px;
         max-width: 1000px;
-        margin: 100px auto;
+        margin: 0 auto;
         color: $white;
         cursor: pointer;
 
@@ -94,7 +94,7 @@ p {
                 width: 0;
                 position: absolute;
                 z-index: -1;
-                transition: 0.5s;
+                transition: 1s;
                 top: 0;
                 bottom: 0;
             }
@@ -252,6 +252,55 @@ p {
                     margin: 0;
                     padding: 1rem;
                     color: #9E0031;
+                }
+            }
+        }
+    }
+
+    .background {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        margin: 0 auto;
+        max-width: 1000px;
+        background-color: $white;
+
+        .slug {
+            display: flex;
+            flex-direction: column;
+            color: $black;
+            position: relative;
+            padding: 2rem;
+
+            &.-a {
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 1;
+                grid-row-end: 2;
+
+                .rectangle {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            &.-b {
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 2;
+                grid-row-end: 3;
+            }
+
+            &.-c {
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 3;
+                grid-row-end: 5;
+
+                .border {
+                    width: 100%;
+                    height: 100%;
+                    border: 5px solid;
                 }
             }
         }
