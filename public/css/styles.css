@@ -2,15 +2,41 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Josefin Sans', sans-serif;
-  background-color: #494850; }
+  background-color: #fff; }
 
 button {
   position: relative;
-  z-index: 99;
-  width: 5rem;
-  height: 3rem;
+  display: inline-flex;
+  min-width: 80px;
+  min-height: 40px;
+  box-sizing: border-box;
   color: #fff;
-  cursor: pointer; }
+  cursor: pointer;
+  padding: 0 4rem;
+  border-radius: 3px;
+  font-size: 1.2rem;
+  box-shadow: 1px 1px 3px #494850;
+  border: 0;
+  background-color: transparent;
+  transition: background-color 1s ease;
+  z-index: 99; }
+  button.border {
+    border: 2px solid;
+    color: #000; }
+  button:hover:after, button:focus:after {
+    background-color: rgba(120, 138, 163, 0.8);
+    width: 100%;
+    height: 100%; }
+  button:after {
+    content: '';
+    height: 100%;
+    width: 0;
+    position: absolute;
+    z-index: -1;
+    transition: 1s;
+    top: 0;
+    left: 0;
+    bottom: 0; }
 
 canvas {
   position: absolute;
@@ -38,170 +64,18 @@ p {
   font-size: 1rem;
   line-height: 1.5; }
 
-.width-80 {
-  width: 80%;
-  justify-content: center; }
-
 .container {
   position: relative;
   padding: 2rem;
   z-index: 2; }
-  .container .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 127px 127px 127px 127px 127px 127px 127px;
-    max-width: 1000px;
-    margin: 0 auto;
-    color: #fff;
-    cursor: pointer; }
-    .container .grid .item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: all ease 1s;
-      overflow: hidden;
-      position: relative; }
-      .container .grid .item:hover {
-        color: #8E0045; }
-        .container .grid .item:hover:after {
-          width: 310%; }
-      .container .grid .item:after {
-        content: '';
-        height: 100%;
-        width: 0;
-        position: absolute;
-        z-index: -1;
-        transition: 1s;
-        top: 0;
-        bottom: 0; }
-      .container .grid .item.-a {
-        grid-column-start: 1;
-        grid-column-end: 3;
-        grid-row-start: 1;
-        grid-row-end: 3;
-        border-top: 1px solid #fff;
-        border-left: 1px solid #fff;
-        border-bottom: 1px solid #fff;
-        border-right: 0;
-        padding: 2rem 0;
-        background-color: rgba(255, 255, 255, 0.5); }
-        .container .grid .item.-a:after {
-          transform: skew(45deg);
-          background: linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 30%, white 100%); }
-      .container .grid .item.-b {
-        grid-column-start: 3;
-        grid-column-end: 5;
-        grid-row-start: 1;
-        grid-row-end: 4;
-        border: 1px solid #fff;
-        padding: 4rem 0;
-        background-color: rgba(0, 0, 0, 0.5); }
-        .container .grid .item.-b:after {
-          transform: skew(-45deg);
-          background: linear-gradient(-45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 30%, black 100%); }
-      .container .grid .item.-c {
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 3;
-        grid-row-end: 5;
-        border-top: 0;
-        border-left: 1px solid #fff;
-        border-bottom: 1px solid #fff;
-        border-right: 1px solid #fff;
-        padding: 2rem 0;
-        background-color: rgba(189, 213, 234, 0.5); }
-        .container .grid .item.-c:after {
-          transform: skew(45deg);
-          background: linear-gradient(45deg, rgba(189, 213, 234, 0) 0%, rgba(189, 213, 234, 0.5) 30%, #bdd5ea 100%); }
-      .container .grid .item.-d {
-        grid-column-start: 2;
-        grid-column-end: 3;
-        grid-row-start: 3;
-        grid-row-end: 5;
-        border-top: 0;
-        border-left: 0;
-        border-right: 0;
-        border-bottom: 1px solid #fff;
-        padding: 2rem 0;
-        background-color: rgba(242, 92, 84, 0.5); }
-        .container .grid .item.-d:after {
-          transform: skew(-45deg);
-          background: linear-gradient(-45deg, rgba(242, 92, 84, 0) 0%, rgba(242, 92, 84, 0.5) 30%, #f25c54 100%); }
-      .container .grid .item.-e {
-        grid-column-start: 3;
-        grid-column-end: 4;
-        grid-row-start: 4;
-        grid-row-end: 6;
-        border-top: 0;
-        border-left: 1px solid #fff;
-        border-right: 0;
-        border-bottom: 0;
-        padding: 2rem 0;
-        background-color: rgba(255, 255, 255, 0.5); }
-        .container .grid .item.-e:after {
-          transform: skew(45deg);
-          background: linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 30%, white 100%); }
-      .container .grid .item.-f {
-        grid-column-start: 4;
-        grid-column-end: 5;
-        grid-row-start: 4;
-        grid-row-end: 8;
-        border-top: 0;
-        border-left: 1px solid #fff;
-        border-right: 1px solid #fff;
-        border-bottom: 1px solid #fff;
-        padding: 2rem 0;
-        background-color: rgba(189, 213, 234, 0.5); }
-        .container .grid .item.-f:after {
-          transform: skew(45deg);
-          background: linear-gradient(45deg, rgba(189, 213, 234, 0) 0%, rgba(189, 213, 234, 0.5) 30%, #bdd5ea 100%); }
-      .container .grid .item.-g {
-        grid-column-start: 1;
-        grid-column-end: 3;
-        grid-row-start: 5;
-        grid-row-end: 8;
-        border-top: 0;
-        border-left: 1px solid #fff;
-        border-right: 0;
-        border-bottom: 1px solid #fff;
-        padding: 2rem 0;
-        background-color: rgba(0, 0, 0, 0.5); }
-        .container .grid .item.-g:after {
-          transform: skew(45deg);
-          background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 30%, black 100%); }
-      .container .grid .item.-h {
-        grid-column-start: 3;
-        grid-column-end: 4;
-        grid-row-start: 6;
-        grid-row-end: 8;
-        border-top: 1px solid #fff;
-        border-left: 1px solid #fff;
-        border-right: 0;
-        border-bottom: 1px solid #fff;
-        padding: 2rem 0;
-        background-color: rgba(242, 92, 84, 0.5); }
-        .container .grid .item.-h:after {
-          transform: skew(45deg);
-          background: linear-gradient(45deg, rgba(242, 92, 84, 0) 0%, rgba(242, 92, 84, 0.5) 30%, #f25c54 100%); }
-      .container .grid .item.-i {
-        grid-column-start: 2;
-        grid-column-end: 4;
-        grid-row-start: 1;
-        grid-row-end: 2;
-        margin-top: -8rem; }
-        .container .grid .item.-i h3 {
-          background-color: #fff;
-          margin: 0;
-          padding: 1rem;
-          color: #9E0031; }
   .container .background {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     margin: 0 auto;
     max-width: 1000px;
-    background-color: #fff; }
+    background-color: #FCFBF4;
+    box-shadow: 1px 1px 3px #494850; }
     .container .background .slug {
       display: flex;
       flex-direction: column;
@@ -217,6 +91,7 @@ p {
           width: 100%;
           height: 100%; }
       .container .background .slug.-b {
+        display: block;
         grid-column-start: 1;
         grid-column-end: 3;
         grid-row-start: 2;
@@ -227,6 +102,31 @@ p {
         grid-row-start: 3;
         grid-row-end: 5; }
         .container .background .slug.-c .border {
-          width: 100%;
-          height: 100%;
+          padding: 1rem;
           border: 5px solid; }
+      .container .background .slug.-d {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 5;
+        grid-row-end: 7; }
+        .container .background .slug.-d label {
+          position: relative; }
+          .container .background .slug.-d label input {
+            display: block;
+            width: 100%;
+            border: 0;
+            height: 1.75rem;
+            margin: 0;
+            background: none; }
+          .container .background .slug.-d label .after {
+            content: '';
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            transition: background-color ease 1s; }
+          .container .background .slug.-d label:hover .after:after, .container .background .slug.-d label:focus .after:after {
+            background-color: rgba(120, 138, 163, 0.8);
+            width: 100%; }

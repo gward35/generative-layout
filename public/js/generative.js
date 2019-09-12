@@ -10,10 +10,6 @@ function setup() {
     canvas = createCanvas(windowWidth, windowWidth)
     canvas.style('display', 'none');
     
-    let gridItems = selectAll('.item');
-    for (let i = 0; i < gridItems.length; i++) {
-        gridItems[i].mouseOver(hoverChange);
-    }
     noLoop();
 }
 
@@ -64,17 +60,23 @@ function draw() {
     savedCanvas = canvas.canvas.toDataURL();
     let buttons = selectAll('.button');
     let backgroundRect = select('.rectangle');
-    let border = select('.border');
+    let border = selectAll('.border');
+    let input = select('.after::after');
 
     for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style('background-image', `url(${str(savedCanvas)})`);
+        buttons[0].style('background', `url(${str(savedCanvas)})`);
+        buttons[1].style('border-image', `url(${str(savedCanvas)}) 2 / 2px / 0 repeat`);
     }
     
     backgroundRect.style('background-image', `url(${str(savedCanvas)})`);
 
-    border.style('border-image', `url(${str(savedCanvas)}) 5 5 / 10px 10px`);
+    for (let i = 0; i < border.length; i++) {
+        border[1].style('border-image', `url(${str(savedCanvas)}) 5 / 5px / 0 repeat`);
+    }
+    
+    input.style('background-image', `url(${str(savedCanvas)})`);
 }
 
-function hoverChange() {
+function mouseClicked() {
     redraw();
 }

@@ -1,23 +1,62 @@
 $white: #fff;
+$offwhite: #FCFBF4;
 $black: #000;
+$darkgray: #494850;
 $plum: #9E0031;
 $crimson: #8E0045;
 $purple: #770058;
+$slateblue: #788AA3;
 
 body {
     width: 100%;
     height: 100%;
     font-family: 'Josefin Sans', sans-serif;
-    background-color: #494850;
+    background-color: $white;
 }
 
 button {
     position: relative;
-    z-index: 99;
-    width: 5rem;
-    height: 3rem;
-    color: $white;
+    display: inline-flex;
+    min-width: 80px;
+    min-height: 40px;
+    box-sizing: border-box;
+    color: #fff;
     cursor: pointer;
+    padding: 0 4rem;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    box-shadow: 1px 1px 3px $darkgray;
+    border: 0;
+    background-color: transparent;
+    transition: background-color 1s ease;
+    z-index: 99;
+
+    &.border {
+        border: 2px solid;
+        color: $black;
+    }
+
+    &:hover,
+    &:focus {
+
+        &:after {
+            background-color: rgba(120,138,163,0.8);
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &:after {
+        content: '';
+        height: 100%;
+        width: 0;
+        position: absolute;
+        z-index: -1;
+        transition: 1s;
+        top: 0;
+        left: 0;
+        bottom: 0;
+    }
 }
 
 canvas {
@@ -52,210 +91,10 @@ p {
     line-height: 1.5;
 }
 
-.width-80 {
-    width: 80%;
-    justify-content: center;
-}
-
 .container {
     position: relative;
     padding: 2rem;
     z-index: 2;
-
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 127px 127px 127px 127px 127px 127px 127px;
-        max-width: 1000px;
-        margin: 0 auto;
-        color: $white;
-        cursor: pointer;
-
-        .item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all ease 1s;
-            overflow: hidden;
-            position: relative;
-
-            &:hover {
-                color: $crimson;
-
-                &:after {
-                    width: 310%;
-                }
-            }
-
-            &:after {
-                content: '';
-                height: 100%;
-                width: 0;
-                position: absolute;
-                z-index: -1;
-                transition: 1s;
-                top: 0;
-                bottom: 0;
-            }
-
-            &.-a {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row-start: 1;
-                grid-row-end: 3;
-                border-top: 1px solid $white;
-                border-left: 1px solid $white;
-                border-bottom: 1px solid $white;
-                border-right: 0;
-                padding: 2rem 0;
-                background-color: rgba(255,255,255, 0.5);
-    
-                &:after {
-                    transform: skew(45deg);
-                    background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 30%, rgba(255,255,255,1) 100%);
-                }
-            }
-
-            &.-b {
-                grid-column-start: 3;
-                grid-column-end: 5;
-                grid-row-start: 1;
-                grid-row-end: 4;
-                border: 1px solid $white;
-                padding: 4rem 0;
-                background-color: rgba(0,0,0, 0.5);
-    
-                &:after {
-                    transform: skew(-45deg);
-                    background: linear-gradient(-45deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,1) 100%);
-                }
-            }
-
-            &.-c {
-                grid-column-start: 1;
-                grid-column-end: 2;
-                grid-row-start: 3;
-                grid-row-end: 5;
-                border-top: 0;
-                border-left: 1px solid $white;
-                border-bottom: 1px solid $white;
-                border-right: 1px solid $white;
-                padding: 2rem 0;
-                background-color: rgba(189, 213, 234, 0.5);
-                
-                &:after {
-                    transform: skew(45deg);
-                    background: linear-gradient(45deg, rgba(189,213,234,0) 0%, rgba(189,213,234,0.5) 30%, rgba(189,213,234,1) 100%);
-                }
-            }
-
-            &.-d {
-                grid-column-start: 2;
-                grid-column-end: 3;
-                grid-row-start: 3;
-                grid-row-end: 5;
-                border-top: 0;
-                border-left: 0;
-                border-right: 0;
-                border-bottom: 1px solid $white;
-                padding: 2rem 0;
-                background-color: rgba(242,92,84, 0.5);
-
-                &:after {
-                    transform: skew(-45deg);
-                    background: linear-gradient(-45deg, rgba(242,92,84,0) 0%, rgba(242,92,84,0.5) 30%, rgba(242,92,84,1) 100%);
-                }
-            }
-
-            &.-e {
-                grid-column-start: 3;
-                grid-column-end: 4;
-                grid-row-start: 4;
-                grid-row-end: 6;
-                border-top: 0;
-                border-left: 1px solid $white;
-                border-right: 0;
-                border-bottom: 0;
-                padding: 2rem 0;
-                background-color: rgba(255,255,255, 0.5);
-    
-                &:after {
-                    transform: skew(45deg);
-                    background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 30%, rgba(255,255,255,1) 100%);
-                }
-            }
-    
-            &.-f {
-                grid-column-start: 4;
-                grid-column-end: 5;
-                grid-row-start: 4;
-                grid-row-end: 8;
-                border-top: 0;
-                border-left: 1px solid $white;
-                border-right: 1px solid $white;
-                border-bottom: 1px solid $white;
-                padding: 2rem 0;
-                background-color: rgba(189, 213, 234, 0.5);
-    
-                &:after {
-                    transform: skew(45deg);
-                    background: linear-gradient(45deg, rgba(189,213,234,0) 0%, rgba(189,213,234,0.5) 30%, rgba(189,213,234,1) 100%);
-                }
-            }
-    
-            &.-g {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row-start: 5;
-                grid-row-end: 8;
-                border-top: 0;
-                border-left: 1px solid $white;
-                border-right: 0;
-                border-bottom: 1px solid $white;
-                padding: 2rem 0;
-                background-color: rgba(0,0,0, 0.5);
-    
-                &:after {
-                    transform: skew(45deg);
-                    background: linear-gradient(45deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,1) 100%);
-                }
-            }
-    
-            &.-h {
-                grid-column-start: 3;
-                grid-column-end: 4;
-                grid-row-start: 6;
-                grid-row-end: 8;
-                border-top: 1px solid $white;
-                border-left: 1px solid $white;
-                border-right: 0;
-                border-bottom: 1px solid $white;
-                padding: 2rem 0;
-                background-color: rgba(242,92,84, 0.5);
-    
-                &:after {
-                    transform: skew(45deg);
-                    background: linear-gradient(45deg, rgba(242,92,84,0) 0%, rgba(242,92,84,0.5) 30%, rgba(242,92,84,1) 100%);
-                }
-            }
-
-            &.-i {
-                grid-column-start: 2;
-                grid-column-end: 4;
-                grid-row-start: 1;
-                grid-row-end: 2;
-                margin-top: -8rem;
-                
-                h3 {
-                    background-color: $white;
-                    margin: 0;
-                    padding: 1rem;
-                    color: #9E0031;
-                }
-            }
-        }
-    }
 
     .background {
         display: grid;
@@ -263,7 +102,8 @@ p {
         grid-template-rows: 1fr 1fr 1fr;
         margin: 0 auto;
         max-width: 1000px;
-        background-color: $white;
+        background-color: $offwhite;
+        box-shadow: 1px 1px 3px $darkgray;
 
         .slug {
             display: flex;
@@ -285,6 +125,7 @@ p {
             }
 
             &.-b {
+                display: block;
                 grid-column-start: 1;
                 grid-column-end: 3;
                 grid-row-start: 2;
@@ -298,9 +139,49 @@ p {
                 grid-row-end: 5;
 
                 .border {
-                    width: 100%;
-                    height: 100%;
+                    padding: 1rem;
                     border: 5px solid;
+                }
+            }
+
+            &.-d {
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 5;
+                grid-row-end: 7;
+
+                label {
+                    position: relative;
+
+                    input {
+                        display: block;
+                        width: 100%;
+                        border: 0;
+                        height: 1.75rem;
+                        margin: 0;
+                        background: none;
+                    }
+    
+                    .after {
+                        content: '';
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        position: absolute;
+                        height: 2px;
+                        width: 100%;
+                        transition: background-color ease 1s;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        .after {
+                            &:after {
+                                background-color: rgba(120,138,163,0.8);
+                                width: 100%;
+                            }
+                        }
+                    }
                 }
             }
         }
