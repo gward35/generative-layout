@@ -11,12 +11,15 @@
     "nodemon": "^1.19.1",
     "p5": "^0.9.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.26.7"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-css": "node-sass --include-path scss public/sass/styles.scss public/css/styles.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
-    "start": "concurrently \"node server.js\" \"npm run watch-css\""
+    "watch": "browser-sync start --server --index browser-sync.html --watch server.js src/*",
+    "start": "concurrently \"nodemon server.js\" \"npm run watch\""
   },
   "author": "",
   "license": "ISC"
