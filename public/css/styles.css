@@ -4,6 +4,9 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   background-color: #fff; }
 
+img {
+  margin: 0; }
+
 button {
   position: relative;
   display: inline-flex;
