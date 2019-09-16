@@ -4,7 +4,7 @@ const port = 8080;
 const canvas = require("./src/canvas");
 
 app.use("/", express.static('public'));
-app.get("/bluecanvas", (req, res) => {
+app.get("/canvas", (req, res) => {
   canvas(req, res);
 });
 
