@@ -3,9 +3,9 @@ const app = express();
 const port = 8080;
 const canvas = require("./src/canvas");
 
-// app.use(express.static('public'));
-app.get("/", (req, res) => {
-  canvas(res);
+app.use("/", express.static('public'));
+app.get("/bluecanvas", (req, res) => {
+  canvas(req, res);
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));

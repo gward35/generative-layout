@@ -1,16 +1,20 @@
 const { createCanvas } = require("canvas");
-const color = [['#9E0031', '#8E0045', '#770058'], ['#666A86', '#788AA3', '#92B6B1'], ['#FC7753', '#66D7D1', '#403D58']];
+const color = {
+  'red': ['#9E0031', '#8E0045', '#770058'], 
+  'blue': ['#666A86', '#788AA3', '#92B6B1'], 
+  'orange': ['#FC7753', '#66D7D1', '#403D58']
+}
+
 let queueNumber = [0, 1, 2];
 let num = 30;
-let colorThemeIndex = 1;
+let colorTheme;
 let currentPalette, tileLen;
 
-module.exports = function(res) {
-  const canvas = createCanvas(1800, 1800);
+module.exports = function(req, res) {
+  const canvas = createCanvas(2000, 100);
   const context = canvas.getContext("2d");
   tileLen = 1600 / num;
-  currentPalette = color[colorThemeIndex]
-  console.log(tileLen)
+  currentPalette = (!colorTheme ? ['#84828F', '#6A687A', '#536271'] : color[`${req.query.color}`]);
 
   function shuffle(array) {
     let currentIndex = array.length, tempVal, randomIndex;
@@ -36,9 +40,8 @@ module.exports = function(res) {
     context.fill();
   }
 
-  for (let x = 0; x < 1800; x += tileLen) {
-    for(let y = 0; y < 1800; y += tileLen) {
-        console.log(x)
+  for (let x = 0; x < 600; x += tileLen) {
+    for(let y = 0; y < 600; y += tileLen) {
         queueNumber = shuffle(queueNumber);
         context.fillStyle = (currentPalette[queueNumber[0]]);
         context.fillRect(x, y, tileLen, tileLen);
@@ -66,7 +69,6 @@ module.exports = function(res) {
       }
     }
   }
-
   res.set("Content-Type", "image/png");
   canvas.pngStream().pipe(res);
 };
