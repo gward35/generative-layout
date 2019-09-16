@@ -4,15 +4,15 @@ const color = {
   'blue': ['#666A86', '#788AA3', '#92B6B1'], 
   'orange': ['#FC7753', '#66D7D1', '#403D58']
 }
-
+let colorTheme;
 let queueNumber = [0, 1, 2];
 let num = 30;
-let colorTheme;
 let currentPalette, tileLen;
 
 module.exports = function(req, res) {
   const canvas = createCanvas(2000, 100);
   const context = canvas.getContext("2d");
+  colorTheme = color[`${req.query.color}`];
   tileLen = 1600 / num;
   currentPalette = (!colorTheme ? ['#84828F', '#6A687A', '#536271'] : color[`${req.query.color}`]);
 
