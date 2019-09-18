@@ -2,77 +2,68 @@ $white: #fff;
 $offwhite: #FCFBF4;
 $black: #000;
 $darkgray: #494850;
-$plum: #9E0031;
-$crimson: #8E0045;
-$purple: #770058;
-$slateblue: #788AA3;
+$red: #C44536;
+$plum: #8E0045;
+$blue: #0496FF;
+$slate: #788AA3;
+$purple: #31263E;
+$seafoam: #B8E0D2;
+$lime: #96BE8C;
+
+@mixin border {
+    .border {
+        border: 2px solid transparent;
+        border-image-repeat: repeat;
+        border-image-slice: 3;
+        border-image-width: 3px;
+
+        &.red {
+            border-image-source: url('http://localhost:8080/canvas?color=red');
+            border-color: $red;
+        }
+
+        &.plum {
+            border-image-source: url('http://localhost:8080/canvas?color=plum');
+            border-color: $plum;
+        }
+    
+        &.blue {
+            border-image-source: url('http://localhost:8080/canvas?color=blue');
+            border-color: $blue;
+        }
+
+        &.slate {
+            border-image-source: url('http://localhost:8080/canvas?color=slate');
+            border-color: $slate;
+        }
+
+        &.purple {
+            border-image-source: url('http://localhost:8080/canvas?color=purple');
+            border-color: $purple;
+        }
+
+        &.seafoam {
+            border-image-source: url('http://localhost:8080/canvas?color=seafoam');
+            border-color: $seafoam;
+        }
+
+        &.lime {
+            border-image-source: url('http://localhost:8080/canvas?color=lime');
+            border-color: $lime;
+        }
+    
+        &.no-color {
+            border-image-source: url('http://localhost:8080/canvas');
+            border-color: $darkgray;
+        }
+    }
+}
 
 body {
     width: 100%;
     height: 100%;
     font-family: 'Josefin Sans', sans-serif;
     background-color: $white;
-}
-
-img {
-    margin: 0;
-}
-
-button {
-    position: relative;
-    display: inline-flex;
-    min-width: 80px;
-    min-height: 40px;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    padding: 0 4rem;
-    border-radius: 3px;
-    font-size: 1.2rem;
-    box-shadow: 1px 1px 3px $darkgray;
-    border: 0;
-    background-color: transparent;
-    transition: background-color 1s ease;
-    z-index: 99;
-    background: url('http://localhost:8080/canvas?color=red') no-repeat;
-
-    &.border {
-        border: 2px solid;
-        color: $black;
-    }
-
-    &:hover,
-    &:focus {
-
-        &:after {
-            background-color: rgba(120,138,163,0.8);
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    &:after {
-        content: '';
-        height: 100%;
-        width: 0;
-        position: absolute;
-        z-index: -1;
-        transition: 1s;
-        top: 0;
-        left: 0;
-        bottom: 0;
-    }
-}
-
-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0 auto;
-    background-size: cover;
-    background-position: center center;
 }
 
 h1 {
@@ -96,12 +87,103 @@ p {
     line-height: 1.5;
 }
 
+img {
+    margin: 0;
+}
+
+button {
+    position: relative;
+    display: inline-flex;
+    min-width: 80px;
+    min-height: 40px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    padding: 0 4rem;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: 1px 1px 3px $darkgray;
+    border: 0;
+    background-color: transparent;
+    text-transform: uppercase;
+
+    @include border;
+
+    &.red {
+        background: url('http://localhost:8080/canvas?color=red');
+        background-color: $red;
+    }
+
+    &.plum {
+        background: url('http://localhost:8080/canvas?color=plum');
+        background-color: $plum;
+    }
+
+    &.blue {
+        background: url('http://localhost:8080/canvas?color=blue');
+        background-color: $blue;
+    }
+
+    &.slate {
+        background: url('http://localhost:8080/canvas?color=slate');
+        background-color: $slate;
+    }
+
+    &.purple {
+        background: url('http://localhost:8080/canvas?color=purple');
+        background-color: $purple;
+    }
+
+    &.seafoam {
+        background: url('http://localhost:8080/canvas?color=seafoam');
+        background-color: $seafoam;
+    }
+
+    &.lime {
+        background: url('http://localhost:8080/canvas?color=lime');
+        background-color: $lime;
+    }
+
+    &.no-color {
+        background: url('http://localhost:8080/canvas');
+        background-color: $darkgray;
+    }
+
+    &.clip-text {
+        position: relative;
+        /* Color fallback */
+        color: #fff;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        &:before,
+        &:after {
+            position: absolute;
+            content: '';
+        }
+
+        &:before {
+            z-index: -2;
+            background-image: inherit;
+        }
+
+        &:after {
+            position: absolute;
+            z-index: -1;
+            background-color: #000;
+        }
+    }
+}
+
+@include border;
+
 .container {
     position: relative;
     padding: 2rem;
     z-index: 2;
 
-    .background {
+    .paper {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
@@ -123,10 +205,10 @@ p {
                 grid-row-start: 1;
                 grid-row-end: 2;
 
-                .rectangle {
+                .background {
                     width: 100%;
                     height: 100%;
-                    background: url('http://localhost:8080/canvas') no-repeat;
+                    background: url('http://localhost:8080/canvas');
                 }
             }
 
@@ -146,7 +228,6 @@ p {
 
                 .border {
                     padding: 1rem;
-                    border: 5px solid;
                 }
             }
 
@@ -162,31 +243,70 @@ p {
                     input {
                         display: block;
                         width: 100%;
-                        border: 0;
+                        border-top: 0;
+                        border-left: 0;
+                        border-right: 0;
                         height: 1.75rem;
                         margin: 0;
                         background: none;
-                    }
-    
-                    .after {
-                        content: '';
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        position: absolute;
-                        height: 2px;
-                        width: 100%;
-                        transition: background-color ease 1s;
-                    }
+                        @include border;
+                        border-image-width: inherit;
 
-                    &:hover,
-                    &:focus {
-                        .after {
-                            &:after {
-                                background-color: rgba(120,138,163,0.8);
-                                width: 100%;
-                            }
+                        &.red {
+                            border-bottom: 2px solid $red;
                         }
+                    
+                        &.plum {
+                            border-bottom: 2px solid $plum;
+                        }
+                    
+                        &.blue {
+                            border-bottom: 2px solid $blue;
+                        }
+                    
+                        &.slate {
+                            border-bottom: 2px solid $slate;
+                        }
+                    
+                        &.purple {
+                            border-bottom: 2px solid $purple;
+                        }
+                    
+                        &.seafoam {
+                            border-bottom: 2px solid $seafoam;
+                        }
+                    
+                        &.lime {           
+                            border-bottom: 2px solid $lime;    
+                        }
+                    }
+                }
+            }
+
+            &.-e {
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 7;
+                grid-row-end: 9;
+
+                select {
+                    appearance: none;
+                    -webkit-appearance: none;
+                    @include border;
+                    border-radius: 3px;
+                    padding: 0.5rem;
+
+                    &::after {
+                        content: '';
+                       position: absolute;
+                       left: 18px;
+                       top: 50px;
+                       width: 0;
+                       height: 0;
+                       border-left: 20px solid transparent;
+                       border-right: 20px solid transparent;
+                       border-top: 20px solid #000;
+                       clear: both;
                     }
                 }
             }

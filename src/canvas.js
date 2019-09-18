@@ -1,8 +1,12 @@
 const { createCanvas } = require("canvas");
 const color = {
-  'red': ['#9E0031', '#8E0045', '#770058'], 
-  'blue': ['#666A86', '#788AA3', '#92B6B1'], 
-  'orange': ['#FC7753', '#66D7D1', '#403D58']
+  'red': ['#EDDDD4','#C44536','#772E25'],
+  'plum': ['#9E0031', '#8E0045', '#770058'], 
+  'blue': ['#006BA6', '#0496FF', '#1D3461'],
+  'slate': ['#666A86', '#788AA3', '#92B6B1'], 
+  'purple': ['#44355B', '#31263E', '#221E22'],
+  'seafoam': ['#95B8D1','#B8E0D2','#D6EADF'],
+  'lime': ['#629460', '#96BE8C', '#ACECA1']
 }
 let colorTheme;
 let queueNumber = [0, 1, 2];
@@ -10,11 +14,19 @@ let num = 30;
 let currentPalette, tileLen;
 
 module.exports = function(req, res) {
-  const canvas = createCanvas(2000, 100);
+  let canvas;
+  if(req.query.width || req.query.height) {
+    console.log('here')
+    canvas = createCanvas(parseInt(req.query.width), parseInt(req.query.height))
+    console.log(canvas)
+  } else if(!req.query.width || !req.query.height) {
+    canvas = createCanvas(500, 500);
+    console.log(canvas)
+  }
   const context = canvas.getContext("2d");
   colorTheme = color[`${req.query.color}`];
   tileLen = 1600 / num;
-  currentPalette = (!colorTheme ? ['#84828F', '#6A687A', '#536271'] : color[`${req.query.color}`]);
+  currentPalette = (!colorTheme ? ['#7A7D7D', '#D0CFCF', '#565254'] : color[`${req.query.color}`]);
 
   function shuffle(array) {
     let currentIndex = array.length, tempVal, randomIndex;
@@ -31,6 +43,13 @@ module.exports = function(req, res) {
     return array;
   }
 
+  function circle(x, y, radius, startAngle, endAngle) {
+    context.beginPath();
+    context.arc(x, y, radius, startAngle, endAngle);
+    context.closePath();
+    context.fill();
+  }
+
   function triangle(x1, y1, x2, y2, x3, y3) {
     context.beginPath();
     context.moveTo(x1, y1);
@@ -40,13 +59,14 @@ module.exports = function(req, res) {
     context.fill();
   }
 
-  for (let x = 0; x < 600; x += tileLen) {
-    for(let y = 0; y < 600; y += tileLen) {
+  for (let x = 0; x < parseInt(req.query.width); x += tileLen) {
+    for(let y = 0; y < parseInt(req.query.height); y += tileLen) {
         queueNumber = shuffle(queueNumber);
         context.fillStyle = (currentPalette[queueNumber[0]]);
         context.fillRect(x, y, tileLen, tileLen);
         context.fillStyle = (currentPalette[queueNumber[1]]);
 
+      if(req.query.pattern === 'triangle') {
         switch(Math.round(Math.random() * 10)) {
           case 1: triangle(x, y, x, y + tileLen, x + tileLen, y + tileLen);
           break;
@@ -66,9 +86,35 @@ module.exports = function(req, res) {
           break;
           case 9: triangle(x + tileLen, y, x, y + tileLen, x + tileLen, y + tileLen);
           break;
+        }
+      }
+
+      if(req.query.pattern === 'circle') {
+        switch(Math.round(Math.random() * 10)) {
+          case 1: circle(x, y, 50, 0, 1 * Math.PI);
+          break;
+          case 2: circle(x, y, 50, 0, 1 * Math.PI);
+          break;
+          case 3: circle(x + tileLen, y, 50, 0, 1 * Math.PI);
+          break;
+          case 4: circle(x + tileLen, y + tileLen, 50, 0, 1 * Math.PI);
+          break;
+          case 5: circle(x + tileLen, y, 50, 0, 1 * Math.PI);
+          break;
+          case 6: circle(x, y, 50, 0, 1 * Math.PI);
+          break;
+          case 7: circle(x + tileLen, y, 50, 0, 1 * Math.PI);
+          break;
+          case 8: circle(x, y + tileLen, 50, 0, 1 * Math.PI);
+          break;
+          case 9: circle(x + tileLen, y, 50, 0, 1 * Math.PI);
+          break;
+        }
       }
     }
   }
   res.set("Content-Type", "image/png");
   canvas.pngStream().pipe(res);
+  const currentURL = req.protocol + '://' + req.get('Host') + req.originalUrl;
+  console.log(currentURL)
 };

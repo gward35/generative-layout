@@ -10,30 +10,33 @@
     </head>
     <body>
         <section class="container">
-            <div class="background">
+            <div class="paper">
                 <div class="slug -a">
                     <h2>Background</h2>
-                    <div class="rectangle"></div>
+                    <div class="background"></div>
                 </div>
                 <div class="slug -b">
                     <h2>Button</h2>
-                    <button class="button">I'm a button</button>
-                    <button class="button border">I'm a button with border</button>
+                    <button class="button clip-text border red">
+                        I'm a button
+                    </button>
+                    <button class="button blue">
+                        I'm a button
+                    </button>
                 </div>
                 <div class="slug -c">
                     <h2>Border</h2>
-                    <div class="border">Stuff inside</div>
+                    <div class="border lime">Stuff inside</div>
                 </div>
                 <div class="slug -d">
                     <h2>Input</h2>
                     <label for="text">Label
-                        <input type="text" name="text" class="input" />
-                        <span class="after"></span>
+                        <input type="text" name="text" class="border plum" />
                     </label>
                 </div>
                 <div class="slug -e">
                     <h2>Select</h2>
-                    <select class="select">
+                    <select class="border slate">
                         <option value="">Please select option</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -42,7 +45,5 @@
             </div>
         </section>
     </body>
-    <script src="./js/p5/p5.min.js"></script>
-    <script src="./js/p5/addons/p5.dom.min.js"></script>
     <script src="./js/generative.js" type="text/javascript"></script>
 </html>
