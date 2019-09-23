@@ -15,20 +15,18 @@ let currentPalette, tileLen;
 
 module.exports = function(req, res) {
   let canvas;
-  if(req.query.width || req.query.height) {
-    console.log('here')
+  if(req.query.width) {
     canvas = createCanvas(parseInt(req.query.width), parseInt(req.query.height))
     console.log(canvas)
-  } else if(!req.query.width || !req.query.height) {
-    canvas = createCanvas(500, 500);
-    console.log(canvas)
+  } else {
+    canvas = createCanvas(500, 500)
   }
   const context = canvas.getContext("2d");
   colorTheme = color[`${req.query.color}`];
   tileLen = 1600 / num;
   currentPalette = (!colorTheme ? ['#7A7D7D', '#D0CFCF', '#565254'] : color[`${req.query.color}`]);
 
-  function shuffle(array) {
+  const shuffle = array => {
     let currentIndex = array.length, tempVal, randomIndex;
 
     while (0 !== currentIndex) {
@@ -43,14 +41,15 @@ module.exports = function(req, res) {
     return array;
   }
 
-  function circle(x, y, radius, startAngle, endAngle) {
+  const circle = (x, y, radius, startAngle, endAngle) => {
     context.beginPath();
+    context.moveTo(x, y);
     context.arc(x, y, radius, startAngle, endAngle);
     context.closePath();
     context.fill();
   }
 
-  function triangle(x1, y1, x2, y2, x3, y3) {
+  const triangle = (x1, y1, x2, y2, x3, y3) => {
     context.beginPath();
     context.moveTo(x1, y1);
     context.lineTo(x2, y2);
@@ -59,8 +58,8 @@ module.exports = function(req, res) {
     context.fill();
   }
 
-  for (let x = 0; x < parseInt(req.query.width); x += tileLen) {
-    for(let y = 0; y < parseInt(req.query.height); y += tileLen) {
+  for (let x = 0; x < (req.query.width ? parseInt(req.query.width) : 500); x += tileLen) {
+    for(let y = 0; y < (req.query.height ? parseInt(req.query.height) : 500); y += tileLen) {
         queueNumber = shuffle(queueNumber);
         context.fillStyle = (currentPalette[queueNumber[0]]);
         context.fillRect(x, y, tileLen, tileLen);
@@ -91,24 +90,25 @@ module.exports = function(req, res) {
 
       if(req.query.pattern === 'circle') {
         switch(Math.round(Math.random() * 10)) {
-          case 1: circle(x, y, 50, 0, 1 * Math.PI);
+          case 1: circle(x, y, 50, 0, 0.5 * Math.PI);
           break;
-          case 2: circle(x, y, 50, 0, 1 * Math.PI);
+          case 2: circle(x + tileLen, y + tileLen, 50, 1.575, 1 * Math.PI);
           break;
-          case 3: circle(x + tileLen, y, 50, 0, 1 * Math.PI);
+          case 3: circle(x + tileLen, y, 50, 1.575, 1 * Math.PI);
           break;
-          case 4: circle(x + tileLen, y + tileLen, 50, 0, 1 * Math.PI);
+          case 4: circle(x, y, 50, Math.PI, 1.5 * Math.PI);
           break;
-          case 5: circle(x + tileLen, y, 50, 0, 1 * Math.PI);
+          case 5: circle(x, y + tileLen, 50, 1.575, 1 * Math.PI);
           break;
-          case 6: circle(x, y, 50, 0, 1 * Math.PI);
+          case 6: circle(x, y + tileLen, 50, 0, 0.5 * Math.PI);
           break;
-          case 7: circle(x + tileLen, y, 50, 0, 1 * Math.PI);
+          case 7: circle(x + tileLen, y + tileLen, 50, Math.PI, 1.5 * Math.PI);
           break;
-          case 8: circle(x, y + tileLen, 50, 0, 1 * Math.PI);
+          case 8: circle(x + tileLen, y, 50, Math.PI, 1.5 * Math.PI);
           break;
-          case 9: circle(x + tileLen, y, 50, 0, 1 * Math.PI);
+          case 9: circle(x, y + tileLen, 50, Math.PI, 1.5 * Math.PI);
           break;
+     
         }
       }
     }
