@@ -15,12 +15,9 @@ let currentPalette, tileLen;
 
 module.exports = function(req, res) {
   let canvas;
-  if(req.query.width) {
-    canvas = createCanvas(parseInt(req.query.width), parseInt(req.query.height))
-    console.log(canvas)
-  } else {
-    canvas = createCanvas(500, 500)
-  }
+  let dynamicWidth = (req.query.width ? parseInt(req.query.width) : 500);
+  let dynamicHeight = (req.query.height ? parseInt(req.query.height) : 500);
+  canvas = createCanvas(dynamicWidth, dynamicHeight)
   const context = canvas.getContext("2d");
   colorTheme = color[`${req.query.color}`];
   tileLen = 1600 / num;
@@ -41,14 +38,6 @@ module.exports = function(req, res) {
     return array;
   }
 
-  const circle = (x, y, radius, startAngle, endAngle) => {
-    context.beginPath();
-    context.moveTo(x, y);
-    context.arc(x, y, radius, startAngle, endAngle);
-    context.closePath();
-    context.fill();
-  }
-
   const triangle = (x1, y1, x2, y2, x3, y3) => {
     context.beginPath();
     context.moveTo(x1, y1);
@@ -58,11 +47,29 @@ module.exports = function(req, res) {
     context.fill();
   }
 
-  for (let x = 0; x < (req.query.width ? parseInt(req.query.width) : 500); x += tileLen) {
-    for(let y = 0; y < (req.query.height ? parseInt(req.query.height) : 500); y += tileLen) {
+  const arc = (x, y, radius, startAngle, endAngle) => {
+    context.beginPath();
+    context.moveTo(x, y);
+    context.arc(x, y, radius, startAngle, endAngle);
+    context.closePath();
+    context.fill();
+  }
+
+  const line = (x1, y1, x2, y2) => {
+    context.lineWidth = 2;
+    context.beginPath();
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.stroke()
+  }
+
+  for (let x = 0; x < dynamicWidth; x += tileLen) {
+    for(let y = 0; y < dynamicHeight; y += tileLen) {
         queueNumber = shuffle(queueNumber);
+        context.strokeStyle = (currentPalette[queueNumber[0]]);
         context.fillStyle = (currentPalette[queueNumber[0]]);
         context.fillRect(x, y, tileLen, tileLen);
+        context.strokeStyle = (currentPalette[queueNumber[1]]);
         context.fillStyle = (currentPalette[queueNumber[1]]);
 
       if(req.query.pattern === 'triangle') {
@@ -88,27 +95,55 @@ module.exports = function(req, res) {
         }
       }
 
-      if(req.query.pattern === 'circle') {
+      if(req.query.pattern === 'arc') {
         switch(Math.round(Math.random() * 10)) {
-          case 1: circle(x, y, 50, 0, 0.5 * Math.PI);
+          case 1: arc(x, y, 50, 0, 0.5 * Math.PI);
           break;
-          case 2: circle(x + tileLen, y + tileLen, 50, 1.575, 1 * Math.PI);
+          case 2: arc(x + tileLen, y + tileLen, 50, 1.575, 1 * Math.PI);
           break;
-          case 3: circle(x + tileLen, y, 50, 1.575, 1 * Math.PI);
+          case 3: arc(x + tileLen, y, 50, 1.575, 1 * Math.PI);
           break;
-          case 4: circle(x, y, 50, Math.PI, 1.5 * Math.PI);
+          case 4: arc(x, y, 50, Math.PI, 1.5 * Math.PI);
           break;
-          case 5: circle(x, y + tileLen, 50, 1.575, 1 * Math.PI);
+          case 5: arc(x, y + tileLen, 50, 1.575, 1 * Math.PI);
           break;
-          case 6: circle(x, y + tileLen, 50, 0, 0.5 * Math.PI);
+          case 6: arc(x, y + tileLen, 50, 0, 0.5 * Math.PI);
           break;
-          case 7: circle(x + tileLen, y + tileLen, 50, Math.PI, 1.5 * Math.PI);
+          case 7: arc(x + tileLen, y + tileLen, 50, Math.PI, 1.5 * Math.PI);
           break;
-          case 8: circle(x + tileLen, y, 50, Math.PI, 1.5 * Math.PI);
+          case 8: arc(x + tileLen, y, 50, Math.PI, 1.5 * Math.PI);
           break;
-          case 9: circle(x, y + tileLen, 50, Math.PI, 1.5 * Math.PI);
+          case 9: arc(x, y + tileLen, 50, Math.PI, 1.5 * Math.PI);
           break;
-     
+        }
+      }
+
+      if(req.query.pattern === 'line') {
+        switch(Math.round(Math.random() * 10)) {
+          case 1: line(x, y, x + tileLen, y + tileLen);
+          break;    
+          case 2: line(x + tileLen, y, x, y + tileLen);
+          break; 
+          case 3: line(x, y + tileLen, x + tileLen, y);
+          break; 
+          case 4: line(x + tileLen, y + tileLen, x, y);
+          break;    
+          case 5: line(x + tileLen / 2, y, x + tileLen / 2, y + tileLen);
+          break; 
+          case 6: line(x, y + tileLen / 2, x + tileLen, y + tileLen / 2);
+          break;     
+          case 7: line(x, y, x + tileLen, y + tileLen), 
+                  line(x - 8, y, x + tileLen - 8, y + tileLen);
+          break;
+          case 8: line(x, y + tileLen / 2, x + tileLen, y + tileLen / 2),
+                  line(x, y + tileLen / 2 - 8, x + tileLen, y + tileLen / 2 - 8);
+          break;  
+          case 9: line(x + tileLen / 2 - 8, y, x + tileLen / 2 -8, y + tileLen),
+                  line(x + tileLen / 2 - 8, y, x + tileLen / 2 -8, y + tileLen);
+          break; 
+          case 10: line(x, y + tileLen, x + tileLen, y),
+                   line(x, y + tileLen - 8, x + tileLen, y - 8);
+          break;
         }
       }
     }
