@@ -16,11 +16,11 @@ module.exports = function(req, res) {
   let canvas;
   let dynamicWidth = (req.query.width ? parseInt(req.query.width) : 500);
   let dynamicHeight = (req.query.height ? parseInt(req.query.height) : 500);
-  let dynamicTileLen = (req.query.tileLength ? parseInt(req.query.tileLength) : 53.33)
+  let dynamicTileSize = (req.query.tileSize ? parseInt(req.query.tileSize) : 53.33)
   canvas = createCanvas(dynamicWidth, dynamicHeight)
   const context = canvas.getContext("2d");
   colorTheme = color[`${req.query.color}`];
-  tileLen = dynamicTileLen;
+  tileLen = dynamicTileSize;
   currentPalette = (!colorTheme ? ['#7A7D7D', '#D0CFCF', '#565254'] : color[`${req.query.color}`]);
 
   const shuffle = array => {
@@ -114,7 +114,7 @@ module.exports = function(req, res) {
 
       if(req.query.pattern === 'circle') {
         switch(Math.round(Math.random() * 2)) {
-          case 1: circle(25 + x, 25 + y, 20, 0, 2 * Math.PI);
+          case 1: circle(x + tileLen / 2,  y + tileLen / 2, tileLen / 2, 0, 2 * Math.PI);
           break;
           // case 2: circle(25 + x, 25 + y, 20, 0, 2 * Math.PI);
           // break;
