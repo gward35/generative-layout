@@ -10,17 +10,17 @@ const color = {
 }
 let colorTheme;
 let queueNumber = [0, 1, 2];
-let num = 30;
 let currentPalette, tileLen;
 
 module.exports = function(req, res) {
   let canvas;
   let dynamicWidth = (req.query.width ? parseInt(req.query.width) : 500);
   let dynamicHeight = (req.query.height ? parseInt(req.query.height) : 500);
+  let dynamicTileLen = (req.query.tileLength ? parseInt(req.query.tileLength) : 53.33)
   canvas = createCanvas(dynamicWidth, dynamicHeight)
   const context = canvas.getContext("2d");
   colorTheme = color[`${req.query.color}`];
-  tileLen = 1600 / num;
+  tileLen = dynamicTileLen;
   currentPalette = (!colorTheme ? ['#7A7D7D', '#D0CFCF', '#565254'] : color[`${req.query.color}`]);
 
   const shuffle = array => {
@@ -29,7 +29,6 @@ module.exports = function(req, res) {
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-
       tempVal = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = tempVal;
@@ -43,6 +42,14 @@ module.exports = function(req, res) {
     context.moveTo(x1, y1);
     context.lineTo(x2, y2);
     context.lineTo(x3, y3);
+    context.closePath();
+    context.fill();
+  }
+
+  const circle = (x, y, radius, startAngle, endAngle) => {
+    context.beginPath();
+    context.moveTo(x, y);
+    context.arc(x, y, radius, startAngle, endAngle);
     context.closePath();
     context.fill();
   }
@@ -105,23 +112,24 @@ module.exports = function(req, res) {
         }
       }
 
+      if(req.query.pattern === 'circle') {
+        switch(Math.round(Math.random() * 2)) {
+          case 1: circle(25 + x, 25 + y, 20, 0, 2 * Math.PI);
+          break;
+          // case 2: circle(25 + x, 25 + y, 20, 0, 2 * Math.PI);
+          // break;
+        }
+      }
+
       if(req.query.pattern === 'arc') {
-        switch(Math.round(Math.random() * 10)) {
-          case 1: arc(x + tileLen, y + tileLen, 50, 0, 0.5 * Math.PI);
+        switch(Math.round(Math.random() * 5)) {
+          case 1: arc(x, y, 50, 0, 0.5 * Math.PI);
           break;
-          case 2: arc(x, y, 50, 0, 0.5 * Math.PI);
+          case 2: arc(x + tileLen, y + tileLen, 50, 1.575, Math.PI);
           break;
-          case 3: arc(x + tileLen, y + tileLen, 50, 1.575, 1 * Math.PI);
+          case 3: arc(x, y, 50, 1.575, Math.PI);
           break;
-          case 4: arc(x, y, 50, 1.575, 1 * Math.PI);
-          break;
-          case 5: arc(x + tileLen, y + tileLen, 50, Math.PI, 1.5 * Math.PI);
-          break;
-          case 6: arc(x, y, 50, Math.PI, 1.5 * Math.PI);
-          break;
-          case 7: arc(x + tileLen, y + tileLen, 50, Math.PI * 0.5, 2 * Math.PI);
-          break;
-          case 8: arc(x, y, 50, Math.PI * 0.5, 2 * Math.PI);
+          case 4: arc(x + tileLen, y + tileLen, 50, Math.PI * 0.5, Math.PI);
           break;
         }
       }
@@ -156,8 +164,22 @@ module.exports = function(req, res) {
       }
 
       if(req.query.pattern === 'mmm') {
-        switch(Math.round(Math.random() * 10)) {
+        switch(Math.round(Math.random() * 9)) {
           case 1: mmm(x, y + tileLen, x, y, x + tileLen / 2, y + tileLen / 2, x + tileLen, y, x + tileLen, y + tileLen);
+          break;
+          case 2: mmm(x + tileLen, y, x, y, x + tileLen / 2, y + tileLen / 2, x, y + tileLen, x + tileLen, y + tileLen);
+          break;
+          case 3: mmm(x, y, x + tileLen, y, x + tileLen / 2, y + tileLen / 2, x + tileLen, y + tileLen, x, y + tileLen);
+          break;
+          case 4: mmm(x, y, x, y + tileLen, x + tileLen / 2, y + tileLen / 2, x + tileLen, y + tileLen, x + tileLen, y);
+          break;
+          case 5: mmm(x, y + tileLen, x, y, x + tileLen / 2, y + tileLen / 2, x + tileLen, y, x + tileLen, y + tileLen);
+          break;
+          case 6: mmm(x + tileLen, y, x, y, x + tileLen / 2, y + tileLen / 2, x, y + tileLen, x + tileLen, y + tileLen);
+          break;
+          case 7: mmm(x, y, x + tileLen, y, x + tileLen / 2, y + tileLen / 2, x + tileLen, y + tileLen, x, y + tileLen);
+          break;
+          case 8: mmm(x, y, x, y + tileLen, x + tileLen / 2, y + tileLen / 2, x + tileLen, y + tileLen, x + tileLen, y);
           break;
         }
       }
