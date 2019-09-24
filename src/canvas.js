@@ -63,6 +63,16 @@ module.exports = function(req, res) {
     context.stroke()
   }
 
+  const mmm = (x1, y1, x2, y2, x3, y3, x4, y4) => {
+    context.lineWidth = 2;
+    context.beginPath();
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.lineTo(x3, y3);
+    context.lineTo(x4, y4);
+    context.stroke()
+  }
+
   for (let x = 0; x < dynamicWidth; x += tileLen) {
     for(let y = 0; y < dynamicHeight; y += tileLen) {
         queueNumber = shuffle(queueNumber);
@@ -97,23 +107,21 @@ module.exports = function(req, res) {
 
       if(req.query.pattern === 'arc') {
         switch(Math.round(Math.random() * 10)) {
-          case 1: arc(x, y, 50, 0, 0.5 * Math.PI);
+          case 1: arc(x + tileLen, y + tileLen, 50, 0, 0.5 * Math.PI);
           break;
-          case 2: arc(x + tileLen, y + tileLen, 50, 1.575, 1 * Math.PI);
+          case 2: arc(x, y, 50, 0, 0.5 * Math.PI);
           break;
-          case 3: arc(x + tileLen, y, 50, 1.575, 1 * Math.PI);
+          case 3: arc(x + tileLen, y + tileLen, 50, 1.575, 1 * Math.PI);
           break;
-          case 4: arc(x, y, 50, Math.PI, 1.5 * Math.PI);
+          case 4: arc(x, y, 50, 1.575, 1 * Math.PI);
           break;
-          case 5: arc(x, y + tileLen, 50, 1.575, 1 * Math.PI);
+          case 5: arc(x + tileLen, y + tileLen, 50, Math.PI, 1.5 * Math.PI);
           break;
-          case 6: arc(x, y + tileLen, 50, 0, 0.5 * Math.PI);
+          case 6: arc(x, y, 50, Math.PI, 1.5 * Math.PI);
           break;
-          case 7: arc(x + tileLen, y + tileLen, 50, Math.PI, 1.5 * Math.PI);
+          case 7: arc(x + tileLen, y + tileLen, 50, Math.PI * 0.5, 2 * Math.PI);
           break;
-          case 8: arc(x + tileLen, y, 50, Math.PI, 1.5 * Math.PI);
-          break;
-          case 9: arc(x, y + tileLen, 50, Math.PI, 1.5 * Math.PI);
+          case 8: arc(x, y, 50, Math.PI * 0.5, 2 * Math.PI);
           break;
         }
       }
@@ -143,6 +151,13 @@ module.exports = function(req, res) {
           break; 
           case 10: line(x, y + tileLen, x + tileLen, y),
                    line(x, y + tileLen - 8, x + tileLen, y - 8);
+          break;
+        }
+      }
+
+      if(req.query.pattern === 'mmm') {
+        switch(Math.round(Math.random() * 10)) {
+          case 1: mmm(x, y + tileLen, x, y, x + tileLen / 2, y + tileLen / 2, x + tileLen, y, x + tileLen, y + tileLen);
           break;
         }
       }
