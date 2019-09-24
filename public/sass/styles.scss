@@ -3,7 +3,7 @@ $offwhite: #FCFBF4;
 $black: #000;
 $darkgray: #494850;
 $red: #C44536;
-$plum: #8E0045;
+$orange: #FF9F1C;
 $blue: #0496FF;
 $slate: #788AA3;
 $purple: #31263E;
@@ -22,9 +22,9 @@ $lime: #96BE8C;
             border-color: $red;
         }
 
-        &.plum {
-            border-image-source: url('http://localhost:8080/canvas?color=plum');
-            border-color: $plum;
+        &.orange {
+            border-image-source: url('http://localhost:8080/canvas?color=orange');
+            border-color: $orange;
         }
     
         &.blue {
@@ -115,9 +115,9 @@ button {
         background-color: $red;
     }
 
-    &.plum {
-        background: url('http://localhost:8080/canvas?color=plum');
-        background-color: $plum;
+    &.orange {
+        background: url('http://localhost:8080/canvas?color=orange');
+        background-color: $orange;
     }
 
     &.blue {
@@ -256,8 +256,8 @@ button {
                             border-bottom: 2px solid $red;
                         }
                     
-                        &.plum {
-                            border-bottom: 2px solid $plum;
+                        &.orange {
+                            border-bottom: 2px solid $orange;
                         }
                     
                         &.blue {

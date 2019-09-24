@@ -1,7 +1,7 @@
 const { createCanvas } = require("canvas");
 const color = {
   'red': ['#EDDDD4','#C44536','#772E25'],
-  'plum': ['#9E0031', '#8E0045', '#770058'], 
+  'orange': ['#FFC15E', '#F5FF90', '#FF9F1C'], 
   'blue': ['#006BA6', '#0496FF', '#1D3461'],
   'slate': ['#666A86', '#788AA3', '#92B6B1'], 
   'purple': ['#44355B', '#31263E', '#221E22'],

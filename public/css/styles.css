@@ -47,9 +47,9 @@ button {
     button .border.red {
       border-image-source: url("http://localhost:8080/canvas?color=red");
       border-color: #C44536; }
-    button .border.plum {
-      border-image-source: url("http://localhost:8080/canvas?color=plum");
-      border-color: #8E0045; }
+    button .border.orange {
+      border-image-source: url("http://localhost:8080/canvas?color=orange");
+      border-color: #FF9F1C; }
     button .border.blue {
       border-image-source: url("http://localhost:8080/canvas?color=blue");
       border-color: #0496FF; }
@@ -71,9 +71,9 @@ button {
   button.red {
     background: url("http://localhost:8080/canvas?color=red");
     background-color: #C44536; }
-  button.plum {
-    background: url("http://localhost:8080/canvas?color=plum");
-    background-color: #8E0045; }
+  button.orange {
+    background: url("http://localhost:8080/canvas?color=orange");
+    background-color: #FF9F1C; }
   button.blue {
     background: url("http://localhost:8080/canvas?color=blue");
     background-color: #0496FF; }
@@ -117,9 +117,9 @@ button {
   .border.red {
     border-image-source: url("http://localhost:8080/canvas?color=red");
     border-color: #C44536; }
-  .border.plum {
-    border-image-source: url("http://localhost:8080/canvas?color=plum");
-    border-color: #8E0045; }
+  .border.orange {
+    border-image-source: url("http://localhost:8080/canvas?color=orange");
+    border-color: #FF9F1C; }
   .border.blue {
     border-image-source: url("http://localhost:8080/canvas?color=blue");
     border-color: #0496FF; }
@@ -204,9 +204,9 @@ button {
               .container .paper .slug.-d label input .border.red {
                 border-image-source: url("http://localhost:8080/canvas?color=red");
                 border-color: #C44536; }
-              .container .paper .slug.-d label input .border.plum {
-                border-image-source: url("http://localhost:8080/canvas?color=plum");
-                border-color: #8E0045; }
+              .container .paper .slug.-d label input .border.orange {
+                border-image-source: url("http://localhost:8080/canvas?color=orange");
+                border-color: #FF9F1C; }
               .container .paper .slug.-d label input .border.blue {
                 border-image-source: url("http://localhost:8080/canvas?color=blue");
                 border-color: #0496FF; }
@@ -227,8 +227,8 @@ button {
                 border-color: #494850; }
             .container .paper .slug.-d label input.red {
               border-bottom: 2px solid #C44536; }
-            .container .paper .slug.-d label input.plum {
-              border-bottom: 2px solid #8E0045; }
+            .container .paper .slug.-d label input.orange {
+              border-bottom: 2px solid #FF9F1C; }
             .container .paper .slug.-d label input.blue {
               border-bottom: 2px solid #0496FF; }
             .container .paper .slug.-d label input.slate {
@@ -257,9 +257,9 @@ button {
             .container .paper .slug.-e select .border.red {
               border-image-source: url("http://localhost:8080/canvas?color=red");
               border-color: #C44536; }
-            .container .paper .slug.-e select .border.plum {
-              border-image-source: url("http://localhost:8080/canvas?color=plum");
-              border-color: #8E0045; }
+            .container .paper .slug.-e select .border.orange {
+              border-image-source: url("http://localhost:8080/canvas?color=orange");
+              border-color: #FF9F1C; }
             .container .paper .slug.-e select .border.blue {
               border-image-source: url("http://localhost:8080/canvas?color=blue");
               border-color: #0496FF; }
