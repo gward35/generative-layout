@@ -1,4 +1,6 @@
 const { createCanvas } = require("canvas");
+let rand = require('random-seed').create();
+
 const color = {
   'red': ['#EDDDD4','#C44536','#772E25'],
   'orange': ['#FFC15E', '#F5FF90', '#FF9F1C'], 
@@ -16,18 +18,31 @@ module.exports = function(req, res) {
   let canvas;
   let dynamicWidth = (req.query.width ? parseInt(req.query.width) : 500);
   let dynamicHeight = (req.query.height ? parseInt(req.query.height) : 500);
-  let dynamicTileSize = (req.query.tileSize ? parseInt(req.query.tileSize) : 53.33)
+  let dynamicTileSize = (req.query.tileSize ? parseInt(req.query.tileSize) : 53.33);
+  let dynamicSeed = (req.query.seed ? req.query.seed : 10);
+  let seed = dynamicSeed;
+  rand.seed(seed);
+  
   canvas = createCanvas(dynamicWidth, dynamicHeight)
   const context = canvas.getContext("2d");
   colorTheme = color[`${req.query.color}`];
   tileLen = dynamicTileSize;
   currentPalette = (!colorTheme ? ['#7A7D7D', '#D0CFCF', '#565254'] : color[`${req.query.color}`]);
 
+  const randomPattern = (multiplier) => {
+    return (req.query.random ? Math.round(Math.random() * multiplier) : Math.round(rand.random() * multiplier))
+  }
+
+  const randomColor = (multiplier) => {
+    return (req.query.random ? Math.floor(Math.random() * multiplier) : Math.floor(rand.random() * multiplier))
+  }
+
   const shuffle = array => {
     let currentIndex = array.length, tempVal, randomIndex;
 
     while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
+      randomIndex = randomColor(currentIndex);
+      console.log(randomIndex)
       currentIndex -= 1;
       tempVal = array[currentIndex];
       array[currentIndex] = array[randomIndex];
@@ -80,17 +95,26 @@ module.exports = function(req, res) {
     context.stroke()
   }
 
+  // let seedz = rand(seed)
+  // console.log(seed)
+
   for (let x = 0; x < dynamicWidth; x += tileLen) {
     for(let y = 0; y < dynamicHeight; y += tileLen) {
-        queueNumber = shuffle(queueNumber);
+      let dynamicRandomColor = (req.query.random ? shuffle(queueNumber) : queueNumber );
+      
+      //   dynamicRandomColor;
+        queueNumber = shuffle(queueNumber)
         context.strokeStyle = (currentPalette[queueNumber[0]]);
         context.fillStyle = (currentPalette[queueNumber[0]]);
-        context.fillRect(x, y, tileLen, tileLen);
+        // context.fillRect(x, y, tileLen, tileLen);
         context.strokeStyle = (currentPalette[queueNumber[1]]);
         context.fillStyle = (currentPalette[queueNumber[1]]);
 
       if(req.query.pattern === 'triangle') {
-        switch(Math.round(Math.random() * 10)) {
+        // console.log('rand ' + Math.round(rand.random() * 10))
+        // console.log('math ' + Math.round(Math.random() * 10))
+      
+        switch(randomPattern(10)) {
           case 1: triangle(x, y, x, y + tileLen, x + tileLen, y + tileLen);
           break;
           case 2: triangle(x, y, x + tileLen, y, x + tileLen, y + tileLen);
@@ -113,7 +137,7 @@ module.exports = function(req, res) {
       }
 
       if(req.query.pattern === 'circle') {
-        switch(Math.round(Math.random() * 2)) {
+        switch(randomPattern(2)) {
           case 1: circle(x + tileLen / 2,  y + tileLen / 2, tileLen / 2, 0, 2 * Math.PI);
           break;
           // case 2: circle(25 + x, 25 + y, 20, 0, 2 * Math.PI);
@@ -122,7 +146,7 @@ module.exports = function(req, res) {
       }
 
       if(req.query.pattern === 'arc') {
-        switch(Math.round(Math.random() * 5)) {
+        switch(randomPattern(5)) {
           case 1: arc(x, y, 50, 0, 0.5 * Math.PI);
           break;
           case 2: arc(x + tileLen, y + tileLen, 50, 1.575, Math.PI);
@@ -135,7 +159,7 @@ module.exports = function(req, res) {
       }
 
       if(req.query.pattern === 'line') {
-        switch(Math.round(Math.random() * 10)) {
+        switch(randomPattern(11)) {
           case 1: line(x, y, x + tileLen, y + tileLen);
           break;    
           case 2: line(x + tileLen, y, x, y + tileLen);
@@ -164,7 +188,7 @@ module.exports = function(req, res) {
       }
 
       if(req.query.pattern === 'mmm') {
-        switch(Math.round(Math.random() * 9)) {
+        switch(randomPattern(9)) {
           case 1: mmm(x, y + tileLen, x, y, x + tileLen / 2, y + tileLen / 2, x + tileLen, y, x + tileLen, y + tileLen);
           break;
           case 2: mmm(x + tileLen, y, x, y, x + tileLen / 2, y + tileLen / 2, x, y + tileLen, x + tileLen, y + tileLen);
@@ -187,6 +211,8 @@ module.exports = function(req, res) {
   }
   res.set("Content-Type", "image/png");
   canvas.pngStream().pipe(res);
-  const currentURL = req.protocol + '://' + req.get('Host') + req.originalUrl;
+  // let dataURL = canvas.toDataURL();
+  // console.log(dataURL);
+  const currentURL = req.protocol + '://' + req.get('Host') + req.url;
   console.log(currentURL)
 };
