@@ -1,20 +1,19 @@
 const { createCanvas } = require("canvas");
 let rand = require('random-seed').create();
 
-const color = {
-  'red': ['#EDDDD4','#C44536','#772E25'],
-  'orange': ['#FFC15E', '#F5FF90', '#FF9F1C'], 
-  'blue': ['#006BA6', '#0496FF', '#1D3461'],
-  'slate': ['#666A86', '#788AA3', '#92B6B1'], 
-  'purple': ['#44355B', '#31263E', '#221E22'],
-  'seafoam': ['#95B8D1','#B8E0D2','#D6EADF'],
-  'lime': ['#629460', '#96BE8C', '#ACECA1']
-}
-let colorTheme;
-let queueNumber = [0, 1, 2];
-let currentPalette, tileLen;
-
 module.exports = function(req, res) {
+  const color = {
+    'red': ['#EDDDD4','#C44536','#772E25'],
+    'orange': ['#FFC15E', '#F5FF90', '#FF9F1C'], 
+    'blue': ['#006BA6', '#0496FF', '#1D3461'],
+    'slate': ['#666A86', '#788AA3', '#92B6B1'], 
+    'purple': ['#44355B', '#31263E', '#221E22'],
+    'seafoam': ['#95B8D1','#B8E0D2','#D6EADF'],
+    'lime': ['#629460', '#96BE8C', '#ACECA1']
+  }
+  let colorTheme;
+  let queueNumber = [0, 1, 2];
+  let currentPalette, tileLen;
   let canvas;
   let dynamicWidth = (req.query.width ? parseInt(req.query.width) : 500);
   let dynamicHeight = (req.query.height ? parseInt(req.query.height) : 500);
@@ -39,16 +38,13 @@ module.exports = function(req, res) {
 
   const shuffle = array => {
     let currentIndex = array.length, tempVal, randomIndex;
-
     while (0 !== currentIndex) {
       randomIndex = randomColor(currentIndex);
-      console.log(randomIndex)
-      currentIndex -= 1;
+      currentIndex = currentIndex - 1;
       tempVal = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = tempVal;
     }
-
     return array;
   }
 
@@ -95,25 +91,19 @@ module.exports = function(req, res) {
     context.stroke()
   }
 
-  // let seedz = rand(seed)
-  // console.log(seed)
-
   for (let x = 0; x < dynamicWidth; x += tileLen) {
     for(let y = 0; y < dynamicHeight; y += tileLen) {
+      queueNumber = shuffle(queueNumber)
       let dynamicRandomColor = (req.query.random ? shuffle(queueNumber) : queueNumber );
-      
-      //   dynamicRandomColor;
-        queueNumber = shuffle(queueNumber)
-        context.strokeStyle = (currentPalette[queueNumber[0]]);
-        context.fillStyle = (currentPalette[queueNumber[0]]);
-        // context.fillRect(x, y, tileLen, tileLen);
-        context.strokeStyle = (currentPalette[queueNumber[1]]);
-        context.fillStyle = (currentPalette[queueNumber[1]]);
+      queueNumber = dynamicRandomColor;
+
+      context.strokeStyle = (currentPalette[queueNumber[0]]);
+      context.fillStyle = (currentPalette[queueNumber[0]]);
+      context.fillRect(x, y, tileLen, tileLen);
+      context.strokeStyle = (currentPalette[queueNumber[1]]);
+      context.fillStyle = (currentPalette[queueNumber[1]]);
 
       if(req.query.pattern === 'triangle') {
-        // console.log('rand ' + Math.round(rand.random() * 10))
-        // console.log('math ' + Math.round(Math.random() * 10))
-      
         switch(randomPattern(10)) {
           case 1: triangle(x, y, x, y + tileLen, x + tileLen, y + tileLen);
           break;
@@ -211,8 +201,6 @@ module.exports = function(req, res) {
   }
   res.set("Content-Type", "image/png");
   canvas.pngStream().pipe(res);
-  // let dataURL = canvas.toDataURL();
-  // console.log(dataURL);
   const currentURL = req.protocol + '://' + req.get('Host') + req.url;
   console.log(currentURL)
 };
