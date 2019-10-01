@@ -29,32 +29,49 @@ usage: `pattern=mmm`
 ## Color Schemes
 
 ### Red
-hex values: `['#EDDDD4','#C44536','#772E25']`
+hex values: `['#EDDDD4','#C44536','#772E25']`\
 usage: `color=red`
 
 ### Orange
-hex values: `['#FFC15E', '#F5FF90', '#FF9F1C']`
+hex values: `['#FFC15E', '#F5FF90', '#FF9F1C']`\
 usage: `color=orange`
 
 ### Blue
-hex values: `['#006BA6', '#0496FF', '#1D3461']`
+hex values: `['#006BA6', '#0496FF', '#1D3461']`\
 usage: `color=blue`
 
 ### Slate
-hex values: `['#666A86', '#788AA3', '#92B6B1']`
+hex values: `['#666A86', '#788AA3', '#92B6B1']`\
 usage: `color=slate`
 
 ### Purple
-hex values: `['#44355B', '#31263E', '#221E22']`
+hex values: `['#44355B', '#31263E', '#221E22']`\ 
 usage: `color=purple`
 
 ### Seafoam
-hex values: `['#95B8D1','#B8E0D2','#D6EADF']`
+hex values: `['#95B8D1','#B8E0D2','#D6EADF']`\
 usage: `color=seafoam`
 
 ### Lime
-hex values: `['#629460', '#96BE8C', '#ACECA1']`
+hex values: `['#629460', '#96BE8C', '#ACECA1']`\
 usage: `color=lime`
 
+## Canvas Size 
+
+### Width
+sets the width of the generated canvas (if not passed into url the default is `500`)\ 
+usage: `width=700`
+
+### Height
+sets the height of the generated canvas (if not passed into url the default is `500`)\ 
+usage: `height: 500`
+
+## Tile Size
+sets height and width dimensions of "tiles" in canvas (if not passed into url the default is `53.33`)\
+usage: `tileSize=60`
+
+## The Random Param 
+allows generation of random patterns everytime the user requests the url (if not passed into url the default is `false`)\
+usage: `random=true`
 
 
