@@ -28,6 +28,10 @@ usage: `pattern=mmm`
 
 ## Color Schemes
 
+### Default (Grayscale)
+hex values: `['#7A7D7D','#D0CFCF','#565254']`\
+usage: omit color param from url
+
 ### Red
 hex values: `['#EDDDD4','#C44536','#772E25']`\
 usage: `color=red`
@@ -45,7 +49,7 @@ hex values: `['#666A86', '#788AA3', '#92B6B1']`\
 usage: `color=slate`
 
 ### Purple
-hex values: `['#44355B', '#31263E', '#221E22']`\ 
+hex values: `['#44355B', '#31263E', '#221E22']`\
 usage: `color=purple`
 
 ### Seafoam
@@ -59,11 +63,11 @@ usage: `color=lime`
 ## Canvas Size 
 
 ### Width
-sets the width of the generated canvas (if not passed into url the default is `500`)\ 
+sets the width of the generated canvas (if not passed into url the default is `500`)\
 usage: `width=700`
 
 ### Height
-sets the height of the generated canvas (if not passed into url the default is `500`)\ 
+sets the height of the generated canvas (if not passed into url the default is `500`)\
 usage: `height: 500`
 
 ## Tile Size

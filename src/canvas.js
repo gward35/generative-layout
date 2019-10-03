@@ -17,8 +17,8 @@ module.exports = function(req, res) {
   let canvas;
   let dynamicWidth = (req.query.width ? parseInt(req.query.width) : 500);
   let dynamicHeight = (req.query.height ? parseInt(req.query.height) : 500);
-  let dynamicTileSize = (req.query.tileSize ? parseInt(req.query.tileSize) : 53.33);
-  let dynamicSeed = (req.query.seed ? req.query.seed : 10);
+  let dynamicTileSize = (req.query.tileSize ? parseInt(req.query.tileSize) : 50);
+  let dynamicSeed = (req.query.seed ? req.query.seed : 0);
   let seed = dynamicSeed;
   rand.seed(seed);
   
