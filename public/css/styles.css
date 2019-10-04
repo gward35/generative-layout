@@ -46,19 +46,16 @@ button {
     border-image-width: 3px; }
     button .border.red {
       border-image-source: url("http://localhost:8080/canvas?color=red");
-      border-color: #C44536; }
+      border-color: #C75146; }
     button .border.orange {
       border-image-source: url("http://localhost:8080/canvas?color=orange");
-      border-color: #FF9F1C; }
+      border-color: #F08700; }
     button .border.blue {
       border-image-source: url("http://localhost:8080/canvas?color=blue");
       border-color: #0496FF; }
-    button .border.slate {
-      border-image-source: url("http://localhost:8080/canvas?color=slate");
-      border-color: #788AA3; }
     button .border.purple {
       border-image-source: url("http://localhost:8080/canvas?color=purple");
-      border-color: #31263E; }
+      border-color: #2B193D; }
     button .border.seafoam {
       border-image-source: url("http://localhost:8080/canvas?color=seafoam");
       border-color: #B8E0D2; }
@@ -70,19 +67,16 @@ button {
       border-color: #494850; }
   button.red {
     background: url("http://localhost:8080/canvas?color=red");
-    background-color: #C44536; }
+    background-color: #C75146; }
   button.orange {
     background: url("http://localhost:8080/canvas?color=orange");
-    background-color: #FF9F1C; }
+    background-color: #F08700; }
   button.blue {
     background: url("http://localhost:8080/canvas?color=blue");
     background-color: #0496FF; }
-  button.slate {
-    background: url("http://localhost:8080/canvas?color=slate");
-    background-color: #788AA3; }
   button.purple {
     background: url("http://localhost:8080/canvas?color=purple");
-    background-color: #31263E; }
+    background-color: #2B193D; }
   button.seafoam {
     background: url("http://localhost:8080/canvas?color=seafoam");
     background-color: #B8E0D2; }
@@ -116,19 +110,16 @@ button {
   border-image-width: 3px; }
   .border.red {
     border-image-source: url("http://localhost:8080/canvas?color=red");
-    border-color: #C44536; }
+    border-color: #C75146; }
   .border.orange {
     border-image-source: url("http://localhost:8080/canvas?color=orange");
-    border-color: #FF9F1C; }
+    border-color: #F08700; }
   .border.blue {
     border-image-source: url("http://localhost:8080/canvas?color=blue");
     border-color: #0496FF; }
-  .border.slate {
-    border-image-source: url("http://localhost:8080/canvas?color=slate");
-    border-color: #788AA3; }
   .border.purple {
     border-image-source: url("http://localhost:8080/canvas?color=purple");
-    border-color: #31263E; }
+    border-color: #2B193D; }
   .border.seafoam {
     border-image-source: url("http://localhost:8080/canvas?color=seafoam");
     border-color: #B8E0D2; }
@@ -203,19 +194,16 @@ button {
               border-image-width: 3px; }
               .container .paper .slug.-d label input .border.red {
                 border-image-source: url("http://localhost:8080/canvas?color=red");
-                border-color: #C44536; }
+                border-color: #C75146; }
               .container .paper .slug.-d label input .border.orange {
                 border-image-source: url("http://localhost:8080/canvas?color=orange");
-                border-color: #FF9F1C; }
+                border-color: #F08700; }
               .container .paper .slug.-d label input .border.blue {
                 border-image-source: url("http://localhost:8080/canvas?color=blue");
                 border-color: #0496FF; }
-              .container .paper .slug.-d label input .border.slate {
-                border-image-source: url("http://localhost:8080/canvas?color=slate");
-                border-color: #788AA3; }
               .container .paper .slug.-d label input .border.purple {
                 border-image-source: url("http://localhost:8080/canvas?color=purple");
-                border-color: #31263E; }
+                border-color: #2B193D; }
               .container .paper .slug.-d label input .border.seafoam {
                 border-image-source: url("http://localhost:8080/canvas?color=seafoam");
                 border-color: #B8E0D2; }
@@ -226,15 +214,13 @@ button {
                 border-image-source: url("http://localhost:8080/canvas");
                 border-color: #494850; }
             .container .paper .slug.-d label input.red {
-              border-bottom: 2px solid #C44536; }
+              border-bottom: 2px solid #C75146; }
             .container .paper .slug.-d label input.orange {
-              border-bottom: 2px solid #FF9F1C; }
+              border-bottom: 2px solid #F08700; }
             .container .paper .slug.-d label input.blue {
               border-bottom: 2px solid #0496FF; }
-            .container .paper .slug.-d label input.slate {
-              border-bottom: 2px solid #788AA3; }
             .container .paper .slug.-d label input.purple {
-              border-bottom: 2px solid #31263E; }
+              border-bottom: 2px solid #2B193D; }
             .container .paper .slug.-d label input.seafoam {
               border-bottom: 2px solid #B8E0D2; }
             .container .paper .slug.-d label input.lime {
@@ -256,19 +242,16 @@ button {
             border-image-width: 3px; }
             .container .paper .slug.-e select .border.red {
               border-image-source: url("http://localhost:8080/canvas?color=red");
-              border-color: #C44536; }
+              border-color: #C75146; }
             .container .paper .slug.-e select .border.orange {
               border-image-source: url("http://localhost:8080/canvas?color=orange");
-              border-color: #FF9F1C; }
+              border-color: #F08700; }
             .container .paper .slug.-e select .border.blue {
               border-image-source: url("http://localhost:8080/canvas?color=blue");
               border-color: #0496FF; }
-            .container .paper .slug.-e select .border.slate {
-              border-image-source: url("http://localhost:8080/canvas?color=slate");
-              border-color: #788AA3; }
             .container .paper .slug.-e select .border.purple {
               border-image-source: url("http://localhost:8080/canvas?color=purple");
-              border-color: #31263E; }
+              border-color: #2B193D; }
             .container .paper .slug.-e select .border.seafoam {
               border-image-source: url("http://localhost:8080/canvas?color=seafoam");
               border-color: #B8E0D2; }

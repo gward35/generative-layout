@@ -3,13 +3,13 @@ let rand = require('random-seed').create();
 
 module.exports = function(req, res) {
   const color = {
-    'red': ['#EDDDD4','#C44536','#772E25'],
-    'orange': ['#FFC15E', '#F5FF90', '#FF9F1C'], 
+    'red': ['#C75146','#AD2E24','#81171B'],
+    'orange': ['#F08700', '#EFCA08', '#F49F0A'], 
     'blue': ['#006BA6', '#0496FF', '#1D3461'],
-    'slate': ['#666A86', '#788AA3', '#92B6B1'], 
-    'purple': ['#44355B', '#31263E', '#221E22'],
+    'purple': ['#2B193D', '#5D4E6D', '#8A7090'],
     'seafoam': ['#95B8D1','#B8E0D2','#D6EADF'],
-    'lime': ['#629460', '#96BE8C', '#ACECA1']
+    'lime': ['#629460', '#96BE8C', '#ACECA1'],
+    'jade': ['#476A6F','#519E8A','#7EB09B']
   }
   let colorTheme;
   let queueNumber = [0, 1, 2];

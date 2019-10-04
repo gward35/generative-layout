@@ -2,13 +2,13 @@ $white: #fff;
 $offwhite: #FCFBF4;
 $black: #000;
 $darkgray: #494850;
-$red: #C44536;
-$orange: #FF9F1C;
+$red: #C75146;
+$orange: #F08700;
 $blue: #0496FF;
-$slate: #788AA3;
-$purple: #31263E;
+$purple: #2B193D;
 $seafoam: #B8E0D2;
 $lime: #96BE8C;
+$jade: #476A6F;
 
 @mixin border {
     .border {
@@ -30,11 +30,6 @@ $lime: #96BE8C;
         &.blue {
             border-image-source: url('http://localhost:8080/canvas?color=blue');
             border-color: $blue;
-        }
-
-        &.slate {
-            border-image-source: url('http://localhost:8080/canvas?color=slate');
-            border-color: $slate;
         }
 
         &.purple {
@@ -123,11 +118,6 @@ button {
     &.blue {
         background: url('http://localhost:8080/canvas?color=blue');
         background-color: $blue;
-    }
-
-    &.slate {
-        background: url('http://localhost:8080/canvas?color=slate');
-        background-color: $slate;
     }
 
     &.purple {
@@ -262,10 +252,6 @@ button {
                     
                         &.blue {
                             border-bottom: 2px solid $blue;
-                        }
-                    
-                        &.slate {
-                            border-bottom: 2px solid $slate;
                         }
                     
                         &.purple {

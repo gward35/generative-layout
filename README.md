@@ -33,23 +33,19 @@ hex values: `['#7A7D7D','#D0CFCF','#565254']`\
 usage: omit color param from url
 
 ### Red
-hex values: `['#EDDDD4','#C44536','#772E25']`\
+hex values: `['#C75146','#AD2E24','#81171B']`\
 usage: `color=red`
 
 ### Orange
-hex values: `['#FFC15E', '#F5FF90', '#FF9F1C']`\
+hex values: `['#F08700', '#EFCA08', '#F49F0A']`\
 usage: `color=orange`
 
 ### Blue
 hex values: `['#006BA6', '#0496FF', '#1D3461']`\
 usage: `color=blue`
 
-### Slate
-hex values: `['#666A86', '#788AA3', '#92B6B1']`\
-usage: `color=slate`
-
 ### Purple
-hex values: `['#44355B', '#31263E', '#221E22']`\
+hex values: `['#2B193D', '#5D4E6D', '#8A7090']`\
 usage: `color=purple`
 
 ### Seafoam
@@ -59,6 +55,10 @@ usage: `color=seafoam`
 ### Lime
 hex values: `['#629460', '#96BE8C', '#ACECA1']`\
 usage: `color=lime`
+
+### Jade
+hex values: `['#476A6F','#519E8A','#7EB09B']`\
+usage: `color=jade`
 
 ## Canvas Size 
 
