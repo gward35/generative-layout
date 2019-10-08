@@ -1,37 +1,30 @@
 const express = require("express");
 const app = express();
-const mcache = require("memory-cache");
 const port = 8080;
 const canvas = require("./src/canvas");
+const flatCache = require("flat-cache");
+const url = require("url");
 
-app.set('generative pattern', 'input');
+let cache = flatCache.load('patternsCache')
 
-let cache = duration => {
-  return (req, res, next) => {
-    let key = '__express__' + req.originalUrl || req.url 
-    let cachedBody = mcache.get(key)
-    if(cachedBody) {
-      res.send(cachedBody)
-      return
-    } else {
-      res.sendResponse = res.send
-      res.send = body => {
-        mcache.put(key, body, duration * 1000)
-        res.sendResponse(body)
-      }
-      next()
+let cacheMiddleware = (req, res, next) => {
+  let key = req.protocol + '://' + req.get('Host') + req.url;
+  let cacheContent = cache.getKey(key)
+  if(cacheContent) {
+    res.send(cacheContent)
+  } else {
+    res.sendResponse = res.send
+    res.send = (body) => {
+      cache.setKey(key, body)
+      cache.save()
+      res.sendResponse(body)
     }
+    next()
   }
 }
 
-// app.use("/", cache(10), (req, res) => {
-//   setTimeout(() => {
-//     canvas(req, res);
-//   }, 5000)
-// });
-
-app.get("/canvas", cache(10), (req, res) => {
-    canvas(req, res);
+app.get("/canvas", cacheMiddleware, (req, res) => {
+  canvas(req, res);
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
