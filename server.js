@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 const canvas = require("./src/canvas");
 const url = require("url");
 
-app.get("/canvas", cacheMiddleware, (req, res) => {
+app.get("/canvas", (req, res) => {
   canvas(req, res);
 });
 
