@@ -5,15 +5,13 @@ const canvas = require("./src/canvas");
 const url = require("url");
 
 const cacheHeader = (res, seconds = 1800) => { //30 minutes
-  if(req.query.random) {
-    return
-  } else {
-    res.set('Cache-Control', `max-age=${seconds}`)
-  }
+  res.set('Cache-Control', `max-age=${seconds}`)
 }
 
-app.get("/canvas", cacheMiddleware, (req, res) => {
-  cacheHeader(res)
+app.get("/canvas", (req, res) => {
+  if(!req.query.random) {
+    cacheHeader(res)
+  }
   if(!req.query.seed) {
     req.query.seed = 0; 
     res.redirect(url.format({
