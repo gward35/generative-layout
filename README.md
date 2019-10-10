@@ -74,6 +74,9 @@ usage: `height: 500`
 sets height and width dimensions of "tiles" in canvas (if not passed into url the default is `53.33`)\
 usage: `tileSize=60`
 
+## The Seed Param
+provides an identifier or reference to a generated pattern. By default a `seed=0` is passed to the url
+
 ## The Random Param 
 allows generation of random patterns everytime the user requests the url (if not passed into url the default is `false`)\
 usage: `random=true`
