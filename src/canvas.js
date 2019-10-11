@@ -9,9 +9,9 @@ module.exports = function(req, res) {
     'purple': ['#2B193D', '#5D4E6D', '#8A7090'],
     'seafoam': ['#95B8D1','#B8E0D2','#D6EADF'],
     'lime': ['#629460', '#96BE8C', '#ACECA1'],
-    'jade': ['#476A6F','#519E8A','#7EB09B']
+    'jade': ['#476A6F','#519E8A','#7EB09B'],
+    'grayscale': ['#7A7D7D', '#D0CFCF', '#565254']
   }
-  let colorTheme;
   let queueNumber = [0, 1, 2];
   let currentPalette, tileLen;
   let canvas;
@@ -24,9 +24,21 @@ module.exports = function(req, res) {
   
   canvas = createCanvas(dynamicWidth, dynamicHeight)
   const context = canvas.getContext("2d");
-  colorTheme = color[`${req.query.color}`];
   tileLen = dynamicTileSize;
-  currentPalette = (!colorTheme ? ['#7A7D7D', '#D0CFCF', '#565254'] : color[`${req.query.color}`]);
+
+  if(req.query.random && !req.query.color) {
+    let colorKeys = Object.keys(color)
+    let randomColorIdx = Math.floor(Math.random() * colorKeys.length)
+    let selectedColors = color[colorKeys[randomColorIdx]]
+    currentPalette = selectedColors
+  } else {
+    currentPalette = color[`${req.query.color}`];
+  }
+
+  if(req.query.random && !req.query.tileSize) {
+    tileLen = Math.ceil(Math.random() * 100)
+    console.log(tileLen)
+  }
 
   const randomPattern = (multiplier) => {
     return (req.query.random ? Math.round(Math.random() * multiplier) : Math.round(rand.random() * multiplier))
@@ -137,13 +149,13 @@ module.exports = function(req, res) {
 
       if(req.query.pattern === 'arc') {
         switch(randomPattern(5)) {
-          case 1: arc(x, y, 50, 0, 0.5 * Math.PI);
+          case 1: arc(x, y, tileLen, 0, 0.5 * Math.PI);
           break;
-          case 2: arc(x + tileLen, y + tileLen, 50, 1.575, Math.PI);
+          case 2: arc(x + tileLen, y + tileLen, tileLen, 1.575, Math.PI);
           break;
-          case 3: arc(x, y, 50, 1.575, Math.PI);
+          case 3: arc(x, y, tileLen, 1.575, Math.PI);
           break;
-          case 4: arc(x + tileLen, y + tileLen, 50, Math.PI * 0.5, Math.PI);
+          case 4: arc(x + tileLen, y + tileLen, tileLen, Math.PI * 0.5, Math.PI);
           break;
         }
       }
@@ -196,6 +208,13 @@ module.exports = function(req, res) {
           case 8: mmm(x, y, x, y + tileLen, x + tileLen / 2, y + tileLen / 2, x + tileLen, y + tileLen, x + tileLen, y);
           break;
         }
+      }
+
+      if(req.query.random && !req.query.pattern) {
+        const patterns = ['triangle', 'circle', 'arc', 'line', 'mmm', false];
+        let selectedPattern = patterns[Math.floor(Math.random() * patterns.length)]
+        req.query.pattern = selectedPattern
+        console.log(req.query.pattern)
       }
     }
   }
