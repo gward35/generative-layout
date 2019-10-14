@@ -31,26 +31,25 @@ module.exports = function(req, res) {
   const context = canvas.getContext("2d");
   tileLen = dynamicTileSize;
 
-  if(req.query.random && !req.query.color) {
+  if(req.query.random === 'true' && !req.query.color) {
     let colorKeys = Object.keys(color)
     let randomColorIdx = Math.floor(Math.random() * colorKeys.length)
     let selectedColors = color[colorKeys[randomColorIdx]]
     currentPalette = selectedColors
   } else {
-    currentPalette = color[`${req.query.color}`];
+    currentPalette = (!req.query.color ? color['grayscale'] : color[`${req.query.color}`]);
   }
 
-  if(req.query.random && !req.query.tileSize) {
+  if(req.query.random === 'true' && !req.query.tileSize) {
     tileLen = Math.ceil(Math.random() * 100)
-    console.log(tileLen)
   }
 
   const randomPattern = (multiplier) => {
-    return (req.query.random ? Math.round(Math.random() * multiplier) : Math.round(rand.random() * multiplier))
+    return (req.query.random === 'true'? Math.round(Math.random() * multiplier) : Math.round(rand.random() * multiplier))
   }
 
   const randomColor = (multiplier) => {
-    return (req.query.random ? Math.floor(Math.random() * multiplier) : Math.floor(rand.random() * multiplier))
+    return (req.query.random === 'true' ? Math.floor(Math.random() * multiplier) : Math.floor(rand.random() * multiplier))
   }
 
   const shuffle = array => {
@@ -120,6 +119,17 @@ module.exports = function(req, res) {
       context.strokeStyle = (currentPalette[queueNumber[1]]);
       context.fillStyle = (currentPalette[queueNumber[1]]);
 
+      // if (dynamicWidth % tileLen !== 0) {
+      //   let difference = dynamicWidth - x 
+      //   let remainder = tileLen - difference
+      //   let newWidth = dynamicWidth + remainder
+      //   req.query.width = newWidth
+        
+      //   console.log('doesnt fit')
+      // } else {
+      //   console.log('fits')
+      // }
+
       if(req.query.pattern === 'triangle') {
         switch(randomPattern(10)) {
           case 1: triangle(x, y, x, y + tileLen, x + tileLen, y + tileLen);
@@ -147,8 +157,6 @@ module.exports = function(req, res) {
         switch(randomPattern(2)) {
           case 1: circle(x + tileLen / 2,  y + tileLen / 2, tileLen / 2, 0, 2 * Math.PI);
           break;
-          // case 2: circle(25 + x, 25 + y, 20, 0, 2 * Math.PI);
-          // break;
         }
       }
 
@@ -215,8 +223,8 @@ module.exports = function(req, res) {
         }
       }
 
-      if(req.query.random && !req.query.pattern) {
-        const patterns = ['triangle', 'circle', 'arc', 'line', 'mmm', false];
+      if(req.query.random === 'true' && !req.query.pattern) {
+        const patterns = ['triangle', 'circle', 'arc', 'line', 'mmm', 'false'];
         let selectedPattern = patterns[Math.floor(Math.random() * patterns.length)]
         req.query.pattern = selectedPattern
         console.log(req.query.pattern)
@@ -227,4 +235,4 @@ module.exports = function(req, res) {
   canvas.pngStream().pipe(res);
   const currentURL = req.protocol + '://' + req.get('Host') + req.url;
   console.log(currentURL)
-};
+}

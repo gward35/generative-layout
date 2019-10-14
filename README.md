@@ -9,7 +9,7 @@ You can pick a specific color scheme, pattern, width, height, tilesize, and gene
 ## Patterns
 
 ### Default (Square)
-usage: omit pattern param from url
+usage: `pattern=false`
 
 ### Triangle
 usage: `pattern=triangle`
