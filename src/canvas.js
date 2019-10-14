@@ -4,11 +4,16 @@ let rand = require('random-seed').create();
 module.exports = function(req, res) {
   const color = {
     'red': ['#C75146','#AD2E24','#81171B'],
+    'brightred': ['#FF220C','#FEC0AA','#FF4B3E'],
     'orange': ['#F08700', '#EFCA08', '#F49F0A'], 
+    'salmon': ['#FFAF87','#FF8E72','#ED6A5E'],
     'blue': ['#006BA6', '#0496FF', '#1D3461'],
+    'slate': ['#495867','#577399','#BDD5EA'],
     'purple': ['#2B193D', '#5D4E6D', '#8A7090'],
-    'seafoam': ['#95B8D1','#B8E0D2','#D6EADF'],
+    'myrtle': ['#413C58','#967AA1','#ACACDE'],
+    'green': ['#1E441E','#2A7221','#119822'],
     'lime': ['#629460', '#96BE8C', '#ACECA1'],
+    'coral': ['#F6C28B','#5296A5','#82DDF0'],
     'jade': ['#476A6F','#519E8A','#7EB09B'],
     'grayscale': ['#7A7D7D', '#D0CFCF', '#565254']
   }

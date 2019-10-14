@@ -36,29 +36,53 @@ usage: omit color param from url
 hex values: `['#C75146','#AD2E24','#81171B']`\
 usage: `color=red`
 
+### BrightRed
+hex values: `['#FF220C','#333745','#FF4B3E']`\
+usage: `color=brightred`
+
 ### Orange
 hex values: `['#F08700', '#EFCA08', '#F49F0A']`\
 usage: `color=orange`
+
+### Salmon
+hex values: `['#FFAF87','#FF8E72','#ED6A5E']`\
+usage: `color=salmon`
 
 ### Blue
 hex values: `['#006BA6', '#0496FF', '#1D3461']`\
 usage: `color=blue`
 
+### Slate
+hex values: `['#495867','#577399','#BDD5EA']`\
+usage: `color=slate`
+
 ### Purple
 hex values: `['#2B193D', '#5D4E6D', '#8A7090']`\
 usage: `color=purple`
 
-### Seafoam
-hex values: `['#95B8D1','#B8E0D2','#D6EADF']`\
-usage: `color=seafoam`
+### Myrtle 
+hex values: `['#413C58','#967AA1','#ACACDE']`\
+usage: `color=myrtle`
+
+### Green
+hex values: `['#1E441E','#2A7221','#119822']`\
+usage: `color=green`
 
 ### Lime
 hex values: `['#629460', '#96BE8C', '#ACECA1']`\
 usage: `color=lime`
 
+### Coral
+hex values: `['#F6C28B','#5296A5','82DDF0']`\
+usage: `color=coral`
+
 ### Jade
 hex values: `['#476A6F','#519E8A','#7EB09B']`\
 usage: `color=jade`
+
+### Grayscale
+hex values: `['#7A7D7D', '#D0CFCF', '#565254']`\
+usage: `color=grayscale`
 
 ## Canvas Size 
 
