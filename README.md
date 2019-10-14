@@ -75,10 +75,10 @@ sets height and width dimensions of "tiles" in canvas (if not passed into url th
 usage: `tileSize=60`
 
 ## The Seed Param
-provides an identifier or reference to a generated pattern. By default a `seed=0` is passed to the url
+provides an identifier or reference to a generated pattern. By default a `seed=0` is passed to the url. Accessing a pattern url with a defined seed will always return the associated pattern unless the `random` param is set.
 
 ## The Random Param 
-allows generation of random patterns everytime the user requests the url (if not passed into url the default is `false`)\
+allows generation of random patterns everytime the user makes a request to the url (if not passed into url the default is `false`). If a parameter is not set such as `pattern` or `color` that will be randomized too\
 usage: `random=true`
 
 
