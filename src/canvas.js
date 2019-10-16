@@ -29,11 +29,10 @@ module.exports = function(req, res) {
   
   canvas = createCanvas(dynamicWidth, dynamicHeight)
   const context = canvas.getContext("2d");
-  tileLen = dynamicTileSize;
 
   if(req.query.random === 'true' && !req.query.color) {
     let colorKeys = Object.keys(color)
-    let randomColorIdx = Math.floor(Math.random() * colorKeys.length)
+    let randomColorIdx = Math.floor(rand.random() * colorKeys.length)
     let selectedColors = color[colorKeys[randomColorIdx]]
     currentPalette = selectedColors
   } else {
@@ -41,15 +40,17 @@ module.exports = function(req, res) {
   }
 
   if(req.query.random === 'true' && !req.query.tileSize) {
-    tileLen = Math.ceil(Math.random() * 100)
+    tileLen = Math.ceil(rand.random() * 100)
+  } else {
+    tileLen = dynamicTileSize;
   }
 
   const randomPattern = (multiplier) => {
-    return (req.query.random === 'true'? Math.round(Math.random() * multiplier) : Math.round(rand.random() * multiplier))
+    return (req.query.random === 'true' ? Math.round(rand.random() * multiplier) : Math.round(rand.random() * multiplier))
   }
 
   const randomColor = (multiplier) => {
-    return (req.query.random === 'true' ? Math.floor(Math.random() * multiplier) : Math.floor(rand.random() * multiplier))
+    return (req.query.random === 'true' ? Math.floor(rand.random() * multiplier) : Math.floor(rand.random() * multiplier))
   }
 
   const shuffle = array => {
@@ -110,7 +111,7 @@ module.exports = function(req, res) {
   for (let x = 0; x < dynamicWidth; x += tileLen) {
     for(let y = 0; y < dynamicHeight; y += tileLen) {
       queueNumber = shuffle(queueNumber)
-      let dynamicRandomColor = (req.query.random ? shuffle(queueNumber) : queueNumber );
+      let dynamicRandomColor = (req.query.random === 'true' ? shuffle(queueNumber) : queueNumber );
       queueNumber = dynamicRandomColor;
 
       context.strokeStyle = (currentPalette[queueNumber[0]]);
@@ -225,9 +226,8 @@ module.exports = function(req, res) {
 
       if(req.query.random === 'true' && !req.query.pattern) {
         const patterns = ['triangle', 'circle', 'arc', 'line', 'mmm', 'false'];
-        let selectedPattern = patterns[Math.floor(Math.random() * patterns.length)]
+        let selectedPattern = patterns[Math.floor(rand.random() * patterns.length)]
         req.query.pattern = selectedPattern
-        console.log(req.query.pattern)
       }
     }
   }
