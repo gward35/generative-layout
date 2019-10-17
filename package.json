@@ -18,8 +18,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-css": "node-sass --include-path scss public/sass/styles.scss public/css/styles.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
-    "watch": "browser-sync start --server --index browser-sync.html --watch server.js src/*",
-    "dev": "concurrently \"nodemon server.js\" \"npm run watch\"",
+    "watch": "browser-sync start --server --index browser-sync.html --watch server.js src/* public/*",
+    "dev": "concurrently \"nodemon server.js\" \"npm run watch\" \"npm run watch-css\"",
     "start": "node server.js"
   },
   "author": "",

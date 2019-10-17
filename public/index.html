@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>Generative</title>
-        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap" rel="stylesheet">
-        <link href="./css/styles.css" rel="stylesheet">
-    </head>
-    <body>
-        <section class="container">
-            <div class="paper">
-                <div class="slug -a">
-                    <h2>Background</h2>
-                    <div class="background"></div>
-                </div>
-                <div class="slug -b">
-                    <h2>Button</h2>
-                    <button class="button clip-text border red">
-                        I'm a button
-                    </button>
-                    <button class="button blue">
-                        I'm a button
-                    </button>
-                </div>
-                <div class="slug -c">
-                    <h2>Border</h2>
-                    <div class="border lime">Stuff inside</div>
-                </div>
-                <div class="slug -d">
-                    <h2>Input</h2>
-                    <label for="text">Label
-                        <input type="text" name="text" class="border orange" />
-                    </label>
-                </div>
-                <div class="slug -e">
-                    <h2>Select</h2>
-                    <select class="border red">
-                        <option value="">Please select option</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                    </select>
-                </div>
-            </div>
-        </section>
-    </body>
-    <script src="./js/generative.js" type="text/javascript"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Generative</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/public/css/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section class="container">
+      <img src="/canvas?width=800&height=200&random=true" />
+      <div class="paper">
+        <div class="slug -a">
+          <h2>Background</h2>
+          <div class="background"></div>
+        </div>
+        <div class="slug -b">
+          <h2>Button</h2>
+          <button class="button clip-text border red">
+            I'm a button
+          </button>
+          <button class="button blue">
+            I'm a button
+          </button>
+        </div>
+        <div class="slug -c">
+          <h2>Border</h2>
+          <div class="border lime">Stuff inside</div>
+        </div>
+        <div class="slug -d">
+          <h2>Input</h2>
+          <label for="text"
+            >Label
+            <input type="text" name="text" class="border orange" />
+          </label>
+        </div>
+        <div class="slug -e">
+          <h2>Select</h2>
+          <select class="border red">
+            <option value="">Please select option</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="/public/js/generative.js" type="text/javascript"></script>
 </html>
