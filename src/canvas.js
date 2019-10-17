@@ -30,20 +30,9 @@ module.exports = function(req, res) {
   canvas = createCanvas(dynamicWidth, dynamicHeight)
   const context = canvas.getContext("2d");
 
-  if(req.query.random === 'true' && !req.query.color) {
-    let colorKeys = Object.keys(color)
-    let randomColorIdx = Math.floor(rand.random() * colorKeys.length)
-    let selectedColors = color[colorKeys[randomColorIdx]]
-    currentPalette = selectedColors
-  } else {
-    currentPalette = (!req.query.color ? color['grayscale'] : color[`${req.query.color}`]);
-  }
-
-  if(req.query.random === 'true' && !req.query.tileSize) {
-    tileLen = Math.ceil(rand.random() * 100)
-  } else {
-    tileLen = dynamicTileSize;
-  }
+  currentPalette = (!req.query.color ? color['grayscale'] : color[`${req.query.color}`]);
+  
+  tileLen = dynamicTileSize; 
 
   const randomPattern = (multiplier) => {
     return (req.query.random === 'true' ? Math.round(rand.random() * multiplier) : Math.round(rand.random() * multiplier))
@@ -222,12 +211,6 @@ module.exports = function(req, res) {
           case 8: mmm(x, y, x, y + tileLen, x + tileLen / 2, y + tileLen / 2, x + tileLen, y + tileLen, x + tileLen, y);
           break;
         }
-      }
-
-      if(req.query.random === 'true' && !req.query.pattern) {
-        const patterns = ['triangle', 'circle', 'arc', 'line', 'mmm', 'false'];
-        let selectedPattern = patterns[Math.floor(rand.random() * patterns.length)]
-        req.query.pattern = selectedPattern
       }
     }
   }
