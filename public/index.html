@@ -7,51 +7,107 @@
       name="viewport"
       content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>Generative</title>
+    <title>Gimme Pattern - Pattern Generator</title>
     <link
-      href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap"
       rel="stylesheet"
     />
     <link href="/public/css/styles.css" rel="stylesheet" />
   </head>
   <body>
-    <section class="container">
-      <img src="/canvas?width=800&height=200&random=true" />
-      <div class="paper">
-        <div class="slug -a">
-          <h2>Background</h2>
-          <div class="background"></div>
-        </div>
-        <div class="slug -b">
-          <h2>Button</h2>
-          <button class="button clip-text border red">
-            I'm a button
-          </button>
-          <button class="button blue">
-            I'm a button
-          </button>
-        </div>
-        <div class="slug -c">
-          <h2>Border</h2>
-          <div class="border lime">Stuff inside</div>
-        </div>
-        <div class="slug -d">
-          <h2>Input</h2>
-          <label for="text"
-            >Label
-            <input type="text" name="text" class="border orange" />
-          </label>
-        </div>
-        <div class="slug -e">
-          <h2>Select</h2>
-          <select class="border red">
-            <option value="">Please select option</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-          </select>
-        </div>
+    <header>
+      <div>
+        <h1>Gimme Patterns</h1>
       </div>
-    </section>
+      <p class="tagline">
+        Beautiful, bespoke machine-generated web patterns. The perfect asset for
+        any interactive designer.
+      </p>
+    </header>
+    <main>
+      <section class="canvas-container">
+        <img src="/canvas?&random=true" />
+      </section>
+      <section class="controls-container">
+        <form action="" method="get" class="canvas-form">
+          <div class="controls-grid">
+            <div class="dropdown">
+              <h2>Canvas Color</h2>
+              <label>Select Color Palette</label>
+              <select>
+                <option value="">Please Select A Color</option>
+                <option value="&color=red">Red</option>
+                <option value="&color=brightred">BrightRed</option>
+                <option value="&color=orange">Orange</option>
+                <option value="&color=salmon">Salmon</option>
+                <option value="&color=blue">Blue</option>
+                <option value="&color=slate">Slate</option>
+                <option value="&color=purple">Purple</option>
+                <option value="&color=myrtle">Myrtle</option>
+                <option value="&color=green">Green</option>
+                <option value="&color=lime">Lime</option>
+                <option value="&color=coral">Coral</option>
+                <option value="&color=jade">Jade</option>
+                <option value="&color=grayscale">Grayscale</option>
+              </select>
+            </div>
+            <div class="dropdown">
+              <h2>Canvas Pattern</h2>
+              <label>Select Pattern</label>
+              <select>
+                <option value="">Please Select A Pattern</option>
+                <option value="&pattern=false">Default (Square)</option>
+                <option value="&pattern=triangle">Triangle</option>
+                <option value="&pattern=circle">Circle</option>
+                <option value="&pattern=arc">Arc</option
+                ><option value="&pattern=line">Line</option>
+                <option value="&pattern=mmm">MMM</option>
+              </select>
+            </div>
+            <div class="input">
+              <h2>Canvas Size</h2>
+              <label for="width">Width</label>
+              <input id="width" type="number" min="100" max="5000" value="" />
+              <label for="height">Height</label>
+              <input id="height" type="number" min="100" max="5000" value="" />
+            </div>
+            <div class="range">
+              <h2>Canvas Tilesize</h2>
+              <label for="tilesize">Tilesize</label>
+              <input id="tilesize" type="range" min="1" max="500" value="" />
+            </div>
+            <div class="range">
+              <h2>Canvas Seed</h2>
+              <label for="seed">Seed</label>
+              <input id="seed" type="range" min="1" max="1000000000" value="" />
+            </div>
+            <div class="checkbox">
+              <h2>Random</h2>
+              <label for="random">Randomize ?</label>
+              <input
+                id="random"
+                type="checkbox"
+                min="1"
+                max="1000000000"
+                value="&random=true"
+              />
+            </div>
+          </div>
+        </form>
+      </section>
+      <section class="documentation-container">
+        <p class="callout">
+          Check out the documentation
+          <a href="https://github.com/istrategylabs/generative-layout">here!</a>
+        </p>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-callout">
+        <p>Have Feedback? We want to know what you think!</p>
+        <button>Give Feedback</button>
+      </div>
+    </footer>
   </body>
   <script src="/public/js/generative.js" type="text/javascript"></script>
 </html>

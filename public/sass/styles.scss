@@ -1,301 +1,159 @@
 $white: #fff;
-$offwhite: #FCFBF4;
+$offwhite: #fcfbf4;
 $black: #000;
 $darkgray: #494850;
-$red: #C75146;
-$orange: #F08700;
-$blue: #0496FF;
-$purple: #2B193D;
-$seafoam: #B8E0D2;
-$lime: #96BE8C;
-$jade: #476A6F;
-
-@mixin border {
-    .border {
-        border: 2px solid transparent;
-        border-image-repeat: repeat;
-        border-image-slice: 3;
-        border-image-width: 3px;
-
-        &.red {
-            border-image-source: url('http://localhost:8080/canvas?color=red');
-            border-color: $red;
-        }
-
-        &.orange {
-            border-image-source: url('http://localhost:8080/canvas?color=orange');
-            border-color: $orange;
-        }
-    
-        &.blue {
-            border-image-source: url('http://localhost:8080/canvas?color=blue');
-            border-color: $blue;
-        }
-
-        &.purple {
-            border-image-source: url('http://localhost:8080/canvas?color=purple');
-            border-color: $purple;
-        }
-
-        &.seafoam {
-            border-image-source: url('http://localhost:8080/canvas?color=seafoam');
-            border-color: $seafoam;
-        }
-
-        &.lime {
-            border-image-source: url('http://localhost:8080/canvas?color=lime');
-            border-color: $lime;
-        }
-    
-        &.no-color {
-            border-image-source: url('http://localhost:8080/canvas');
-            border-color: $darkgray;
-        }
-    }
-}
+$red: #c75146;
+$orange: #f08700;
+$blue: #0496ff;
+$purple: #2b193d;
+$seafoam: #b8e0d2;
+$lime: #96be8c;
+$jade: #476a6f;
 
 body {
-    width: 100%;
-    height: 100%;
-    font-family: 'Josefin Sans', sans-serif;
-    background-color: $white;
+  width: 100%;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  background-color: $white;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  background-color: #171123;
+}
+
+.clip-text {
+  font-weight: 700;
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+  color: #000;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: url('/canvas?&random=true');
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: '';
+  }
+
+  &:before {
+    z-index: -2;
+    background-image: inherit;
+  }
+
+  :after {
+    position: absolute;
+    z-index: -1;
+    top: 0.125em;
+    right: 0.125em;
+    bottom: 0.125em;
+    left: 0.125em;
+    background-color: #fff;
+  }
 }
 
 h1 {
-    font-size: 3rem;
+  font-size: 4rem;
+  margin: 0.5rem 0;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 h2 {
-    font-size: 2rem
-}
-
-h3 {
-    font-size: 1.5rem;
-}
-
-h4 {
-    font-size: 1.25rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 p {
-    font-size: 1rem;
-    line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.tagline {
+  color: $white;
 }
 
 img {
-    margin: 0;
+  margin: 0;
 }
 
 button {
-    position: relative;
-    display: inline-flex;
-    min-width: 80px;
-    min-height: 40px;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    padding: 0 4rem;
-    border-radius: 3px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    box-shadow: 1px 1px 3px $darkgray;
-    border: 0;
-    background-color: transparent;
-    text-transform: uppercase;
+  position: relative;
+  box-sizing: border-box;
+  color: #1f2d3d;
+  border: 0;
+  cursor: pointer;
+  padding: 2rem 2rem;
+  border-radius: 3px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: #ace894;
+  transition: all 0.3s ease;
 
-    @include border;
-
-    &.red {
-        background: url('http://localhost:8080/canvas?color=red');
-        background-color: $red;
-    }
-
-    &.orange {
-        background: url('http://localhost:8080/canvas?color=orange');
-        background-color: $orange;
-    }
-
-    &.blue {
-        background: url('http://localhost:8080/canvas?color=blue');
-        background-color: $blue;
-    }
-
-    &.purple {
-        background: url('http://localhost:8080/canvas?color=purple');
-        background-color: $purple;
-    }
-
-    &.seafoam {
-        background: url('http://localhost:8080/canvas?color=seafoam');
-        background-color: $seafoam;
-    }
-
-    &.lime {
-        background: url('http://localhost:8080/canvas?color=lime');
-        background-color: $lime;
-    }
-
-    &.no-color {
-        background: url('http://localhost:8080/canvas');
-        background-color: $darkgray;
-    }
-
-    &.clip-text {
-        position: relative;
-        /* Color fallback */
-        color: #fff;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-
-        &:before,
-        &:after {
-            position: absolute;
-            content: '';
-        }
-
-        &:before {
-            z-index: -2;
-            background-image: inherit;
-        }
-
-        &:after {
-            position: absolute;
-            z-index: -1;
-            background-color: #000;
-        }
-    }
+  &:hover,
+  &:focus {
+    background-color: #91c499;
+  }
 }
 
-@include border;
+.canvas-container {
+  display: flex;
+  justify-content: center;
+}
 
-.container {
-    position: relative;
-    padding: 2rem;
-    z-index: 2;
+.controls-container {
+  padding: 2rem 0;
+  background-color: #e5e5e5;
+  .controls-grid {
+    max-width: 980px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
 
-    .paper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        margin: 0 auto;
-        max-width: 1000px;
-        background-color: $offwhite;
-        box-shadow: 1px 1px 3px $darkgray;
+.documentation-container {
+  padding: 2rem 0;
+  background-color: #e5e5e5;
+  display: flex;
+  justify-content: center;
+  .callout {
+    padding: 1rem;
+    background-color: #ace894;
+    color: #1f2d3d;
+    width: 300px;
+    text-align: center;
+    box-shadow: #91c499 2px 2px 5px;
+    cursor: default;
+    transition: all 0.3s ease;
 
-        .slug {
-            display: flex;
-            flex-direction: column;
-            color: $black;
-            position: relative;
-            padding: 2rem;
-
-            &.-a {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row-start: 1;
-                grid-row-end: 2;
-
-                .background {
-                    width: 100%;
-                    height: 100%;
-                    background: url('http://localhost:8080/canvas');
-                }
-            }
-
-            &.-b {
-                display: block;
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row-start: 2;
-                grid-row-end: 3;
-            }
-
-            &.-c {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row-start: 3;
-                grid-row-end: 5;
-
-                .border {
-                    padding: 1rem;
-                }
-            }
-
-            &.-d {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row-start: 5;
-                grid-row-end: 7;
-
-                label {
-                    position: relative;
-
-                    input {
-                        display: block;
-                        width: 100%;
-                        border-top: 0;
-                        border-left: 0;
-                        border-right: 0;
-                        height: 1.75rem;
-                        margin: 0;
-                        background: none;
-                        @include border;
-                        border-image-width: inherit;
-
-                        &.red {
-                            border-bottom: 2px solid $red;
-                        }
-                    
-                        &.orange {
-                            border-bottom: 2px solid $orange;
-                        }
-                    
-                        &.blue {
-                            border-bottom: 2px solid $blue;
-                        }
-                    
-                        &.purple {
-                            border-bottom: 2px solid $purple;
-                        }
-                    
-                        &.seafoam {
-                            border-bottom: 2px solid $seafoam;
-                        }
-                    
-                        &.lime {           
-                            border-bottom: 2px solid $lime;    
-                        }
-                    }
-                }
-            }
-
-            &.-e {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row-start: 7;
-                grid-row-end: 9;
-
-                select {
-                    appearance: none;
-                    -webkit-appearance: none;
-                    @include border;
-                    border-radius: 3px;
-                    padding: 0.5rem;
-
-                    &::after {
-                        content: '';
-                       position: absolute;
-                       left: 18px;
-                       top: 50px;
-                       width: 0;
-                       height: 0;
-                       border-left: 20px solid transparent;
-                       border-right: 20px solid transparent;
-                       border-top: 20px solid #000;
-                       clear: both;
-                    }
-                }
-            }
-        }
+    &:hover,
+    &:focus {
+      background-color: #91c499;
     }
+  }
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $white;
+  background-color: #171123;
+  padding: 2rem 0;
+
+  .footer-callout {
+    text-align: center;
+  }
 }
