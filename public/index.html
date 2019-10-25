@@ -26,13 +26,13 @@
     </header>
     <main>
       <section class="canvas-container">
-        <img src="/canvas?&random=true" />
+        <img src="/canvas?&width=2000&random=true" />
       </section>
       <section class="controls-container">
         <form action="" method="get" class="canvas-form">
           <div class="controls-grid">
             <div class="dropdown">
-              <h2>Canvas Color</h2>
+              <p class="control-title">Canvas Color</p>
               <label>Select Color Palette</label>
               <select>
                 <option value="">Please Select A Color</option>
@@ -52,7 +52,7 @@
               </select>
             </div>
             <div class="dropdown">
-              <h2>Canvas Pattern</h2>
+              <p class="control-title">Canvas Pattern</p>
               <label>Select Pattern</label>
               <select>
                 <option value="">Please Select A Pattern</option>
@@ -65,24 +65,30 @@
               </select>
             </div>
             <div class="input">
-              <h2>Canvas Size</h2>
+              <p class="control-title">Canvas Size</p>
               <label for="width">Width</label>
-              <input id="width" type="number" min="100" max="5000" value="" />
+              <input
+                id="width"
+                type="number"
+                min="100"
+                max="5000"
+                value="2000"
+              />
               <label for="height">Height</label>
               <input id="height" type="number" min="100" max="5000" value="" />
             </div>
             <div class="range">
-              <h2>Canvas Tilesize</h2>
+              <p class="control-title">Canvas Tilesize</p>
               <label for="tilesize">Tilesize</label>
               <input id="tilesize" type="range" min="1" max="500" value="" />
             </div>
             <div class="range">
-              <h2>Canvas Seed</h2>
+              <p class="control-title">Canvas Seed</p>
               <label for="seed">Seed</label>
               <input id="seed" type="range" min="1" max="1000000000" value="" />
             </div>
             <div class="checkbox">
-              <h2>Random</h2>
+              <p class="control-title">Random</p>
               <label for="random">Randomize ?</label>
               <input
                 id="random"

@@ -92,12 +92,13 @@ button {
   color: #1f2d3d;
   border: 0;
   cursor: pointer;
-  padding: 2rem 2rem;
+  padding: 1rem;
   border-radius: 3px;
   font-size: 1.2rem;
   font-weight: 700;
   text-transform: uppercase;
   background-color: #ace894;
+  box-shadow: #91c499 2px 2px 5px;
   transition: all 0.3s ease;
 
   &:hover,
@@ -118,8 +119,25 @@ button {
     max-width: 980px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
     margin: 0 auto;
-    text-align: center;
+
+    .dropdown,
+    .input,
+    .range {
+      display: grid;
+    }
+
+    .control-title {
+      font-size: bold;
+    }
+
+    select {
+      -webkit-appearance: none;
+      appearance: none;
+      min-height: 2rem;
+      padding: 0 1rem;
+    }
   }
 }
 
