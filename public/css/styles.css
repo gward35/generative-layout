@@ -59,6 +59,22 @@ p {
 img {
   margin: 0; }
 
+.callout {
+  padding: 1rem;
+  background-color: #ace894;
+  color: #1f2d3d;
+  width: 300px;
+  text-align: center;
+  box-shadow: #91c499 2px 2px 5px;
+  cursor: default;
+  transition: all 0.3s ease;
+  text-decoration: none; }
+  .callout a {
+    color: #1f2d3d;
+    text-decoration: none; }
+  .callout:hover, .callout:focus {
+    background-color: #91c499; }
+
 button {
   position: relative;
   box-sizing: border-box;
@@ -100,29 +116,18 @@ button {
       appearance: none;
       min-height: 2rem;
       padding: 0 1rem; }
-    .controls-container .controls-grid .input input[type=text],
-    .controls-container .controls-grid .input input[type=number] {
+    .controls-container .controls-grid .input input[type='text'],
+    .controls-container .controls-grid .input input[type='number'] {
       min-height: 2rem;
       padding: 0 1rem;
       border-radius: 3px;
-      border: 1px solid #A6A6A6; }
+      border: 1px solid #a6a6a6; }
 
 .documentation-container {
   padding: 2rem 0;
   background-color: #e5e5e5;
   display: flex;
   justify-content: center; }
-  .documentation-container .callout {
-    padding: 1rem;
-    background-color: #ace894;
-    color: #1f2d3d;
-    width: 300px;
-    text-align: center;
-    box-shadow: #91c499 2px 2px 5px;
-    cursor: default;
-    transition: all 0.3s ease; }
-    .documentation-container .callout:hover, .documentation-container .callout:focus {
-      background-color: #91c499; }
 
 footer {
   display: flex;
@@ -132,4 +137,6 @@ footer {
   background-color: #171123;
   padding: 2rem 0; }
   footer .footer-callout {
-    text-align: center; }
+    display: flex;
+    flex-direction: column;
+    align-items: center; }

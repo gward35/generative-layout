@@ -29,12 +29,12 @@
         <img class="big-canvas" src="/canvas?&width=2000&random=true" />
       </section>
       <section class="controls-container">
-        <form action="" method="GET" class="canvas-form">
+        <form action="/canvas" method="POST" class="canvas-form">
           <div class="controls-grid">
             <div class="dropdown">
               <p class="control-title">Canvas Color</p>
               <label>Select Color Palette</label>
-              <select onchange="this.form.submit()">
+              <select name="color" onchange="this.form.submit()">
                 <option value="">Please Select A Color</option>
                 <option value="&color=red">Red</option>
                 <option value="&color=brightred">BrightRed</option>
@@ -54,7 +54,7 @@
             <div class="dropdown">
               <p class="control-title">Canvas Pattern</p>
               <label>Select Pattern</label>
-              <select>
+              <select name="pattern" onchange="this.form.submit()">
                 <option value="">Please Select A Pattern</option>
                 <option value="&pattern=false">Default (Square)</option>
                 <option value="&pattern=triangle">Triangle</option>
@@ -68,35 +68,61 @@
               <p class="control-title">Canvas Size</p>
               <label for="width">Width</label>
               <input
+                name="width"
                 id="width"
                 type="number"
                 min="100"
                 max="5000"
                 value="2000"
+                onchange="this.form.submit()"
               />
               <label for="height">Height</label>
-              <input id="height" type="number" min="100" max="5000" value="" />
+              <input
+                name="height"
+                id="height"
+                type="number"
+                min="100"
+                max="5000"
+                value="500"
+                onchange="this.form.submit()"
+              />
             </div>
             <div class="range">
-              <p class="control-title">Canvas Tilesize</p>
+              <p class="control-title">Canvas Tile Size</p>
               <label for="tilesize">Tilesize</label>
-              <input id="tilesize" type="range" min="1" max="500" value="" />
+              <input
+                name="tilesize"
+                id="tilesize"
+                type="range"
+                min="1"
+                max="500"
+                value="50"
+                onchange="this.form.submit()"
+              />
             </div>
             <div class="range">
               <p class="control-title">Canvas Seed</p>
               <label for="seed">Seed</label>
-              <input id="seed" type="range" min="1" max="1000000000" value="" />
+              <input
+                name="seed"
+                id="seed"
+                type="range"
+                min="1"
+                max="1000000000"
+                value="1"
+                onchange="this.form.submit()"
+              />
             </div>
             <div class="checkbox">
               <p class="control-title">Random</p>
-              <label for="random">Randomize ?</label>
-              <input
+              <button
+                name="random"
                 id="random"
-                type="checkbox"
-                min="1"
-                max="1000000000"
                 value="&random=true"
-              />
+                onchange="this.form.submit()"
+              >
+                Randomize !
+              </button>
             </div>
           </div>
         </form>
@@ -111,9 +137,9 @@
     <footer>
       <div class="footer-callout">
         <p>Have Feedback? We want to know what you think!</p>
-        <button>Give Feedback</button>
+        <a class="callout" href="mailto:info@isl.co">Give Feedback</a>
       </div>
     </footer>
-  </body>  
+  </body>
   <script src="/public/js/generative.js" type="text/javascript"></script>
 </html>
