@@ -217,5 +217,6 @@ module.exports = function(req, res) {
   res.set("Content-Type", "image/png");
   canvas.pngStream().pipe(res);
   const currentURL = req.protocol + '://' + req.get('Host') + req.url;
+  
   console.log(currentURL)
 }

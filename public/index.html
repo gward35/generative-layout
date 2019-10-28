@@ -26,15 +26,15 @@
     </header>
     <main>
       <section class="canvas-container">
-        <img src="/canvas?&width=2000&random=true" />
+        <img class="big-canvas" src="/canvas?&width=2000&random=true" />
       </section>
       <section class="controls-container">
-        <form action="" method="get" class="canvas-form">
+        <form action="" method="GET" class="canvas-form">
           <div class="controls-grid">
             <div class="dropdown">
               <p class="control-title">Canvas Color</p>
               <label>Select Color Palette</label>
-              <select>
+              <select onchange="this.form.submit()">
                 <option value="">Please Select A Color</option>
                 <option value="&color=red">Red</option>
                 <option value="&color=brightred">BrightRed</option>
@@ -114,6 +114,6 @@
         <button>Give Feedback</button>
       </div>
     </footer>
-  </body>
+  </body>  
   <script src="/public/js/generative.js" type="text/javascript"></script>
 </html>
