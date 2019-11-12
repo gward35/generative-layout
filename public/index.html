@@ -16,9 +16,7 @@
   </head>
   <body>
     <header>
-      <div>
-        <h1>Gimme Patterns</h1>
-      </div>
+      <h1>Gimme Patterns</h1>
       <p class="tagline">
         Beautiful, bespoke machine-generated web patterns. The perfect asset for
         any interactive designer.
@@ -29,12 +27,12 @@
         <img class="big-canvas" src="/canvas?&width=2000&random=true" />
       </section>
       <section class="controls-container">
-        <form action="/canvas" method="POST" class="canvas-form">
+        <div class="canvas-form">
           <div class="controls-grid">
             <div class="dropdown">
               <p class="control-title">Canvas Color</p>
               <label>Select Color Palette</label>
-              <select name="color" onchange="this.form.submit()">
+              <select id="color" name="color" >
                 <option value="">Please Select A Color</option>
                 <option value="&color=red">Red</option>
                 <option value="&color=brightred">BrightRed</option>
@@ -54,7 +52,7 @@
             <div class="dropdown">
               <p class="control-title">Canvas Pattern</p>
               <label>Select Pattern</label>
-              <select name="pattern" onchange="this.form.submit()">
+              <select id="pattern" name="pattern">
                 <option value="">Please Select A Pattern</option>
                 <option value="&pattern=false">Default (Square)</option>
                 <option value="&pattern=triangle">Triangle</option>
@@ -74,7 +72,6 @@
                 min="100"
                 max="5000"
                 value="2000"
-                onchange="this.form.submit()"
               />
               <label for="height">Height</label>
               <input
@@ -84,7 +81,6 @@
                 min="100"
                 max="5000"
                 value="500"
-                onchange="this.form.submit()"
               />
             </div>
             <div class="range">
@@ -97,7 +93,6 @@
                 min="1"
                 max="500"
                 value="50"
-                onchange="this.form.submit()"
               />
             </div>
             <div class="range">
@@ -107,10 +102,9 @@
                 name="seed"
                 id="seed"
                 type="range"
-                min="1"
+                min="0"
                 max="1000000000"
                 value="1"
-                onchange="this.form.submit()"
               />
             </div>
             <div class="checkbox">
@@ -119,13 +113,12 @@
                 name="random"
                 id="random"
                 value="&random=true"
-                onchange="this.form.submit()"
               >
                 Randomize !
               </button>
             </div>
           </div>
-        </form>
+        </div>
       </section>
       <section class="documentation-container">
         <p class="callout">
@@ -141,5 +134,10 @@
       </div>
     </footer>
   </body>
+  <script>
+      function submit(e) {
+        e.preventDefault();
+      }
+    </script>
   <script src="/public/js/generative.js" type="text/javascript"></script>
 </html>

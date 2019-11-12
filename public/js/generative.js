@@ -1,53 +1,68 @@
-const colorAndPatternSelect = [].slice.call(document.querySelectorAll('select')) // color and pattern dropdown
-const widthAndHeightInput = [].slice.call(
-  document.querySelectorAll('.input input')
-) // width and height inputs
-const tileSizeAndSeedInput = [].slice.call(
-  document.querySelectorAll('.range input')
-) // tileSize and seed inputs
-const randomCheckbox = document.querySelector('.checkbox button')
-console.log(colorAndPatternSelect)
-console.log(widthAndHeightInput)
-console.log(tileSizeAndSeedInput)
-console.log(randomCheckbox)
+const colorSelect = document.getElementById('color');
+const patternSelect = document.getElementById('pattern');
+const widthInput = document.getElementById('width');
+const heightInput = document.getElementById('height')
+const tileSizeInput = document.getElementById('tilesize');
+const seedInput = document.getElementById('seed')
+const randomCheckbox = document.getElementById('random')
+const image = document.querySelector('.big-canvas');
+let color, pattern, tilesize, seed, random;
+let width = "&width=" + widthInput.value;
+let height = "&height=" + heightInput.value;
 
-const getParams = async () => {
-  const settings = {
-    method: 'GET',
-    headers: {
-      Accept: 'application/x-www-form-urlencoded',
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
+const setImage = () => {
+  colorSelect.addEventListener('change', () => {
+    color = colorSelect.value;
+    image.setAttribute("src", `/canvas?${color}${pattern}${width}${height}${tilesize}${seed}${random}`);
+  });
+  
+  patternSelect.addEventListener('change', () => {
+   pattern = patternSelect.value;
+   image.setAttribute("src", `/canvas?${color}${pattern}${width}${height}${tilesize}${seed}${random}`);
+  });
+  
+  widthInput.addEventListener('change', () => {
+      width = "&width=" + widthInput.value
+      image.setAttribute("src", `/canvas?${color}${pattern}${width}${height}${tilesize}${seed}${random}`);
+  })
+  
+  heightInput.addEventListener('change', () => {
+    console.log(height)
+    height = "&height=" + heightInput.value
+    image.setAttribute("src", `/canvas?${color}${pattern}${width}${height}${tilesize}${seed}${random}`);
+  })
+  
+  tileSizeInput.addEventListener('change', () => {
+      tilesize = "&tileSize=" + tileSizeInput.value
+      image.setAttribute("src", `/canvas?${color}${pattern}${width}${height}${tilesize}${seed}${random}`);
+  })
+
+  seedInput.addEventListener('change', () => {
+    seed = "&seed=" + seedInput.value
+    image.setAttribute("src", `/canvas?${color}${pattern}${width}${height}${tilesize}${seed}${random}`);
+  })
+
+  function randomize(callback){
+    randomCheckbox.addEventListener('click', () => {
+      random = randomCheckbox.value
+      image.setAttribute("src", `/canvas?${color}${pattern}${width}${height}${tilesize}${seed}${random}`);
+    })
+    callback()
   }
-  try {
-    const response = await fetch('http://localhost:8080/canvas', settings)
-    const data = await response.text()
-    console.log(data)
-  } catch (e) {
-    console.log(e)
+
+  function clearRandom() {
+   image.setAttribute("src", image.src.replace(`&random=true`, ""))
   }
+
+  randomize(clearRandom);
+  
+  
+
 }
 
-colorAndPatternSelect.forEach(select => {
-  select.addEventListener('change', () => {
-    getParams()
-  })
-})
+setImage()
 
-widthAndHeightInput.forEach(input => {
-  input.addEventListener('change', () => {
-    getParams()
-  })
-})
 
-tileSizeAndSeedInput.forEach(input => {
-  input.addEventListener('change', () => {
-    getParams()
-  })
-})
 
-randomCheckbox.addEventListener('click', () => {
-  getParams()
-})
 
-export default storeValues
+

@@ -89,39 +89,6 @@ app.get('/canvas', randomizer(), (req, res) => {
   canvas(req, res)
 })
 
-app.use(express.urlencoded())
 
-app.post('/canvas', (req, res) => {
-  console.log(req.body.color)
-  console.log(req.body.pattern)
-  console.log(req.body.width)
-  console.log(req.body.height)
-  console.log(req.body.width)
-  console.log(req.body.height)
-
-  req.body.width = '&width=' + req.body.width
-  req.body.height = '&height=' + req.body.height
-  req.body.tilesize = '&tileSize=' + req.body.tilesize
-  req.body.seed = '&seed=' + req.body.seed
-  if (req.body.random === undefined) {
-    req.body.random = ''
-  }
-
-  console.log(req.body.random)
-
-  const postUrl =
-    req.protocol +
-    '://' +
-    req.get('Host') +
-    req.url +
-    req.body.color +
-    req.body.pattern +
-    req.body.width +
-    req.body.height +
-    req.body.tilesize +
-    req.body.seed +
-    req.body.random
-  console.log(postUrl)
-})
 
 app.listen(port, () => console.log(`Listening on port ${port}!`))
