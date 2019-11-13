@@ -156,7 +156,7 @@ footer {
   align-items: center;
   color: #fff;
   background-color: #171123;
-  padding: 2rem 0; }
+  padding: 2rem 0 3rem 0; }
   footer .footer-callout {
     display: flex;
     flex-direction: column;
