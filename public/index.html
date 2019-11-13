@@ -24,7 +24,7 @@
     </header>
     <main>
       <section class="canvas-container">
-        <img class="big-canvas" src="/canvas?&width=2000&random=true" />
+        <img class="big-canvas" src="/canvas?" />
       </section>
       <section class="controls-container">
         <div class="canvas-form">
@@ -32,7 +32,7 @@
             <div class="dropdown">
               <p class="control-title">Canvas Color</p>
               <label>Select Color Palette</label>
-              <select id="color" name="color" >
+              <select id="color" name="color">
                 <option value="">Please Select A Color</option>
                 <option value="&color=red">Red</option>
                 <option value="&color=brightred">BrightRed</option>
@@ -109,11 +109,7 @@
             </div>
             <div class="checkbox">
               <p class="control-title">Random</p>
-              <button
-                name="random"
-                id="random"
-                value="&random=true"
-              >
+              <button name="random" id="random" value="&random=true">
                 Randomize !
               </button>
             </div>
@@ -121,10 +117,11 @@
         </div>
       </section>
       <section class="documentation-container">
-        <p class="callout">
-          Check out the documentation
-          <a href="https://github.com/istrategylabs/generative-layout">here!</a>
-        </p>
+        <a href="https://github.com/istrategylabs/generative-layout"
+          ><p class="callout">
+            Check out the documentation!
+          </p></a
+        >
       </section>
     </main>
     <footer>
@@ -135,9 +132,9 @@
     </footer>
   </body>
   <script>
-      function submit(e) {
-        e.preventDefault();
-      }
-    </script>
+    function submit(e) {
+      e.preventDefault()
+    }
+  </script>
   <script src="/public/js/generative.js" type="text/javascript"></script>
 </html>

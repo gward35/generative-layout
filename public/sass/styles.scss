@@ -27,7 +27,8 @@ header {
   padding: 2rem 0;
   background-color: #171123;
 
-  h1, p {
+  h1,
+  p {
     margin: 0;
   }
 }
@@ -91,6 +92,12 @@ img {
   margin: 0;
 }
 
+a {
+  color: #1f2d3d;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .callout {
   padding: 1rem;
   background-color: #ace894;
@@ -98,14 +105,8 @@ img {
   width: 300px;
   text-align: center;
   box-shadow: #91c499 2px 2px 5px;
-  cursor: default;
   transition: all 0.3s ease;
   text-decoration: none;
-
-  a {
-    color: #1f2d3d;
-    text-decoration: none;
-  }
 
   &:hover,
   &:focus {

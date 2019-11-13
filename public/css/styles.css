@@ -13,7 +13,8 @@ header {
   align-items: center;
   padding: 2rem 0;
   background-color: #171123; }
-  header h1, header p {
+  header h1,
+  header p {
     margin: 0; }
 
 .clip-text {
@@ -62,6 +63,11 @@ p {
 img {
   margin: 0; }
 
+a {
+  color: #1f2d3d;
+  text-decoration: none;
+  cursor: pointer; }
+
 .callout {
   padding: 1rem;
   background-color: #ace894;
@@ -69,12 +75,8 @@ img {
   width: 300px;
   text-align: center;
   box-shadow: #91c499 2px 2px 5px;
-  cursor: default;
   transition: all 0.3s ease;
   text-decoration: none; }
-  .callout a {
-    color: #1f2d3d;
-    text-decoration: none; }
   .callout:hover, .callout:focus {
     background-color: #91c499; }
 
