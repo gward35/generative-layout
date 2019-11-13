@@ -153,7 +153,19 @@ button {
     .dropdown,
     .input,
     .range {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input > div {
+      display: flex;
+    }
+
+    .inputs {
       display: grid;
+      &:first-of-type {
+        margin-right: 2rem;
+      }
     }
 
     .control-title {
@@ -161,6 +173,9 @@ button {
     }
 
     .dropdown {
+      label {
+        margin-bottom: 0.5rem;
+      }
       select {
         -webkit-appearance: none;
         appearance: none;
@@ -170,6 +185,9 @@ button {
     }
 
     .input {
+      label {
+        margin-bottom: 0.5rem;
+      }
       input[type='text'],
       input[type='number'] {
         min-height: 2rem;

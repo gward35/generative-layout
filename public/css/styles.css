@@ -113,14 +113,25 @@ button {
     .controls-container .controls-grid .dropdown,
     .controls-container .controls-grid .input,
     .controls-container .controls-grid .range {
+      display: flex;
+      flex-direction: column; }
+    .controls-container .controls-grid .input > div {
+      display: flex; }
+    .controls-container .controls-grid .inputs {
       display: grid; }
+      .controls-container .controls-grid .inputs:first-of-type {
+        margin-right: 2rem; }
     .controls-container .controls-grid .control-title {
       font-weight: bold; }
+    .controls-container .controls-grid .dropdown label {
+      margin-bottom: 0.5rem; }
     .controls-container .controls-grid .dropdown select {
       -webkit-appearance: none;
       appearance: none;
       min-height: 2rem;
       padding: 0 1rem; }
+    .controls-container .controls-grid .input label {
+      margin-bottom: 0.5rem; }
     .controls-container .controls-grid .input input[type='text'],
     .controls-container .controls-grid .input input[type='number'] {
       min-height: 2rem;

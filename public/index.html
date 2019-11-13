@@ -64,24 +64,30 @@
             </div>
             <div class="input">
               <p class="control-title">Canvas Size</p>
-              <label for="width">Width</label>
-              <input
-                name="width"
-                id="width"
-                type="number"
-                min="100"
-                max="5000"
-                value="2000"
-              />
-              <label for="height">Height</label>
-              <input
-                name="height"
-                id="height"
-                type="number"
-                min="100"
-                max="5000"
-                value="500"
-              />
+              <div>
+                <div class="inputs">
+                  <label for="width">Width</label>
+                  <input
+                    name="width"
+                    id="width"
+                    type="number"
+                    min="100"
+                    max="5000"
+                    value="2000"
+                  />
+                </div>
+                <div class="inputs">
+                  <label for="height">Height</label>
+                  <input
+                    name="height"
+                    id="height"
+                    type="number"
+                    min="100"
+                    max="5000"
+                    value="500"
+                  />
+                </div>
+              </div>
             </div>
             <div class="range">
               <p class="control-title">Canvas Tile Size</p>
@@ -102,14 +108,14 @@
                 name="seed"
                 id="seed"
                 type="range"
-                min="0"
-                max="1000000000"
-                value="1"
+                min="1"
+                max="1000000"
+                value="50"
               />
             </div>
-            <div class="checkbox">
+            <div class="button">
               <p class="control-title">Random</p>
-              <button name="random" id="random" value="&random=true">
+              <button name="random" id="random">
                 Randomize !
               </button>
             </div>

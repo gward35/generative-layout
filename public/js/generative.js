@@ -4,9 +4,9 @@ const widthInput = document.getElementById('width')
 const heightInput = document.getElementById('height')
 const tileSizeInput = document.getElementById('tilesize')
 const seedInput = document.getElementById('seed')
-const randomCheckbox = document.getElementById('random')
+const randomButton = document.getElementById('random')
 const image = document.querySelector('.big-canvas')
-let color, pattern, width, height, tilesize, seed, random, defaultImage
+let color, pattern, width, height, tilesize, seed, defaultImage
 
 const setup = () => {
   width = '&width=' + widthInput.value
@@ -16,7 +16,7 @@ const setup = () => {
   image.setAttribute('src', `/canvas?${width}${height}${tilesize}${seed}`)
 }
 
-const setImage = () => {
+const setImageParameters = () => {
   defaultImage = image.getAttribute('src')
   colorSelect.addEventListener('change', () => {
     color = colorSelect.value
@@ -74,7 +74,7 @@ const setImage = () => {
 }
 
 const randomize = () => {
-  randomCheckbox.addEventListener('click', () => {
+  randomButton.addEventListener('click', () => {
     const patterns = [
       '&pattern=triangle',
       '&pattern=circle',
@@ -85,7 +85,6 @@ const randomize = () => {
     ]
     let selectedPattern = patterns[Math.floor(Math.random() * patterns.length)]
     patternSelect.value = selectedPattern
-    console.log(selectedPattern)
     pattern = selectedPattern
 
     const colors = [
@@ -105,16 +104,23 @@ const randomize = () => {
     ]
     let selectedColor = colors[Math.floor(Math.random() * colors.length)]
     colorSelect.value = selectedColor
-    console.log(selectedColor)
     color = selectedColor
+
+    let randomizeTilesize = Math.ceil(Math.random() * 500)
+    tileSizeInput.value = randomizeTilesize
+    tilesize = '&tileSize=' + randomizeTilesize
+
+    let randomizeSeed = Math.ceil(Math.random() * 1000)
+    seedInput.value = randomizeSeed
+    seed = '&seed=' + randomizeSeed
 
     image.setAttribute(
       'src',
-      `/canvas?${color}${pattern}${width}${height}${tilesize}${seed}${random}`
+      `/canvas?${color}${pattern}${width}${height}${tilesize}${seed}`
     )
   })
 }
 
 setup()
-setImage()
+setImageParameters()
 randomize()
