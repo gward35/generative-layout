@@ -97,7 +97,7 @@
                 id="tilesize"
                 type="range"
                 min="1"
-                max="500"
+                max="300"
                 value="50"
               />
             </div>
@@ -109,15 +109,25 @@
                 id="seed"
                 type="range"
                 min="1"
-                max="1000000"
+                max="100000"
                 value="50"
               />
             </div>
             <div class="button">
-              <p class="control-title">Random</p>
-              <button name="random" id="random">
-                Randomize !
-              </button>
+              <div>
+                <div class="buttons">
+                  <button name="random" id="random">
+                    Randomize !
+                  </button>
+                </div>
+                <div class="buttons">
+                  <button name="save" id="save">
+                    <a class="save-link" href="#" download="pattern.png"
+                      >Save Pattern</a
+                    >
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

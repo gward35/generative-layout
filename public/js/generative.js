@@ -5,6 +5,8 @@ const heightInput = document.getElementById('height')
 const tileSizeInput = document.getElementById('tilesize')
 const seedInput = document.getElementById('seed')
 const randomButton = document.getElementById('random')
+const saveButton = document.getElementById('save')
+const saveLink = document.querySelector('.save-link')
 const image = document.querySelector('.big-canvas')
 let color, pattern, width, height, tilesize, seed, defaultImage
 
@@ -22,7 +24,7 @@ const setImageParameters = () => {
     color = colorSelect.value
     image.setAttribute(
       'src',
-      `/canvas?${width}${height}${tilesize}${seed}${color}`
+      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}`
     )
   })
 
@@ -106,11 +108,11 @@ const randomize = () => {
     colorSelect.value = selectedColor
     color = selectedColor
 
-    let randomizeTilesize = Math.ceil(Math.random() * 500)
+    let randomizeTilesize = Math.ceil(Math.random() * 100)
     tileSizeInput.value = randomizeTilesize
     tilesize = '&tileSize=' + randomizeTilesize
 
-    let randomizeSeed = Math.ceil(Math.random() * 1000)
+    let randomizeSeed = Math.ceil(Math.random() * 50000)
     seedInput.value = randomizeSeed
     seed = '&seed=' + randomizeSeed
 
@@ -121,6 +123,17 @@ const randomize = () => {
   })
 }
 
+const saveImage = () => {
+  saveButton.addEventListener('click', () => {
+    saveLink.setAttribute(
+      'href',
+      'http://localhost:8080' + image.getAttribute('src')
+    )
+    console.log(saveLink)
+  })
+}
+
 setup()
 setImageParameters()
 randomize()
+saveImage()

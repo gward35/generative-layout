@@ -88,9 +88,7 @@ button {
   cursor: pointer;
   padding: 1rem;
   border-radius: 3px;
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-size: 1rem;
   background-color: #ace894;
   box-shadow: #91c499 2px 2px 5px;
   transition: all 0.3s ease; }
@@ -112,14 +110,21 @@ button {
     margin: 0 auto; }
     .controls-container .controls-grid .dropdown,
     .controls-container .controls-grid .input,
-    .controls-container .controls-grid .range {
+    .controls-container .controls-grid .range,
+    .controls-container .controls-grid .button {
       display: flex;
       flex-direction: column; }
-    .controls-container .controls-grid .input > div {
+    .controls-container .controls-grid .button {
+      justify-content: flex-end; }
+    .controls-container .controls-grid .input > div,
+    .controls-container .controls-grid .button > div {
       display: flex; }
-    .controls-container .controls-grid .inputs {
-      display: grid; }
-      .controls-container .controls-grid .inputs:first-of-type {
+    .controls-container .controls-grid .inputs,
+    .controls-container .controls-grid .buttons {
+      display: grid;
+      width: 100%; }
+      .controls-container .controls-grid .inputs:first-of-type,
+      .controls-container .controls-grid .buttons:first-of-type {
         margin-right: 2rem; }
     .controls-container .controls-grid .control-title {
       font-weight: bold; }
