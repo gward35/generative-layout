@@ -22,10 +22,18 @@ const setImageParameters = () => {
   defaultImage = image.getAttribute('src')
   colorSelect.addEventListener('change', () => {
     color = colorSelect.value
-    image.setAttribute(
-      'src',
-      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}`
-    )
+    if(image.getAttribute('src').indexOf('&pattern=') > -1) {
+      image.setAttribute(
+        'src',
+        `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}`
+      )
+    } else {
+      image.setAttribute(
+        'src',
+        `/canvas?${width}${height}${tilesize}${seed}${color}`
+      )
+    }
+    
   })
 
   patternSelect.addEventListener('change', () => {
