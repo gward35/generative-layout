@@ -127,7 +127,7 @@ const saveImage = () => {
   saveButton.addEventListener('click', () => {
     saveLink.setAttribute(
       'href',
-      'http://localhost:8080' + image.getAttribute('src')
+      'https://gimmepatterns-staging.herokuapp.com' + image.getAttribute('src')
     )
     console.log(saveLink)
   })
