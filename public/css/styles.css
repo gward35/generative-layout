@@ -11,7 +11,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 0;
+  padding: 2rem;
   background-color: #171123; }
   header h1,
   header p {
@@ -47,6 +47,11 @@ h1 {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 2px; }
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 1rem; } }
 
 h2 {
   font-size: 2rem;
@@ -56,6 +61,9 @@ h2 {
 p {
   font-size: 1rem;
   line-height: 1.5; }
+  @media screen and (max-width: 768px) {
+    p {
+      font-size: 0.8rem; } }
 
 .tagline {
   color: #fff; }
@@ -67,6 +75,9 @@ a {
   color: #1f2d3d;
   text-decoration: none;
   cursor: pointer; }
+  @media screen and (max-width: 768px) {
+    a {
+      font-size: 0.8rem; } }
 
 .callout {
   padding: 1rem;
@@ -77,6 +88,10 @@ a {
   box-shadow: #91c499 2px 2px 5px;
   transition: all 0.3s ease;
   text-decoration: none; }
+  @media screen and (max-width: 768px) {
+    .callout {
+      width: 100%;
+      padding: 1rem 0; } }
   .callout:hover, .callout:focus {
     background-color: #91c499; }
 
@@ -92,6 +107,9 @@ button {
   background-color: #ace894;
   box-shadow: #91c499 2px 2px 5px;
   transition: all 0.3s ease; }
+  @media screen and (max-width: 768px) {
+    button {
+      font-size: 0.8rem; } }
   button:hover, button:focus {
     background-color: #91c499; }
 
@@ -100,7 +118,7 @@ button {
   justify-content: center; }
 
 .controls-container {
-  padding: 2rem 0;
+  padding: 2rem;
   background-color: #e5e5e5; }
   .controls-container .controls-grid {
     max-width: 980px;
@@ -108,6 +126,9 @@ button {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     grid-gap: 2rem;
     margin: 0 auto; }
+    @media screen and (max-width: 768px) {
+      .controls-container .controls-grid {
+        grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); } }
     .controls-container .controls-grid .dropdown,
     .controls-container .controls-grid .input,
     .controls-container .controls-grid .range,
@@ -130,6 +151,9 @@ button {
       font-weight: bold; }
     .controls-container .controls-grid .dropdown label {
       margin-bottom: 0.5rem; }
+      @media screen and (max-width: 768px) {
+        .controls-container .controls-grid .dropdown label {
+          font-size: 0.8rem; } }
     .controls-container .controls-grid .dropdown select {
       -webkit-appearance: none;
       appearance: none;
@@ -137,6 +161,9 @@ button {
       padding: 0 1rem; }
     .controls-container .controls-grid .input label {
       margin-bottom: 0.5rem; }
+      @media screen and (max-width: 768px) {
+        .controls-container .controls-grid .input label {
+          font-size: 0.8rem; } }
     .controls-container .controls-grid .input input[type='text'],
     .controls-container .controls-grid .input input[type='number'] {
       min-height: 2rem;
@@ -145,7 +172,7 @@ button {
       border: 1px solid #a6a6a6; }
 
 .documentation-container {
-  padding: 2rem 0;
+  padding: 2rem;
   background-color: #e5e5e5;
   display: flex;
   justify-content: center; }
@@ -156,7 +183,7 @@ footer {
   align-items: center;
   color: #fff;
   background-color: #171123;
-  padding: 2rem 0 3rem 0; }
+  padding: 2rem 2rem 3rem 2rem; }
   footer .footer-callout {
     display: flex;
     flex-direction: column;
