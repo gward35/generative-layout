@@ -188,3 +188,23 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center; }
+  
+
+.footer2 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  color: #000;
+  background-color: #ACE894;
+  padding: .1rem 2rem .2rem 2rem; }
+  .footer2 .footer-callout {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .footer2 a {
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+  }
+      
+

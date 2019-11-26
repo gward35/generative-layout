@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/josh/.nvm/versions/node/v6.3.1/bin/node',
+1 verbose cli   '/Users/josh/.nvm/versions/node/v6.3.1/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'build-css' ]
+2 info using npm@3.10.3
+3 info using node@v6.3.1
+4 verbose run-script [ 'prebuild-css', 'build-css', 'postbuild-css' ]
+5 info lifecycle generative@1.0.0~prebuild-css: generative@1.0.0
+6 silly lifecycle generative@1.0.0~prebuild-css: no script for prebuild-css, continuing
+7 info lifecycle generative@1.0.0~build-css: generative@1.0.0
+8 verbose lifecycle generative@1.0.0~build-css: unsafe-perm in lifecycle true
+9 verbose lifecycle generative@1.0.0~build-css: PATH: /Users/josh/.nvm/versions/node/v6.3.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/josh/Dev/generative-layout/node_modules/.bin:/Users/josh/.nvm/versions/node/v6.3.1/bin:/Users/josh/Dev/generative-layout/node_modules/.bin:/Users/josh/.nvm/versions/node/v6.3.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/josh/Dev/generative-layout/node_modules/.bin:/Users/josh/.nvm/versions/node/v6.3.1/bin:/Users/josh/.nvm/versions/node/v6.3.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/josh/Dev/generative-layout/node_modules/.bin:/Users/josh/.nvm/versions/node/v6.3.1/bin:/usr/local/opt/python/libexec/bin:/usr/local/sbin:/Users/josh/.nvm/versions/node/v6.3.1/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/python/libexec/bin:/usr/local/sbin:/Users/josh/.nvm/versions/node/v6.3.1/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin
+10 verbose lifecycle generative@1.0.0~build-css: CWD: /Users/josh/Dev/generative-layout
+11 silly lifecycle generative@1.0.0~build-css: Args: [ '-c',
+11 silly lifecycle   'node-sass --include-path scss public/sass/styles.scss public/css/styles.css' ]
+12 silly lifecycle generative@1.0.0~build-css: Returned: code: 1  signal: null
+13 info lifecycle generative@1.0.0~build-css: Failed to exec build-css script
+14 verbose stack Error: generative@1.0.0 build-css: `node-sass --include-path scss public/sass/styles.scss public/css/styles.css`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/Users/josh/.nvm/versions/node/v6.3.1/lib/node_modules/npm/lib/utils/lifecycle.js:242:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (/Users/josh/.nvm/versions/node/v6.3.1/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:852:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+15 verbose pkgid generative@1.0.0
+16 verbose cwd /Users/josh/Dev/generative-layout
+17 error Darwin 19.0.0
+18 error argv "/Users/josh/.nvm/versions/node/v6.3.1/bin/node" "/Users/josh/.nvm/versions/node/v6.3.1/bin/npm" "run" "build-css"
+19 error node v6.3.1
+20 error npm  v3.10.3
+21 error code ELIFECYCLE
+22 error generative@1.0.0 build-css: `node-sass --include-path scss public/sass/styles.scss public/css/styles.css`
+22 error Exit status 1
+23 error Failed at the generative@1.0.0 build-css script 'node-sass --include-path scss public/sass/styles.scss public/css/styles.css'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the generative package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node-sass --include-path scss public/sass/styles.scss public/css/styles.css
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs generative
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls generative
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
