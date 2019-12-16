@@ -31,36 +31,40 @@
           <div class="controls-grid">
             <div class="dropdown">
               <p class="control-title">Canvas Color</p>
-              <label>Select Color Palette</label>
-              <select id="color" name="color">
-                <option value="">Please Select A Color</option>
-                <option value="&color=red">Red</option>
-                <option value="&color=brightred">BrightRed</option>
-                <option value="&color=orange">Orange</option>
-                <option value="&color=salmon">Salmon</option>
-                <option value="&color=blue">Blue</option>
-                <option value="&color=slate">Slate</option>
-                <option value="&color=purple">Purple</option>
-                <option value="&color=myrtle">Myrtle</option>
-                <option value="&color=green">Green</option>
-                <option value="&color=lime">Lime</option>
-                <option value="&color=coral">Coral</option>
-                <option value="&color=jade">Jade</option>
-                <option value="&color=grayscale">Grayscale</option>
-              </select>
+              <div class="select-wrapper">
+                <label for="color">Select Color Palette</label>
+                <select id="color" name="color">
+                  <option value="">Please Select A Color</option>
+                  <option value="&color=red">Red</option>
+                  <option value="&color=brightred">BrightRed</option>
+                  <option value="&color=orange">Orange</option>
+                  <option value="&color=salmon">Salmon</option>
+                  <option value="&color=blue">Blue</option>
+                  <option value="&color=slate">Slate</option>
+                  <option value="&color=purple">Purple</option>
+                  <option value="&color=myrtle">Myrtle</option>
+                  <option value="&color=green">Green</option>
+                  <option value="&color=lime">Lime</option>
+                  <option value="&color=coral">Coral</option>
+                  <option value="&color=jade">Jade</option>
+                  <option value="&color=grayscale">Grayscale</option>
+                </select>
+              </div>
             </div>
             <div class="dropdown">
               <p class="control-title">Canvas Pattern</p>
-              <label>Select Pattern</label>
-              <select id="pattern" name="pattern">
-                <option value="">Please Select A Pattern</option>
-                <option value="&pattern=false">Default (Square)</option>
-                <option value="&pattern=triangle">Triangle</option>
-                <option value="&pattern=circle">Circle</option>
-                <option value="&pattern=arc">Arc</option
-                ><option value="&pattern=line">Line</option>
-                <option value="&pattern=mmm">MMM</option>
-              </select>
+              <div class="select-wrapper">
+                <label for="pattern">Select Pattern</label>
+                <select id="pattern" name="pattern">
+                  <option value="">Please Select A Pattern</option>
+                  <option value="&pattern=false">Default (Square)</option>
+                  <option value="&pattern=triangle">Triangle</option>
+                  <option value="&pattern=circle">Circle</option>
+                  <option value="&pattern=arc">Arc</option
+                  ><option value="&pattern=line">Line</option>
+                  <option value="&pattern=mmm">MMM</option>
+                </select>
+              </div>
             </div>
             <div class="input">
               <p class="control-title">Canvas Size</p>
@@ -142,29 +146,10 @@
     </main>
     <footer>
       <div class="footer-callout">
-        <p>Have Feedback? We want to know what you think!</p>
-        <a class="callout" href="mailto:info@isl.co">Give Feedback</a>
-        <p>
-          Gimme Patterns is an
-          <strong
-            ><u
-              ><a
-                class="isl"
-                href="http://isl.co/?ref=gimmepatterns"
-                target="_blank"
-                >ISL</a
-              ></u
-            ></strong
-          >
-          joint.
-        </p>
+        <p>Have Feedback? I want to know what you think!</p>
+        <a class="callout" href="mailto:g.g.ward90@gmail.com">Give Feedback</a>
       </div>
     </footer>
   </body>
-  <script>
-    function submit(e) {
-      e.preventDefault()
-    }
-  </script>
   <script src="/public/js/generative.js" type="text/javascript"></script>
 </html>
