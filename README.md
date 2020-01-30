@@ -109,6 +109,24 @@ usage: `color=jade`
 hex values: `['#7A7D7D', '#D0CFCF', '#565254']`\
 usage: `color=grayscale`
 
+## Custom Color Scheme (new)
+
+Using the gimmiepatterns `/canvas` endpoint you can pass a custom color scheme query string to define a custom color scheme. Its value must be set to `true`.
+
+usage: `customColor=true`
+
+To pass your custom colors into the color scheme you will need to use an additional three query string parameters.
+
+`firstCustomColor`
+`middleCustomColor`
+`lastCustomColor`
+
+Using these query strings pass your custom hex values:
+
+usage: `&customColor=true&firstCustomColor=E0D0C1&middleCustomColor=F7F9F9&lastCustomColor=00A676`
+
+Try playing around with the order of your hex values (first, middle, last) to get different results!
+
 ## Canvas Size
 
 ### Width
@@ -119,7 +137,7 @@ usage: `width=700`
 ### Height
 
 sets the height of the generated canvas (if not passed into url the default is `500`)\
-usage: `height: 500`
+usage: `height=500`
 
 ## Tile Size
 
@@ -132,5 +150,5 @@ provides an identifier or reference to a generated pattern. By default a `seed=0
 
 ## The Random Param
 
-allows generation of random patterns everytime the user makes a request to the url (if not passed into url the default is `false`). If a parameter is not set such as `pattern` or `color` that will be randomized too\
+allows generation of random patterns everytime the user makes a request to the url (if not passed into url the default is `false`). If a parameter is not set such as `pattern` or `color` that will be randomized too. Note: if `customColor` is set to true `color` will not be added to the query string\
 usage: `random=true`
