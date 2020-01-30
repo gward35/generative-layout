@@ -111,7 +111,7 @@ usage: `color=grayscale`
 
 ## Custom Color Scheme - API only (for a short time)
 
-Using the gimmiepatterns `/canvas` endpoint you can pass a custom color scheme query string to define a custom color scheme. Its value must be set to `true`.
+Using the gimmepatterns `/canvas` endpoint you can pass a custom color scheme query string to define a custom color scheme. Its value must be set to `true`.
 
 usage: `customColor=true`
 
