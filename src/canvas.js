@@ -2,7 +2,6 @@ const { createCanvas } = require("canvas");
 let rand = require("random-seed").create();
 
 module.exports = function(req, res) {
-  let firstColor, secondColor, thirdColor;
   const color = {
     red: ["#C75146", "#AD2E24", "#81171B"],
     brightred: ["#FF220C", "#FEC0AA", "#FF4B3E"],
@@ -19,8 +18,6 @@ module.exports = function(req, res) {
     grayscale: ["#7A7D7D", "#D0CFCF", "#565254"]
   };
 
-  const customColor = [];
-
   let queueNumber = [0, 1, 2];
   let currentPalette, tileLen;
   let canvas;
@@ -36,15 +33,16 @@ module.exports = function(req, res) {
 
   if (!req.query.color) {
     currentPalette = color["grayscale"];
-  } else if (req.query.customColor && !req.query.color) {
-    currentPalette = req.query.customColor[0];
+    if (req.query.customColor === "true") {
+      let customColor = [];
+      customColor.push("#" + req.query.firstCustomColor);
+      customColor.push("#" + req.query.middleCustomColor);
+      customColor.push("#" + req.query.lastCustomColor);
+      currentPalette = customColor;
+    }
   } else {
     currentPalette = color[`${req.query.color}`];
   }
-  console.log(req.query.customColor);
-  // currentPalette = !req.query.color
-  //   ? color["grayscale"]
-  //   : color[`${req.query.color}`];
 
   tileLen = dynamicTileSize;
 
