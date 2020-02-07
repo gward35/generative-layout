@@ -9,8 +9,21 @@ const saveButton = document.getElementById("save");
 const saveLink = document.querySelector(".save-link");
 const customColorCheckbox = document.getElementById("customColor");
 const customColorHiddenInput = document.querySelectorAll(".inputs.hidden");
+const firstCustomColorInput = document.getElementById("firstCustomColor");
+const middleCustomColorInput = document.getElementById("middleCustomColor");
+const lastCustomColorInput = document.getElementById("lastCustomColor");
 const image = document.querySelector(".big-canvas");
-let color, pattern, width, height, tilesize, seed, customColor, defaultImage;
+let color,
+  pattern,
+  width,
+  height,
+  tilesize,
+  seed,
+  customColor,
+  firstCustomColor,
+  middleCustomColor,
+  lastCustomColor,
+  defaultImage;
 
 const setup = () => {
   width = "&width=" + widthInput.value;
@@ -42,17 +55,16 @@ const setImageParameters = () => {
     pattern = patternSelect.value;
     image.setAttribute(
       "src",
-      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}`
+      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}${firstCustomColor}${middleCustomColor}${lastCustomColor}`
     );
   });
 
   widthInput.addEventListener("change", () => {
-    console.log(`${width}`);
     defaultImage = image.getAttribute("src");
     width = "&width=" + widthInput.value;
     image.setAttribute(
       "src",
-      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}`
+      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}${firstCustomColor}${middleCustomColor}${lastCustomColor}`
     );
   });
 
@@ -61,7 +73,7 @@ const setImageParameters = () => {
     height = "&height=" + heightInput.value;
     image.setAttribute(
       "src",
-      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}`
+      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}${firstCustomColor}${middleCustomColor}${lastCustomColor}`
     );
   });
 
@@ -70,7 +82,7 @@ const setImageParameters = () => {
     tilesize = "&tileSize=" + tileSizeInput.value;
     image.setAttribute(
       "src",
-      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}`
+      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}${firstCustomColor}${middleCustomColor}${lastCustomColor}`
     );
   });
 
@@ -79,7 +91,7 @@ const setImageParameters = () => {
     seed = "&seed=" + seedInput.value;
     image.setAttribute(
       "src",
-      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}`
+      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}${firstCustomColor}${middleCustomColor}${lastCustomColor}`
     );
   });
   customColorCheckbox.addEventListener("click", () => {
@@ -101,7 +113,34 @@ const setImageParameters = () => {
     }
     image.setAttribute(
       "src",
-      `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}`
+      `/canvas?${width}${height}${tilesize}${seed}${pattern}${customColor}`
+    );
+  });
+  firstCustomColorInput.addEventListener("change", () => {
+    defaultImage = image.getAttribute("src");
+    firstCustomColor =
+      "&firstCustomColor=" + firstCustomColorInput.value.replace("#", "");
+    image.setAttribute(
+      "src",
+      `/canvas?${width}${height}${tilesize}${seed}${pattern}${customColor}${firstCustomColor}`
+    );
+  });
+  middleCustomColorInput.addEventListener("change", () => {
+    defaultImage = image.getAttribute("src");
+    middleCustomColor =
+      "&middleCustomColor=" + middleCustomColorInput.value.replace("#", "");
+    image.setAttribute(
+      "src",
+      `/canvas?${width}${height}${tilesize}${seed}${pattern}${customColor}${firstCustomColor}${middleCustomColor}`
+    );
+  });
+  lastCustomColorInput.addEventListener("change", () => {
+    defaultImage = image.getAttribute("src");
+    lastCustomColor =
+      "&lastCustomColor=" + lastCustomColorInput.value.replace("#", "");
+    image.setAttribute(
+      "src",
+      `/canvas?${width}${height}${tilesize}${seed}${pattern}${customColor}${firstCustomColor}${middleCustomColor}${lastCustomColor}`
     );
   });
 };
@@ -135,9 +174,14 @@ const randomize = () => {
       "&color=jade",
       "&color=grayscale"
     ];
+
     let selectedColor = colors[Math.floor(Math.random() * colors.length)];
     colorSelect.value = selectedColor;
-    color = selectedColor;
+    if (customColorCheckbox.checked) {
+      colorSelect.value = "";
+    } else {
+      color = selectedColor;
+    }
 
     let randomizeTilesize = Math.ceil(Math.random() * 100);
     tileSizeInput.value = randomizeTilesize;
@@ -147,10 +191,17 @@ const randomize = () => {
     seedInput.value = randomizeSeed;
     seed = "&seed=" + randomizeSeed;
 
-    image.setAttribute(
-      "src",
-      `/canvas?${color}${pattern}${width}${height}${tilesize}${seed}`
-    );
+    if (customColorCheckbox.checked) {
+      image.setAttribute(
+        "src",
+        `/canvas?${pattern}${width}${height}${tilesize}${seed}${customColor}${firstCustomColor}${middleCustomColor}${lastCustomColor}`
+      );
+    } else {
+      image.setAttribute(
+        "src",
+        `/canvas?${color}${pattern}${width}${height}${tilesize}${seed}`
+      );
+    }
   });
 };
 
