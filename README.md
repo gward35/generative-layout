@@ -109,7 +109,7 @@ usage: `color=jade`
 hex values: `['#7A7D7D', '#D0CFCF', '#565254']`\
 usage: `color=grayscale`
 
-## Custom Color Scheme - API only (for a short time)
+## Custom Color Scheme
 
 Using the gimmepatterns `/canvas` endpoint you can pass a custom color scheme query string to define a custom color scheme. Its value must be set to `true`.
 
@@ -126,6 +126,8 @@ Using these query strings pass your custom hex values:
 usage: `&customColor=true&firstCustomColor=E0D0C1&middleCustomColor=F7F9F9&lastCustomColor=00A676`
 
 Try playing around with the order of your hex values (first, middle, last) to get different results!
+
+(2/6/2020) Adding custom color scheme was just added for the front end site and should be considered in Beta as it is improved.
 
 ## Canvas Size
 
