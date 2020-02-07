@@ -203,12 +203,55 @@ button {
       display: flex;
     }
 
+    .input > .customColorContainer {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input > .customColorContainer > div:first-of-type {
+      display: flex;
+      align-items: center;
+    }
+
     .inputs,
     .buttons {
       display: grid;
       width: 100%;
       &:first-of-type {
         margin-right: 2rem;
+      }
+    }
+
+    input[type="checkbox" i] {
+      -webkit-appearance: none;
+      background-color: transparent;
+      border: 1px solid #91c499;
+      box-shadow: #91c499 2px 2px 5px;
+      padding: 9px;
+      border-radius: 3px;
+      display: inline-block;
+      position: relative;
+      margin: 0 10px 0 0;
+
+      &:checked {
+        background-color: transparent;
+        border: 1px solid #91c499;
+        box-shadow: #91c499 2px 2px 5px;
+        color: #91c499;
+        &:after {
+          content: "\2714";
+          font-size: 14px;
+          position: absolute;
+          top: 0px;
+          left: 3px;
+          color: #91c499;
+        }
+      }
+    }
+
+    .customColorContainer {
+      div {
+        margin-bottom: 0.75rem;
       }
     }
 
@@ -304,6 +347,9 @@ button {
             -webkit-appearance: none;
             appearance: none;
           }
+        }
+        &.hidden {
+          display: none;
         }
       }
     }

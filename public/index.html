@@ -134,10 +134,12 @@
               </div>
             </div>
             <div class="input">
-              <div>
-                <input type="checkbox" id="customColor" name="customColor" />
-                <label for="customColor">Add Custom Color Scheme?</label>
-                <div class="inputs">
+              <div class="customColorContainer">
+                <div>
+                  <input type="checkbox" id="customColor" name="customColor" />
+                  <label for="customColor">Add Custom Color Scheme?</label>
+                </div>
+                <div class="inputs hidden">
                   <label for="firstCustomColor"
                     >First Custom Color Hex Value</label
                   >
@@ -149,7 +151,7 @@
                     max="6"
                   />
                 </div>
-                <div class="inputs">
+                <div class="inputs hidden">
                   <label for="middleCustomColor"
                     >Middle Custom Color Hex Value</label
                   >
@@ -161,7 +163,7 @@
                     max="6"
                   />
                 </div>
-                <div class="inputs">
+                <div class="inputs hidden">
                   <label for="lastCustomColor"
                     >Last Custom Color Hex Value</label
                   >

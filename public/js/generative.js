@@ -8,6 +8,7 @@ const randomButton = document.getElementById("random");
 const saveButton = document.getElementById("save");
 const saveLink = document.querySelector(".save-link");
 const customColorCheckbox = document.getElementById("customColor");
+const customColorHiddenInput = document.querySelectorAll(".inputs.hidden");
 const image = document.querySelector(".big-canvas");
 let color, pattern, width, height, tilesize, seed, customColor, defaultImage;
 
@@ -81,16 +82,22 @@ const setImageParameters = () => {
       `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}`
     );
   });
-
   customColorCheckbox.addEventListener("click", () => {
     defaultImage = image.getAttribute("src");
     if (customColorCheckbox.checked) {
       colorSelect.disabled = true;
       colorSelect.parentElement.classList.add("disabled");
       customColor = "&customColor=true";
+
+      customColorHiddenInput.forEach(hiddenInput => {
+        hiddenInput.classList.remove("hidden");
+      });
     } else {
       colorSelect.disabled = false;
       colorSelect.parentElement.classList.remove("disabled");
+      customColorHiddenInput.forEach(hiddenInput => {
+        hiddenInput.classList.add("hidden");
+      });
     }
     image.setAttribute(
       "src",

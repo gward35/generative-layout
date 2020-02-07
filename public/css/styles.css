@@ -152,6 +152,12 @@ button {
     .controls-container .controls-grid .input > div,
     .controls-container .controls-grid .button > div {
       display: flex; }
+    .controls-container .controls-grid .input > .customColorContainer {
+      display: flex;
+      flex-direction: column; }
+    .controls-container .controls-grid .input > .customColorContainer > div:first-of-type {
+      display: flex;
+      align-items: center; }
     .controls-container .controls-grid .inputs,
     .controls-container .controls-grid .buttons {
       display: grid;
@@ -159,6 +165,30 @@ button {
       .controls-container .controls-grid .inputs:first-of-type,
       .controls-container .controls-grid .buttons:first-of-type {
         margin-right: 2rem; }
+    .controls-container .controls-grid input[type="checkbox" i] {
+      -webkit-appearance: none;
+      background-color: transparent;
+      border: 1px solid #91c499;
+      box-shadow: #91c499 2px 2px 5px;
+      padding: 9px;
+      border-radius: 3px;
+      display: inline-block;
+      position: relative;
+      margin: 0 10px 0 0; }
+      .controls-container .controls-grid input[type="checkbox" i]:checked {
+        background-color: transparent;
+        border: 1px solid #91c499;
+        box-shadow: #91c499 2px 2px 5px;
+        color: #91c499; }
+        .controls-container .controls-grid input[type="checkbox" i]:checked:after {
+          content: "\2714";
+          font-size: 14px;
+          position: absolute;
+          top: 0px;
+          left: 3px;
+          color: #91c499; }
+    .controls-container .controls-grid .customColorContainer div {
+      margin-bottom: 0.75rem; }
     .controls-container .controls-grid .control-title {
       font-weight: bold; }
     .controls-container .controls-grid .dropdown .select-wrapper {
@@ -230,6 +260,8 @@ button {
         .controls-container .controls-grid .input .inputs input[type="text"]::-webkit-inner-spin-button {
           -webkit-appearance: none;
           appearance: none; }
+      .controls-container .controls-grid .input .inputs.hidden {
+        display: none; }
     .controls-container .controls-grid .range input[type="range" i] {
       -webkit-appearance: none;
       width: 100%;
