@@ -1,7 +1,7 @@
 body {
   width: 100%;
   height: 100%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   background-color: #fff;
   margin: 0;
@@ -28,7 +28,7 @@ header {
   background-image: url("/canvas?&random=true"); }
   .clip-text:before, .clip-text:after {
     position: absolute;
-    content: ''; }
+    content: ""; }
   .clip-text:before {
     z-index: -2;
     background-image: inherit; }
@@ -180,8 +180,12 @@ button {
         position: relative;
         width: 100%;
         cursor: pointer; }
+        .controls-container .controls-grid .dropdown .select-wrapper select:disabled {
+          cursor: not-allowed;
+          border: 1px solid #d4d4d4;
+          box-shadow: #d4d4d4 2px 2px 5px; }
       .controls-container .controls-grid .dropdown .select-wrapper::after {
-        content: '';
+        content: "";
         position: absolute;
         right: 1rem;
         top: 65%;
@@ -192,18 +196,27 @@ button {
         border-right: 5px solid transparent;
         pointer-events: none; }
       .controls-container .controls-grid .dropdown .select-wrapper:hover::after {
-        content: '';
+        content: "";
         border-top: 5px solid #91c499;
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
         position: absolute; }
+      .controls-container .controls-grid .dropdown .select-wrapper.disabled::after {
+        border-top: 5px solid #d4d4d4;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent; }
+      .controls-container .controls-grid .dropdown .select-wrapper.disabled:hover::after {
+        border-top: 5px solid #d4d4d4;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent; }
     .controls-container .controls-grid .input .inputs {
       position: relative;
       display: flex;
       flex-direction: column; }
       .controls-container .controls-grid .input .inputs label {
         margin-bottom: 0.5rem; }
-      .controls-container .controls-grid .input .inputs input[type='number'] {
+      .controls-container .controls-grid .input .inputs input[type="number"],
+      .controls-container .controls-grid .input .inputs input[type="text"] {
         -webkit-appearance: none;
         appearance: none;
         min-height: 2rem;
@@ -212,16 +225,18 @@ button {
         border-radius: 3px;
         border: 1px solid #91c499;
         box-shadow: #91c499 2px 2px 5px; }
-        .controls-container .controls-grid .input .inputs input[type='number']::-webkit-outer-spin-button, .controls-container .controls-grid .input .inputs input[type='number']::-webkit-inner-spin-button {
+        .controls-container .controls-grid .input .inputs input[type="number"]::-webkit-outer-spin-button, .controls-container .controls-grid .input .inputs input[type="number"]::-webkit-inner-spin-button,
+        .controls-container .controls-grid .input .inputs input[type="text"]::-webkit-outer-spin-button,
+        .controls-container .controls-grid .input .inputs input[type="text"]::-webkit-inner-spin-button {
           -webkit-appearance: none;
           appearance: none; }
-    .controls-container .controls-grid .range input[type='range' i] {
+    .controls-container .controls-grid .range input[type="range" i] {
       -webkit-appearance: none;
       width: 100%;
       margin: 15px 0; }
-    .controls-container .controls-grid .range input[type='range' i]:focus {
+    .controls-container .controls-grid .range input[type="range" i]:focus {
       outline: none; }
-    .controls-container .controls-grid .range input[type='range' i]::-webkit-slider-runnable-track {
+    .controls-container .controls-grid .range input[type="range" i]::-webkit-slider-runnable-track {
       width: 100%;
       height: 8.4px;
       cursor: pointer;
@@ -229,7 +244,7 @@ button {
       background: #e5e5e5;
       border-radius: 2px;
       border: 1px solid #91c499; }
-    .controls-container .controls-grid .range input[type='range']::-webkit-slider-thumb {
+    .controls-container .controls-grid .range input[type="range"]::-webkit-slider-thumb {
       box-shadow: 1px 1px 2px #91c499, 0px 0px 1px #91c499;
       border: 1px solid #91c499;
       height: 20px;
@@ -239,7 +254,7 @@ button {
       cursor: pointer;
       -webkit-appearance: none;
       margin-top: -6px; }
-    .controls-container .controls-grid .range input[type='range' i]:focus::-webkit-slider-runnable-track {
+    .controls-container .controls-grid .range input[type="range" i]:focus::-webkit-slider-runnable-track {
       background: #e5e5e5; }
 
 .documentation-container {

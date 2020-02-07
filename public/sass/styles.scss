@@ -13,7 +13,7 @@ $jade: #476a6f;
 body {
   width: 100%;
   height: 100%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   background-color: $white;
   margin: 0;
@@ -41,12 +41,12 @@ header {
   color: #000;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: url('/canvas?&random=true');
+  background-image: url("/canvas?&random=true");
 
   &:before,
   &:after {
     position: absolute;
-    content: '';
+    content: "";
   }
 
   &:before {
@@ -237,9 +237,14 @@ button {
           position: relative;
           width: 100%;
           cursor: pointer;
+          &:disabled {
+            cursor: not-allowed;
+            border: 1px solid #d4d4d4;
+            box-shadow: #d4d4d4 2px 2px 5px;
+          }
         }
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           right: 1rem;
           top: 65%;
@@ -252,11 +257,25 @@ button {
         }
         &:hover {
           &::after {
-            content: '';
+            content: "";
             border-top: 5px solid #91c499;
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
             position: absolute;
+          }
+        }
+        &.disabled {
+          &::after {
+            border-top: 5px solid #d4d4d4;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+          }
+          &:hover {
+            &::after {
+              border-top: 5px solid #d4d4d4;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+            }
           }
         }
       }
@@ -270,7 +289,8 @@ button {
         label {
           margin-bottom: 0.5rem;
         }
-        input[type='number'] {
+        input[type="number"],
+        input[type="text"] {
           -webkit-appearance: none;
           appearance: none;
           min-height: 2rem;
@@ -289,15 +309,15 @@ button {
     }
 
     .range {
-      input[type='range' i] {
+      input[type="range" i] {
         -webkit-appearance: none;
         width: 100%;
         margin: 15px 0;
       }
-      input[type='range' i]:focus {
+      input[type="range" i]:focus {
         outline: none;
       }
-      input[type='range' i]::-webkit-slider-runnable-track {
+      input[type="range" i]::-webkit-slider-runnable-track {
         width: 100%;
         height: 8.4px;
         cursor: pointer;
@@ -306,7 +326,7 @@ button {
         border-radius: 2px;
         border: 1px solid #91c499;
       }
-      input[type='range']::-webkit-slider-thumb {
+      input[type="range"]::-webkit-slider-thumb {
         box-shadow: 1px 1px 2px #91c499, 0px 0px 1px #91c499;
         border: 1px solid #91c499;
         height: 20px;
@@ -317,7 +337,7 @@ button {
         -webkit-appearance: none;
         margin-top: -6px;
       }
-      input[type='range' i]:focus::-webkit-slider-runnable-track {
+      input[type="range" i]:focus::-webkit-slider-runnable-track {
         background: #e5e5e5;
       }
     }
