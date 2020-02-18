@@ -254,3 +254,10 @@ setup();
 setImageParameters();
 randomize();
 saveImage();
+
+module.exports = {
+  setup: setup,
+  setImageParameters: setImageParameters,
+  randomize: randomize,
+  saveImage: saveImage
+};
