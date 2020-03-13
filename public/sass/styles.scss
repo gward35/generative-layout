@@ -270,6 +270,7 @@ button {
         }
         select {
           -webkit-appearance: none;
+          -moz-appearance: none;
           appearance: none;
           min-height: 2rem;
           padding: 0 1rem;
@@ -335,6 +336,7 @@ button {
         input[type="number"],
         input[type="text"] {
           -webkit-appearance: none;
+          -moz-appearance: none;
           appearance: none;
           min-height: 2rem;
           padding: 0 1rem;
@@ -345,6 +347,7 @@ button {
           &::-webkit-outer-spin-button,
           &::-webkit-inner-spin-button {
             -webkit-appearance: none;
+            -moz-appearance: none;
             appearance: none;
           }
         }
@@ -357,14 +360,24 @@ button {
     .range {
       input[type="range" i] {
         -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
         width: 100%;
         margin: 15px 0;
+        height: 8.4px;
       }
       input[type="range" i]:focus {
         outline: none;
       }
       input[type="range" i]::-webkit-slider-runnable-track {
-        width: 100%;
+        height: 8.4px;
+        cursor: pointer;
+        box-shadow: 1px 1px 1px 1px #91c499, 1px 1px 1px 1px #91c499;
+        background: #e5e5e5;
+        border-radius: 2px;
+        border: 1px solid #91c499;
+      }
+      input[type="range" i]::-moz-range-track {
         height: 8.4px;
         cursor: pointer;
         box-shadow: 1px 1px 1px 1px #91c499, 1px 1px 1px 1px #91c499;
@@ -381,9 +394,25 @@ button {
         background: #ace894;
         cursor: pointer;
         -webkit-appearance: none;
+        appearance: none;
+        margin-top: -6px;
+      }
+      input[type="range"]::-moz-range-thumb {
+        box-shadow: 1px 1px 2px #91c499, 0px 0px 1px #91c499;
+        border: 1px solid #91c499;
+        height: 20px;
+        width: 10px;
+        border-radius: 3px;
+        background: #ace894;
+        cursor: pointer;
+        -moz-appearance: none;
+        appearance: none;
         margin-top: -6px;
       }
       input[type="range" i]:focus::-webkit-slider-runnable-track {
+        background: #e5e5e5;
+      }
+      input[type="range" i]:focus::-moz-range-track {
         background: #e5e5e5;
       }
     }

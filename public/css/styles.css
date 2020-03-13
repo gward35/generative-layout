@@ -200,6 +200,7 @@ button {
         margin-bottom: 0.5rem; }
       .controls-container .controls-grid .dropdown .select-wrapper select {
         -webkit-appearance: none;
+        -moz-appearance: none;
         appearance: none;
         min-height: 2rem;
         padding: 0 1rem;
@@ -248,6 +249,7 @@ button {
       .controls-container .controls-grid .input .inputs input[type="number"],
       .controls-container .controls-grid .input .inputs input[type="text"] {
         -webkit-appearance: none;
+        -moz-appearance: none;
         appearance: none;
         min-height: 2rem;
         padding: 0 1rem;
@@ -259,17 +261,27 @@ button {
         .controls-container .controls-grid .input .inputs input[type="text"]::-webkit-outer-spin-button,
         .controls-container .controls-grid .input .inputs input[type="text"]::-webkit-inner-spin-button {
           -webkit-appearance: none;
+          -moz-appearance: none;
           appearance: none; }
       .controls-container .controls-grid .input .inputs.hidden {
         display: none; }
     .controls-container .controls-grid .range input[type="range" i] {
       -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
       width: 100%;
-      margin: 15px 0; }
+      margin: 15px 0;
+      height: 8.4px; }
     .controls-container .controls-grid .range input[type="range" i]:focus {
       outline: none; }
     .controls-container .controls-grid .range input[type="range" i]::-webkit-slider-runnable-track {
-      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      box-shadow: 1px 1px 1px 1px #91c499, 1px 1px 1px 1px #91c499;
+      background: #e5e5e5;
+      border-radius: 2px;
+      border: 1px solid #91c499; }
+    .controls-container .controls-grid .range input[type="range" i]::-moz-range-track {
       height: 8.4px;
       cursor: pointer;
       box-shadow: 1px 1px 1px 1px #91c499, 1px 1px 1px 1px #91c499;
@@ -285,8 +297,22 @@ button {
       background: #ace894;
       cursor: pointer;
       -webkit-appearance: none;
+      appearance: none;
+      margin-top: -6px; }
+    .controls-container .controls-grid .range input[type="range"]::-moz-range-thumb {
+      box-shadow: 1px 1px 2px #91c499, 0px 0px 1px #91c499;
+      border: 1px solid #91c499;
+      height: 20px;
+      width: 10px;
+      border-radius: 3px;
+      background: #ace894;
+      cursor: pointer;
+      -moz-appearance: none;
+      appearance: none;
       margin-top: -6px; }
     .controls-container .controls-grid .range input[type="range" i]:focus::-webkit-slider-runnable-track {
+      background: #e5e5e5; }
+    .controls-container .controls-grid .range input[type="range" i]:focus::-moz-range-track {
       background: #e5e5e5; }
 
 .documentation-container {
