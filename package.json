@@ -11,12 +11,12 @@
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
-    "concurrently": "^4.1.2",
-    "jest": "^25.1.0",
-    "nodemon": "^1.19.4"
+    "concurrently": "^5.1.0",
+    "jest": "^25.2.6",
+    "nodemon": "^2.0.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build-css": "node-sass --include-path scss public/sass/styles.scss public/css/styles.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "watch": "browser-sync start --server --index browser-sync.html --watch server.js src/* public/*",
