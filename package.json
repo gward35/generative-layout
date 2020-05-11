@@ -1,7 +1,7 @@
 {
   "name": "generative",
   "version": "1.0.0",
-  "description": "Generative experiment",
+  "description": "Gimme Patterns",
   "main": "server.js",
   "dependencies": {
     "canvas": "^2.6.1",
