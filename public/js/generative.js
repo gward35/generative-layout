@@ -27,7 +27,7 @@ function generative() {
     defaultImage;
 
   const setup = () => {
-    width = "&width" + widthInput.value;
+    width = "&width=" + widthInput.value;
     height = "&height=" + heightInput.value;
     tilesize = "&tileSize=" + tileSizeInput.value;
     seed = "&seed=" + seedInput.value;
