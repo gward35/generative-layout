@@ -22,6 +22,15 @@ document.body.innerHTML =
   '<option value="&color=coral">Coral</option>' +
   '<option value="&color=jade">Jade</option>' +
   '<option value="&color=grayscale">Grayscale</option>' +
+  "</select>" +
+  '<select id="pattern" name="pattern">' +
+  '<option value="">Please Select A Pattern</option>' +
+  '<option value="&pattern=false">Default (Square)</option>' +
+  '<option value="&pattern=triangle">Triangle</option>' +
+  '<option value="&pattern=circle">Circle</option>' +
+  '<option value="&pattern=arc">Arc</option>' +
+  '<option value="&pattern=line">Line</option>' +
+  '<option value="&pattern=mmm">MMM</option>' +
   "</select>";
 
 describe("width, height, tilesize, seed initial values in setup function", () => {
@@ -70,7 +79,7 @@ describe("test change handler to color, pattern, height, width, seed input", () 
 
   test("on change to color select", () => {
     let colorSelect = document.getElementById("color");
-    let color = "&color=brightred";
+    let color = "&color=grayscale";
     defaultImage = image.getAttribute("src");
 
     function updateValue(cb, color) {
@@ -79,11 +88,26 @@ describe("test change handler to color, pattern, height, width, seed input", () 
     }
 
     const updateVal = jest.fn();
-
     colorSelect.addEventListener("change", updateValue(updateVal, color));
 
     expect(updateVal).toBeCalled();
+    expect(colorSelect.value).toBe("&color=grayscale");
+  });
 
-    expect(colorSelect.value).toBe("&color=brightred");
+  test("on change to pattern select", () => {
+    let patternSelect = document.getElementById("pattern");
+    let pattern = "&pattern=false";
+    defaultImage = image.getAttribute("src");
+
+    function updateValue(cb, pattern) {
+      patternSelect.value = pattern;
+      cb(pattern);
+    }
+
+    const updateVal = jest.fn();
+    patternSelect.addEventListener("change", updateValue(updateVal, pattern));
+
+    expect(updateVal).toBeCalled();
+    expect(patternSelect.value).toBe("&pattern=false");
   });
 });
