@@ -110,4 +110,21 @@ describe("test change handler to color, pattern, height, width, seed input", () 
     expect(updateVal).toBeCalled();
     expect(patternSelect.value).toBe("&pattern=false");
   });
+
+  test("on change to width input", () => {
+    let widthInput = document.getElementById("width");
+    let width = "2000";
+    defaultImage = image.getAttribute("src");
+
+    function updateValue(cb, width) {
+      widthInput.value = width;
+      cb(width);
+    }
+
+    const updateVal = jest.fn();
+    widthInput.addEventListener("change", updateValue(updateVal, width));
+
+    expect(updateVal).toBeCalled();
+    expect(widthInput.value).toBe("2000");
+  });
 });
