@@ -111,6 +111,23 @@ describe("test change handler to color, pattern, height, width, seed input", () 
     expect(patternSelect.value).toBe("&pattern=false");
   });
 
+  test("on change to height input", () => {
+    let heightInput = document.getElementById("height");
+    let height = "500";
+    defaultImage = image.getAttribute("src");
+
+    function updateValue(cb, height) {
+      heightInput.value = height;
+      cb(width);
+    }
+
+    const updateVal = jest.fn();
+    heightInput.addEventListener("change", updateValue(updateVal, height));
+
+    expect(updateVal).toBeCalled();
+    expect(heightInput.value).toBe("500");
+  });
+
   test("on change to width input", () => {
     let widthInput = document.getElementById("width");
     let width = "2000";
@@ -126,5 +143,22 @@ describe("test change handler to color, pattern, height, width, seed input", () 
 
     expect(updateVal).toBeCalled();
     expect(widthInput.value).toBe("2000");
+  });
+
+  test("on change to seed input", () => {
+    let seedInput = document.getElementById("seed");
+    let seed = "50";
+    defaultImage = image.getAttribute("src");
+
+    function updateValue(cb, seed) {
+      seedInput.value = seed;
+      cb(seed);
+    }
+
+    const updateVal = jest.fn();
+    seedInput.addEventListener("change", updateValue(updateVal, seed));
+
+    expect(updateVal).toBeCalled();
+    expect(seedInput.value).toBe("50");
   });
 });
