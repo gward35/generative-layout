@@ -73,7 +73,7 @@ describe("width, height, tilesize, seed initial values in setup function", () =>
   });
 });
 
-describe("test change handler to color, pattern, height, width, seed input", () => {
+describe("test change handler to color, pattern, height, width, seed, and tilesize input", () => {
   let image = document.querySelector(".big-canvas");
   let defaultImage;
 
@@ -160,5 +160,22 @@ describe("test change handler to color, pattern, height, width, seed input", () 
 
     expect(updateVal).toBeCalled();
     expect(seedInput.value).toBe("50");
+  });
+
+  test("on change to seed input", () => {
+    let tilesizeInput = document.getElementById("tilesize");
+    let tilesize = "50";
+    defaultImage = image.getAttribute("src");
+
+    function updateValue(cb, tilesize) {
+      tilesizeInput.value = tilesize;
+      cb(tilesize);
+    }
+
+    const updateVal = jest.fn();
+    tilesizeInput.addEventListener("change", updateValue(updateVal, tilesize));
+
+    expect(updateVal).toBeCalled();
+    expect(tilesizeInput.value).toBe("50");
   });
 });
