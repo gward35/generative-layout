@@ -75,12 +75,10 @@ describe("width, height, tilesize, seed initial values in setup function", () =>
 
 describe("test change handler to color, pattern, height, width, seed, and tilesize input", () => {
   let image = document.querySelector(".big-canvas");
-  let defaultImage;
 
   test("on change to color select", () => {
     let colorSelect = document.getElementById("color");
     let color = "&color=grayscale";
-    defaultImage = image.getAttribute("src");
 
     function updateValue(cb, color) {
       colorSelect.value = color;
@@ -89,15 +87,16 @@ describe("test change handler to color, pattern, height, width, seed, and tilesi
 
     const updateVal = jest.fn();
     colorSelect.addEventListener("change", updateValue(updateVal, color));
+    image.setAttribute("src", `/canvas?${color}`);
 
     expect(updateVal).toBeCalled();
     expect(colorSelect.value).toBe("&color=grayscale");
+    expect(image.src).toMatch("http://localhost/canvas?&color=grayscale");
   });
 
   test("on change to pattern select", () => {
     let patternSelect = document.getElementById("pattern");
     let pattern = "&pattern=false";
-    defaultImage = image.getAttribute("src");
 
     function updateValue(cb, pattern) {
       patternSelect.value = pattern;
@@ -106,15 +105,16 @@ describe("test change handler to color, pattern, height, width, seed, and tilesi
 
     const updateVal = jest.fn();
     patternSelect.addEventListener("change", updateValue(updateVal, pattern));
+    image.setAttribute("src", `/canvas?${pattern}`);
 
     expect(updateVal).toBeCalled();
     expect(patternSelect.value).toBe("&pattern=false");
+    expect(image.src).toMatch("http://localhost/canvas?&pattern=false");
   });
 
   test("on change to height input", () => {
     let heightInput = document.getElementById("height");
     let height = "500";
-    defaultImage = image.getAttribute("src");
 
     function updateValue(cb, height) {
       heightInput.value = height;
@@ -123,15 +123,16 @@ describe("test change handler to color, pattern, height, width, seed, and tilesi
 
     const updateVal = jest.fn();
     heightInput.addEventListener("change", updateValue(updateVal, height));
+    image.setAttribute("src", `/canvas?&height=${height}`);
 
     expect(updateVal).toBeCalled();
     expect(heightInput.value).toBe("500");
+    expect(image.src).toMatch("http://localhost/canvas?&height=500");
   });
 
   test("on change to width input", () => {
     let widthInput = document.getElementById("width");
     let width = "2000";
-    defaultImage = image.getAttribute("src");
 
     function updateValue(cb, width) {
       widthInput.value = width;
@@ -140,15 +141,16 @@ describe("test change handler to color, pattern, height, width, seed, and tilesi
 
     const updateVal = jest.fn();
     widthInput.addEventListener("change", updateValue(updateVal, width));
+    image.setAttribute("src", `/canvas?&width=${width}`);
 
     expect(updateVal).toBeCalled();
     expect(widthInput.value).toBe("2000");
+    expect(image.src).toMatch("http://localhost/canvas?&width=2000");
   });
 
   test("on change to seed input", () => {
     let seedInput = document.getElementById("seed");
     let seed = "50";
-    defaultImage = image.getAttribute("src");
 
     function updateValue(cb, seed) {
       seedInput.value = seed;
@@ -157,15 +159,16 @@ describe("test change handler to color, pattern, height, width, seed, and tilesi
 
     const updateVal = jest.fn();
     seedInput.addEventListener("change", updateValue(updateVal, seed));
+    image.setAttribute("src", `/canvas?&seed=${seed}`);
 
     expect(updateVal).toBeCalled();
     expect(seedInput.value).toBe("50");
+    expect(image.src).toMatch("http://localhost/canvas?&seed=50");
   });
 
-  test("on change to seed input", () => {
+  test("on change to tilesize input", () => {
     let tilesizeInput = document.getElementById("tilesize");
     let tilesize = "50";
-    defaultImage = image.getAttribute("src");
 
     function updateValue(cb, tilesize) {
       tilesizeInput.value = tilesize;
@@ -174,8 +177,10 @@ describe("test change handler to color, pattern, height, width, seed, and tilesi
 
     const updateVal = jest.fn();
     tilesizeInput.addEventListener("change", updateValue(updateVal, tilesize));
+    image.setAttribute("src", `/canvas?&tilesize=${tilesize}`);
 
     expect(updateVal).toBeCalled();
     expect(tilesizeInput.value).toBe("50");
+    expect(image.src).toMatch("http://localhost/canvas?&tilesize=50");
   });
 });
