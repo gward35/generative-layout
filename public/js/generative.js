@@ -89,7 +89,7 @@ function generative() {
       if (image.getAttribute("src").indexOf("&customColor=true") > -1) {
         image.setAttribute(
           "src",
-          `/canvas?${width}${height}${tilesize}${seed}${color}${pattern}${customColor}${firstCustomColor}${middleCustomColor}${lastCustomColor}`
+          `/canvas?${width}${height}${tilesize}${seed}${pattern}${customColor}${firstCustomColor}${middleCustomColor}${lastCustomColor}`
         );
       } else {
         image.setAttribute(
