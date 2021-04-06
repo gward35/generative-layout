@@ -259,6 +259,6 @@ function generative() {
   saveImage();
 }
 
-module.exports = {
-  generative: generative,
-};
+generative();
+
+export { generative };
