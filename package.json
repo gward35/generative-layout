@@ -4,7 +4,7 @@
   "description": "Gimme Patterns",
   "main": "server.js",
   "dependencies": {
-    "canvas": "^2.7.0",
+    "canvas": "^2.8.0",
     "express": "^4.17.1",
     "node-sass": "^6.0.0",
     "random-seed": "^0.3.0"
