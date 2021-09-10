@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.27.5",
-    "concurrently": "^6.1.0",
+    "concurrently": "^6.2.1",
     "jest": "^27.1.1",
     "nodemon": "^2.0.12"
   },
