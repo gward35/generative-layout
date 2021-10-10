@@ -23,12 +23,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Set up JDK 1.8
-      - uses: actions/setup-java@v2
+        uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '8'
       - name: Thundra Maven Test Instrumentation  
-      - uses: thundra-io/thundra-maven-test-action@v1
+        uses: thundra-io/thundra-maven-test-action@v1
         with:
           apikey: 2d807de6-5047-478f-bf64-2923ba1943d2
           project_id: 68eb0ef9-4abf-4ba2-8884-f6b0595f630f
