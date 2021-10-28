@@ -10,7 +10,7 @@
     "random-seed": "^0.3.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.27.5",
+    "browser-sync": "^2.27.7",
     "concurrently": "^6.2.1",
     "jest": "^27.1.1",
     "nodemon": "^2.0.12"
