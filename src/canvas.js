@@ -1,7 +1,7 @@
 const { createCanvas } = require("canvas");
 let rand = require("random-seed").create();
 
-module.exports = function(req, res) {
+module.exports = function (req, res) {
   const color = {
     red: ["#C75146", "#AD2E24", "#81171B"],
     brightred: ["#FF220C", "#FEC0AA", "#FF4B3E"],
@@ -15,7 +15,7 @@ module.exports = function(req, res) {
     lime: ["#629460", "#96BE8C", "#ACECA1"],
     coral: ["#F6C28B", "#5296A5", "#82DDF0"],
     jade: ["#476A6F", "#519E8A", "#7EB09B"],
-    grayscale: ["#7A7D7D", "#D0CFCF", "#565254"]
+    grayscale: ["#7A7D7D", "#D0CFCF", "#565254"],
   };
 
   let queueNumber = [0, 1, 2];
@@ -46,19 +46,19 @@ module.exports = function(req, res) {
 
   tileLen = dynamicTileSize;
 
-  const randomPattern = multiplier => {
+  const randomPattern = (multiplier) => {
     return req.query.random === "true"
       ? Math.round(rand.random() * multiplier)
       : Math.round(rand.random() * multiplier);
   };
 
-  const randomColor = multiplier => {
+  const randomColor = (multiplier) => {
     return req.query.random === "true"
       ? Math.floor(rand.random() * multiplier)
       : Math.floor(rand.random() * multiplier);
   };
 
-  const shuffle = array => {
+  const shuffle = (array) => {
     let currentIndex = array.length,
       tempVal,
       randomIndex;
