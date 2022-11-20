@@ -2,7 +2,7 @@
   "name": "generative",
   "version": "1.0.0",
   "description": "Gimme Patterns",
-  "main": "server.js",
+  "main": "index.js",
   "dependencies": {
     "canvas": "^2.10.2",
     "express": "^4.18.2",
@@ -17,11 +17,11 @@
   },
   "scripts": {
     "test": "jest",
-    "build-css": "node-sass --include-path scss public/sass/styles.scss public/css/styles.css",
+    "build-css": "node-sass --include-path scss api/sass/styles.scss api/css/styles.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
-    "watch": "browser-sync start --server --index browser-sync.html --watch server.js src/* public/*",
+    "watch": "browser-sync start --server --index browser-sync.html --watch server.js src/* api/*",
     "dev": "concurrently \"nodemon server.js\" \"npm run watch\" \"npm run watch-css\"",
-    "start": "node server.js"
+    "start": "node api/index.js"
   },
   "author": "",
   "license": "ISC",

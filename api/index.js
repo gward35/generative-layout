@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 8080;
-const canvas = require("./src/canvas");
+const canvas = require("../src/canvas");
 const url = require("url");
 let rand = require("random-seed").create();
 
@@ -52,12 +52,12 @@ const randomizer = () => {
   };
 };
 
-app.use("/public", express.static("public"));
+app.use("/api", express.static("api"));
 
 app.get("/", (req, res) => {
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
-  res.sendFile(__dirname + "/public/index.html");
+  res.sendFile(__dirname + "/index.html");
   res.postUrl;
 });
 
