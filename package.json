@@ -16,7 +16,6 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "vercel-build": "yum install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/",
     "test": "jest",
     "build-css": "node-sass --include-path scss api/sass/styles.scss api/css/styles.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
