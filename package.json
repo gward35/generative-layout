@@ -4,7 +4,6 @@
   "description": "Gimme Patterns",
   "main": "index.js",
   "dependencies": {
-    "bcrypt": "^5.1.0",
     "canvas": "2.6.1",
     "express": "^4.18.2",
     "node-sass": "^7.0.3",
