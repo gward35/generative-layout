@@ -52,10 +52,10 @@ const randomizer = () => {
   };
 };
 
-app.use(express.static("public"));
+app.use("/public", express.static("public"));
 
 app.get("/", (req, res) => {
-  res.sendFile("index.html", { root: path.join(__dirname, "public") });
+  res.sendFile(__dirname + "/public/index.html");
   res.postUrl;
 });
 
@@ -93,3 +93,5 @@ app.get("/canvas", randomizer(), (req, res) => {
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
+
+module.exports = app;

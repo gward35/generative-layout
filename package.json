@@ -4,15 +4,15 @@
   "description": "Gimme Patterns",
   "main": "index.js",
   "dependencies": {
-    "canvas": "^2.10.2",
+    "canvas": "^2.6.1",
     "express": "^4.18.2",
     "node-sass": "^7.0.3",
     "random-seed": "^0.3.0"
   },
   "devDependencies": {
     "browser-sync": "^2.27.10",
-    "jest": "^29.2.2",
     "concurrently": "^7.5.0",
+    "jest": "^29.2.2",
     "nodemon": "^2.0.20"
   },
   "scripts": {
