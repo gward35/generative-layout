@@ -61,7 +61,7 @@ app.get("/", (req, res) => {
   res.postUrl;
 });
 
-app.get("/canvas", randomizer(), (req, res) => {
+app.get("api/canvas", randomizer(), (req, res) => {
   if (!req.query.random) {
     cacheHeader(res);
   }
