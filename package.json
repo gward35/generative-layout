@@ -21,7 +21,7 @@
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "watch": "browser-sync start --server --index browser-sync.html --watch server.js src/* api/*",
     "dev": "concurrently \"nodemon server.js\" \"npm run watch\" \"npm run watch-css\"",
-    "start": "node api/index.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC"
