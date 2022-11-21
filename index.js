@@ -90,13 +90,9 @@ app.get("/canvas", randomizer(), (req, res) => {
       })
     );
   }
-  //canvas(req, res);
+  canvas(req, res);
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
-module.exports = {
-  entry: {
-    app: [app, canvas],
-  },
-};
+module.exports = app;

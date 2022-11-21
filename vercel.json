@@ -9,10 +9,6 @@
       {
         "src": "/(.*)",
         "dest": "index.js"
-      },
-      {
-        "src": "/canvas",
-        "dest": "index.js"
       }
   ]
 }
