@@ -12,7 +12,7 @@
       },
       {
         "src": "/canvas/(.*)",
-        "dest": "/src/canvas.js"
+        "dest": "canvas.js"
     }
   ]
 }
