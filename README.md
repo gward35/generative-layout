@@ -4,8 +4,8 @@ You can pick a specific color scheme, pattern, width, height, tilesize, and gene
 
 ## Relevant URLs
 
-API: https://gimmepatterns-staging.herokuapp.com/canvas  
-Front End: https://gimmepatterns-staging.herokuapp.com
+API: https://gimmiepatterns.com/canvas  
+Front End: https://gimmiepatterns.com
 
 ## Sample URL To Generate Pattern
 
