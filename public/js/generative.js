@@ -246,7 +246,7 @@ function generative() {
     saveButton.addEventListener("click", () => {
       saveLink.setAttribute(
         "href",
-        "https://gimmepatterns-staging.herokuapp.com" +
+        "https://gimmepatterns.com" +
           image.getAttribute("src")
       );
       console.log(saveLink);
