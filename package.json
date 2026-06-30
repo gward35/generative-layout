@@ -4,9 +4,9 @@
   "description": "Gimme Patterns",
   "main": "index.js",
   "dependencies": {
-    "canvas": "^2.11.2",
-    "node-sass": "^9.0.0",
-    "random-seed": "^0.3.0"
+    "canvas": "^3.2.3",
+    "random-seed": "^0.3.0",
+    "sass": "^1.101.0"
   },
   "devDependencies": {
     "browser-sync": "^3.0.3",
